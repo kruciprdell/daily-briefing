@@ -54,6 +54,9 @@ MIN_RATIO = 0.8                                          # accept a draft with >
 ARTICLE_CHARS = int(os.getenv("ARTICLE_CHARS", "2500"))  # article text per story handed to the writer
 RETRY_BASE_SECONDS = int(os.getenv("RETRY_BASE", "20"))  # wait before retrying a busy (503/429) model
 DEFAULT_STYLE = "relaxed, warm, witty podcast banter"
+BREAK_SECTIONS = {"dutch", "dzogchen"}                     # a short silence is inserted before these segments
+SECTION_PAUSE = float(os.getenv("SECTION_PAUSE", "1.3"))   # seconds
+SECTIONS = {"hook", "random", "news", "dutch", "dzogchen", "close"}
 TTS_CHUNK_CHARS = 2800
 TTS_PAUSE_SECONDS = int(os.getenv("TTS_PAUSE", "22"))   # free-tier TTS has a low requests/min cap
 HOSTS = ("Anna", "Ben")
@@ -428,8 +431,10 @@ STORIES (IDs in brackets):
 OUTPUT: only valid JSON, no markdown fences:
 {{
   "title": "catchy episode title, max 80 chars, no date",
-  "turns": [{{"speaker": "Anna", "text": "spoken words only, no stage directions, no markdown", "style": "optional, max 6 words, e.g. amused / mock-serious / calm, slower, warm"}}, ...]
+  "dutch_phrases": [{{"nl": "the Dutch phrase, plain text", "en": "English meaning"}}, ... the 6 phrases taught in the Dutch lesson],
+  "turns": [{{"speaker": "Anna", "section": "hook", "text": "spoken words only, no stage directions, no markdown", "style": "optional, max 6 words, e.g. amused / mock-serious / calm, slower, warm"}}, ...]
 }}
+"section" goes ONLY on the first turn of each part of the show, with one of: "hook", "random", "news", "dutch", "dzogchen", "close".
 "speaker" must be exactly "Anna" or "Ben". Write numbers and abbreviations the way they are spoken.
 """
 
@@ -451,12 +456,19 @@ def validate_script(data: dict) -> None:
         turn = {"speaker": sp, "text": t["text"].strip()}
         if isinstance(t.get("style"), str) and t["style"].strip():
             turn["style"] = t["style"].strip()[:60]
+        if t.get("section") in SECTIONS:
+            turn["section"] = t["section"]
         good.append(turn)
     bad = len(turns) - len(good)
     if len(good) < 10 or bad > max(2, int(0.05 * len(turns))):
         raise ValueError(f"script too broken: {len(good)} usable turns, {bad} bad")
     data["turns"] = good
     data["title"] = clean(str(data.get("title") or "Daily Briefing"), 80)
+    phrases = []
+    for ph in data.get("dutch_phrases") or []:
+        if isinstance(ph, dict) and str(ph.get("nl") or "").strip() and str(ph.get("en") or "").strip():
+            phrases.append({"nl": clean(str(ph["nl"]), 120), "en": clean(str(ph["en"]), 160)})
+    data["dutch_phrases"] = phrases[:10]
 
 
 def word_count(data: dict) -> int:
@@ -507,7 +519,7 @@ def chunk_turns(turns: list[dict], limit: int = TTS_CHUNK_CHARS) -> list[list[di
     chunks, cur, size = [], [], 0
     for t in turns:
         n = len(t["text"]) + 8
-        if cur and size + n > limit:
+        if cur and (size + n > limit or t.get("section") in BREAK_SECTIONS):
             chunks.append(cur)
             cur, size = [], 0
         cur.append(t)
@@ -515,6 +527,17 @@ def chunk_turns(turns: list[dict], limit: int = TTS_CHUNK_CHARS) -> list[list[di
     if cur:
         chunks.append(cur)
     return chunks
+
+
+def make_silence_wav(workdir: Path, seconds: float = SECTION_PAUSE) -> Path:
+    path = workdir / "break.wav"
+    if not path.exists():
+        with wave.open(str(path), "wb") as w:
+            w.setnchannels(1)
+            w.setsampwidth(2)
+            w.setframerate(24000)
+            w.writeframes(b"\0\0" * int(24000 * seconds))
+    return path
 
 
 def tts_gemini(client, turns: list[dict], workdir: Path) -> list[Path]:
@@ -564,6 +587,8 @@ def tts_gemini(client, turns: list[dict], workdir: Path) -> list[Path]:
                 w.setsampwidth(2)
                 w.setframerate(24000)
                 w.writeframes(data)
+        if paths and chunk[0].get("section") in BREAK_SECTIONS:
+            paths.append(make_silence_wav(workdir))
         paths.append(wav)
         log(f"  TTS chunk {n}/{len(chunks)} ok")
         if n < len(chunks):
@@ -588,9 +613,15 @@ def tts_edge(turns: list[dict], workdir: Path) -> list[Path]:
     run(["ffmpeg", "-y", "-f", "lavfi", "-i", "anullsrc=r=24000:cl=mono", "-t", "0.35",
          "-c:a", "libmp3lame", "-b:a", "48k", "-ar", "24000", "-ac", "1", str(silence)])
 
+    section_break = workdir / "break.mp3"
+    run(["ffmpeg", "-y", "-f", "lavfi", "-i", "anullsrc=r=24000:cl=mono", "-t", str(SECTION_PAUSE),
+         "-c:a", "libmp3lame", "-b:a", "48k", "-ar", "24000", "-ac", "1", str(section_break)])
+
     jobs: list[tuple[Path, str, str]] = []
     order: list[Path] = []
     for ti, t in enumerate(turns):
+        if ti and t.get("section") in BREAK_SECTIONS:
+            order.append(section_break)
         for pi, (lang, text) in enumerate(split_lang(t["text"])):
             p = workdir / f"seg_{ti:04d}_{pi:02d}.mp3"
             jobs.append((p, EDGE_VOICES[(t["speaker"], lang)], text))
@@ -666,6 +697,38 @@ def prune(root: Path, state: dict, today: dt.date) -> None:
     state["episodes"] = sorted(state["episodes"], key=lambda e: e["date"])[-60:]
 
 
+def render_notes(e: dict) -> str:
+    """Episode description as simple HTML (AntennaPod renders links, lists and bold)."""
+    from html import escape as h
+    d = e.get("notes_data")
+    if not d:
+        return "<p>" + h(e.get("notes", "")).replace("\n", "<br/>") + "</p>"
+    out = []
+    if d.get("through_line"):
+        out.append(f"<p><b>Today's thread:</b> {h(d['through_line'])}</p>")
+    if d.get("random_topic"):
+        out.append(f"<p><b>Random topic:</b> {h(d['random_topic'])}</p>")
+    out.append("<p><b>News</b></p>")
+    region = None
+    for n in d.get("news", []):
+        if n["region"] != region:
+            if region is not None:
+                out.append("</ul>")
+            region = n["region"]
+            out.append(f"<p><i>{h(region)}</i></p><ul>")
+        link = n.get("link") or ""
+        title = h(n["headline"])
+        src = f" ({h(n['source'])})" if n.get("source") else ""
+        out.append(f"<li><a href=\"{h(link, quote=True)}\">{title}</a>{src}</li>" if link else f"<li>{title}{src}</li>")
+    if region is not None:
+        out.append("</ul>")
+    out.append(f"<p><b>Dutch: {h(d.get('dutch_theme', ''))}</b></p>")
+    if d.get("dutch_phrases"):
+        out.append("<ul>" + "".join(f"<li>{h(p['nl'])} = {h(p['en'])}</li>" for p in d["dutch_phrases"]) + "</ul>")
+    out.append(f"<p><b>Dzogchen:</b> {h(d.get('dzogchen_theme', ''))}</p>")
+    return "".join(out)
+
+
 def build_feed(root: Path, base: str, feed_dir: str, state: dict) -> None:
     chan_url = f"{base}/{feed_dir}"
     items = []
@@ -676,7 +739,7 @@ def build_feed(root: Path, base: str, feed_dir: str, state: dict) -> None:
         items.append(
             "<item>"
             f"<title>{escape(e['title'])}</title>"
-            f"<description>{escape(e['notes'])}</description>"
+            f"<description><![CDATA[{render_notes(e).replace(']]>', ']] >')}]]></description>"
             f"<pubDate>{email.utils.format_datetime(pub)}</pubDate>"
             f"<guid isPermaLink=\"false\">{escape(e['date'])}-daily-briefing</guid>"
             f"<enclosure url=\"{escape(chan_url)}/episodes/{escape(e['file'])}\" "
@@ -796,6 +859,8 @@ def main() -> int:
     picked = [p for lst in plan["picks"].values() for p in lst]
     used = [by_id[p["id"]] for p in picked]
     stories = [p["headline"] for p in picked]
+    news = [{"region": REGIONS[code], "headline": p["headline"], "link": by_id[p["id"]]["link"],
+             "source": by_id[p["id"]]["source"]} for code, lst in plan["picks"].items() for p in lst]
     meta = {"covered_stories": stories, "random_topic": plan["random_topic"], "through_line": plan["through_line"]}
     entry = {
         "date": today.isoformat(), "title": script["title"], "file": fname,
@@ -804,6 +869,9 @@ def main() -> int:
         "links": [i["link"] for i in used], "item_titles": [i["title"] for i in used],
         "dutch_idx": d_idx, "dzogchen_idx": z_idx,
         "notes": make_notes(meta, dutch_theme, dzogchen_theme), "engine": engine,
+        "notes_data": {"through_line": plan["through_line"], "random_topic": plan["random_topic"], "news": news,
+                       "dutch_theme": dutch_theme, "dutch_phrases": script.get("dutch_phrases", []),
+                       "dzogchen_theme": dzogchen_theme},
     }
     state["episodes"] = [e for e in state["episodes"] if e["date"] != today.isoformat()] + [entry]
     if not existing:
