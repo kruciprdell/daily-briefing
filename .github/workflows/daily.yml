@@ -20,7 +20,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
@@ -32,8 +32,9 @@ jobs:
 
       - name: Install dependencies
         run: |
+          sudo apt-get update -q && sudo apt-get install -y -q ffmpeg
           pip install -r requirements.txt
-          ffmpeg -version | head -1
+          ffmpeg -version
 
       - name: Restore previous site (episodes + state) from gh-pages
         run: |
