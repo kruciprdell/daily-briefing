@@ -63,3 +63,18 @@ jobs:
           git add -A
           git commit -q -m "Episode $(date -u +%F)"
           git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" gh-pages
+
+
+      - name: Keepalive (monthly commit so GitHub never pauses the schedule)
+        continue-on-error: true
+        run: |
+          last=$(git log -1 --format=%ct)
+          now=$(date +%s)
+          if [ $((now - last)) -gt 2592000 ]; then
+            echo "$(date -u +%FT%TZ)" > keepalive.txt
+            git config user.name "podcast-bot"
+            git config user.email "podcast-bot@users.noreply.github.com"
+            git add keepalive.txt
+            git commit -q -m "keepalive"
+            git push origin HEAD:main
+          fi
