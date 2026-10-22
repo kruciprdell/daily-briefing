@@ -22,9 +22,11 @@ import socket
 import subprocess
 import sys
 import tempfile
+import urllib.request
 import time
 import wave
 from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor
 from xml.sax.saxutils import escape
 from zoneinfo import ZoneInfo
 
@@ -34,6 +36,7 @@ HERE = Path(__file__).resolve().parent
 TZ = ZoneInfo("Europe/Amsterdam")
 UTC = dt.timezone.utc
 UA = "Mozilla/5.0 (compatible; daily-podcast-bot/1.0)"
+UA_BROWSER = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 
 # Model names churn. Each list is tried in order; override with a comma-separated env var.
 TEXT_MODELS = [m.strip() for m in os.getenv(
@@ -44,9 +47,13 @@ TTS_MODELS = [m.strip() for m in os.getenv(
 KEEP_DAYS = int(os.getenv("KEEP_DAYS", "14"))       # mp3 files older than this are deleted
 HISTORY_DAYS = 7                                    # topics from the last N days are blocked
 STORIES_PER_REGION = int(os.getenv("STORIES_PER_REGION", "5"))
-ITEMS_PER_REGION = 12                               # candidates handed to the model per region
+ITEMS_PER_REGION = 14                               # candidates handed to the model per region
 MAX_AGE_HOURS = 36
-TARGET_WORDS = int(os.getenv("TARGET_WORDS", "3000"))   # ~150 wpm -> ~20 min
+TARGET_WORDS = int(os.getenv("TARGET_WORDS", "3300"))   # ~150 wpm -> ~22 min
+MIN_RATIO = 0.8                                          # accept a draft with >= 80% of TARGET_WORDS
+ARTICLE_CHARS = int(os.getenv("ARTICLE_CHARS", "2500"))  # article text per story handed to the writer
+RETRY_BASE_SECONDS = int(os.getenv("RETRY_BASE", "20"))  # wait before retrying a busy (503/429) model
+DEFAULT_STYLE = "relaxed, warm, witty podcast banter"
 TTS_CHUNK_CHARS = 2800
 TTS_PAUSE_SECONDS = int(os.getenv("TTS_PAUSE", "22"))   # free-tier TTS has a low requests/min cap
 HOSTS = ("Anna", "Ben")
@@ -155,52 +162,9 @@ def recent_episodes(state: dict, today: dt.date) -> list[dict]:
     return out
 
 
-# --------------------------------------------------------------------------- script generation
+# --------------------------------------------------------------------------- LLM helpers
 
-def build_prompt(today: dt.date, items: dict[str, list[dict]], recent: list[dict],
-                 dutch_theme: str, dzogchen_theme: str, dutch_level: str) -> str:
-    news_words = int(TARGET_WORDS * 0.55)
-    n = STORIES_PER_REGION
-    blocks = []
-    for code, label in REGIONS.items():
-        lines = [f"## {label}"]
-        for idx, i in enumerate(items.get(code, []), 1):
-            lines.append(f"[{code}{idx}] ({i['source']}) {i['title']} - {i['summary']}")
-        blocks.append("\n".join(lines))
-    covered = []
-    for e in recent:
-        covered.append(f"- {e['date']}: " + "; ".join(e.get("stories", [])) +
-                       (f"; random topic: {e['random_topic']}" if e.get("random_topic") else ""))
-    covered_txt = "\n".join(covered) or "(nothing yet)"
-    random_blocked = "; ".join(e["random_topic"] for e in recent if e.get("random_topic")) or "(none)"
-
-    return f"""You write the script for a daily two-host podcast. Date: {today.isoformat()}.
-Hosts: Anna and Ben. Casual, quick, witty, a little dark and absurdist (Central European humour), never mocking victims of tragedies. They talk in plain English, interrupt each other, link stories where a REAL connection exists, and explain jargon in half a sentence. No filler like "welcome to another exciting episode".
-
-TOTAL LENGTH: about {TARGET_WORDS} words of spoken text (about 20 minutes). Follow this order and budget:
-1. Short cold open (~60 words).
-2. NEWS (~{news_words} words): exactly {n} stories each from Czechia, Netherlands, Europe, World ({n * 4} total), picked ONLY from the candidate items below, most important first within each region. Per story: what happened, why it matters, one concrete detail. Source items may be in Czech or Dutch: translate to English. Do not invent facts beyond the item text; if an item is thin, say what is known and stay brief.
-3. RANDOM TOPIC (~{int(TARGET_WORDS * 0.10)} words): one surprising true fact or idea (science, history, nature, language, economics...). It may loosely connect to the news but need not. Must NOT be any of these recent topics: {random_blocked}.
-4. DUTCH LESSON (~{int(TARGET_WORDS * 0.15)} words): theme "{dutch_theme}", level {dutch_level}. Teach 6 phrases. For each: the Dutch phrase, meaning, an English-speaker pronunciation tip, one example sentence. Hosts practise lines back and forth. Wrap EVERY Dutch word or phrase in [nl]...[/nl] markers, e.g. [nl]Goedemorgen[/nl].
-5. DZOGCHEN LESSON (~{int(TARGET_WORDS * 0.15)} words): theme "{dzogchen_theme}". Practical, plain English, one everyday example. Stick to widely taught, non-sectarian points. Do NOT invent quotes and do NOT attribute specific quotes to named teachers; say "teachers in the Dzogchen tradition say..." when needed. Use Tibetan terms sparingly and explain them. Calm, slightly slower tone.
-6. CLOSE (~40 words): one-sentence recap of the Dzogchen idea, goodbye. No meditation segment.
-
-BLOCKED (already covered in the last {HISTORY_DAYS} days). Skip these stories. A listed story may return only if there is a clear NEW development, and then in one sentence:
-{covered_txt}
-
-CANDIDATE NEWS ITEMS (IDs in brackets):
-{chr(10).join(blocks)}
-
-OUTPUT: return ONLY valid JSON, no markdown fences, with this shape:
-{{
-  "title": "catchy episode title, max 80 chars, no date",
-  "turns": [{{"speaker": "Anna" or "Ben", "text": "spoken text, no stage directions, no markdown"}}, ...],
-  "used_ids": ["CZ1", "NL3", ...],
-  "covered_stories": ["short English one-line headline per story covered", ...],
-  "random_topic": "5-10 word description of the random topic"
-}}
-Turns should be 1-5 sentences each. Numbers and abbreviations written the way they are spoken.
-"""
+RETRYABLE = ("503", "UNAVAILABLE", "429", "RESOURCE_EXHAUSTED", "INTERNAL", "DEADLINE", "timed out", "overloaded")
 
 
 def extract_json(text: str) -> dict:
@@ -215,38 +179,288 @@ def extract_json(text: str) -> dict:
         return json.loads(m.group(0))
 
 
+def call_text_model(client, prompt: str, temperature: float = 0.9, max_tokens: int = 30000) -> str:
+    """Try each model in order; on 'busy' errors wait and retry the same model before moving on."""
+    from google.genai import types
+    last = None
+    for model in TEXT_MODELS:
+        for attempt in range(3):
+            try:
+                resp = client.models.generate_content(
+                    model=model, contents=prompt,
+                    config=types.GenerateContentConfig(
+                        response_mime_type="application/json", temperature=temperature,
+                        max_output_tokens=max_tokens))
+                if resp.text:
+                    log(f"  text model: {model}")
+                    return resp.text
+                last = RuntimeError("empty response")
+                break
+            except Exception as ex:
+                last = ex
+                msg = str(ex)
+                log(f"  text model {model} attempt {attempt + 1} failed: {msg[:160]}")
+                if any(k in msg for k in RETRYABLE) and attempt < 2:
+                    time.sleep(RETRY_BASE_SECONDS * (attempt + 1))
+                    continue
+                break
+    raise RuntimeError(f"all text models failed: {last}")
+
+
+# --------------------------------------------------------------------------- stage 1: plan
+
+def format_recent(recent: list[dict]) -> str:
+    lines = []
+    for e in recent:
+        bits = []
+        if e.get("stories"):
+            bits.append("; ".join(e["stories"]))
+        if e.get("random_topic"):
+            bits.append(f"random topic: {e['random_topic']}")
+        if e.get("through_line"):
+            bits.append(f"theme: {e['through_line']}")
+        lines.append(f"- {e['date']}: " + " | ".join(bits))
+    return "\n".join(lines) or "(nothing yet)"
+
+
+def build_plan_prompt(today: dt.date, items: dict[str, list[dict]], recent: list[dict],
+                      dutch_theme: str, dzogchen_theme: str) -> str:
+    blocks = []
+    for code, label in REGIONS.items():
+        lines = [f"## {label} ({code})"]
+        for idx, i in enumerate(items.get(code, []), 1):
+            lines.append(f"[{code}{idx}] ({i['source']}) {i['title']} - {i['summary'][:200]}")
+        blocks.append("\n".join(lines))
+    n = STORIES_PER_REGION
+    return f"""You are the editor of a daily two-host podcast mixing news and ideas. Date: {today.isoformat()}.
+Today you only PLAN the episode: choose what goes in and find the one idea that ties it together. A scriptwriter works from your plan.
+
+Ingredients of the episode:
+- NEWS from four regions: CZ (Czechia), NL (Netherlands), EU (Europe), WORLD. Candidates are listed below.
+- A RANDOM TOPIC that you choose.
+- A DUTCH LESSON on the theme: "{dutch_theme}".
+- A DZOGCHEN LESSON on the theme: "{dzogchen_theme}" (a practical lens on how the mind works).
+
+Your tasks:
+1. Pick exactly {n} stories per region (fewer only if fewer candidates exist). Rank by importance to ordinary people first (consequences, money, safety, politics, big shifts), variety second, fit with your through-line third. Never pick the same underlying event twice, even across regions. Skip trivia, gossip and routine sports results unless they say something bigger.
+2. Mark exactly ONE pick per region as "deep" (most substance, best fit with the through-line). The rest are "quick".
+3. Choose the RANDOM TOPIC: a surprising, true, well-documented story or phenomenon (history, science, nature, language, economics, a famous mystery) that you can explain accurately from general knowledge, with concrete details. It opens the episode as a story, so it must set up the through-line. Do not use any blocked random topic below.
+4. Write the THROUGH-LINE: one plain sentence naming the idea that connects the random topic, the Dzogchen theme and several of the news stories (for example: "our minds invent dramatic stories to fill gaps in information"). Do not reuse a recent theme.
+5. For every pick write an "angle": one short line on how it connects to the through-line or to another pick ("" if it does not).
+
+BLOCKED (already covered in the last {HISTORY_DAYS} days). Do not pick these stories, random topics or themes. A listed story may return only if there is a clear new development:
+{format_recent(recent)}
+
+CANDIDATE NEWS ITEMS (IDs in brackets; items may be in Czech or Dutch):
+{chr(10).join(blocks)}
+
+OUTPUT: only valid JSON, no markdown fences:
+{{
+  "through_line": "one sentence",
+  "random_topic": {{"title": "5-10 words", "why_it_fits": "one sentence"}},
+  "picks": {{
+    "CZ": [{{"id": "CZ3", "headline": "short English headline", "angle": "...", "depth": "deep"}}, {{"id": "CZ1", "headline": "...", "angle": "", "depth": "quick"}}],
+    "NL": [...], "EU": [...], "WORLD": [...]
+  }}
+}}
+"""
+
+
+def normalize_plan(plan: dict, items: dict[str, list[dict]], by_id: dict[str, dict]) -> dict:
+    """Repair/complete whatever the model returned so the rest of the pipeline can rely on it."""
+    out = {"through_line": clean(str(plan.get("through_line") or ""), 300),
+           "random_topic": "", "random_why": "", "picks": {}}
+    rt = plan.get("random_topic")
+    if isinstance(rt, dict):
+        out["random_topic"] = clean(str(rt.get("title") or ""), 160)
+        out["random_why"] = clean(str(rt.get("why_it_fits") or ""), 300)
+    elif isinstance(rt, str):
+        out["random_topic"] = clean(rt, 160)
+    picks_raw = plan.get("picks") if isinstance(plan.get("picks"), dict) else {}
+    for code in REGIONS:
+        cands = [f"{code}{n}" for n in range(1, len(items.get(code, [])) + 1)]
+        want = min(STORIES_PER_REGION, len(cands))
+        chosen, seen = [], set()
+        for p in picks_raw.get(code) or []:
+            if not isinstance(p, dict):
+                continue
+            pid = p.get("id")
+            if pid in cands and pid not in seen:
+                seen.add(pid)
+                chosen.append({"id": pid,
+                               "headline": clean(str(p.get("headline") or by_id[pid]["title"]), 160),
+                               "angle": clean(str(p.get("angle") or ""), 200),
+                               "depth": "deep" if p.get("depth") == "deep" else "quick"})
+            if len(chosen) == want:
+                break
+        for pid in cands:                                   # top up if the model picked too few
+            if len(chosen) >= want:
+                break
+            if pid not in seen:
+                seen.add(pid)
+                chosen.append({"id": pid, "headline": by_id[pid]["title"], "angle": "", "depth": "quick"})
+        deep_seen = False
+        for c in chosen:                                    # exactly one "deep" per region
+            if c["depth"] == "deep" and not deep_seen:
+                deep_seen = True
+            else:
+                c["depth"] = "quick"
+        if chosen and not deep_seen:
+            chosen[0]["depth"] = "deep"
+        out["picks"][code] = chosen
+    return out
+
+
+def make_plan(client, prompt: str, items: dict, by_id: dict) -> dict:
+    try:
+        raw = extract_json(call_text_model(client, prompt, temperature=0.7, max_tokens=12000))
+        plan = normalize_plan(raw, items, by_id)
+        log(f"  through-line: {plan['through_line'] or '(none)'}")
+        log(f"  random topic: {plan['random_topic'] or '(none)'}")
+        return plan
+    except Exception as ex:
+        log(f"  planning failed ({str(ex)[:200]}); using a plain top-of-feed plan")
+        return normalize_plan({}, items, by_id)
+
+
+# --------------------------------------------------------------------------- stage 2: article text
+
+def fetch_article(url: str, timeout: int = 15) -> str:
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": UA_BROWSER,
+                                                   "Accept-Language": "en,cs;q=0.8,nl;q=0.8"})
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            raw = r.read(2_000_000)
+            charset = r.headers.get_content_charset() or "utf-8"
+        import trafilatura
+        text = trafilatura.extract(raw.decode(charset, errors="replace"),
+                                   include_comments=False, include_tables=False, favor_precision=True) or ""
+        return re.sub(r"\s+", " ", text).strip()[:ARTICLE_CHARS]
+    except Exception as ex:
+        log(f"  article fetch failed {url[:70]}: {str(ex)[:80]}")
+        return ""
+
+
+def fetch_articles(plan: dict, by_id: dict[str, dict]) -> dict[str, str]:
+    ids = [p["id"] for lst in plan["picks"].values() for p in lst]
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        texts = list(pool.map(lambda pid: fetch_article(by_id[pid]["link"]) if by_id[pid]["link"] else "", ids))
+    out, full = {}, 0
+    for pid, text in zip(ids, texts):
+        summary = by_id[pid]["summary"]
+        if len(text) >= 400 and len(text) > len(summary):
+            out[pid] = text
+            full += 1
+        else:
+            out[pid] = summary
+    log(f"  full article text for {full}/{len(ids)} stories (rest use the RSS summary)")
+    return out
+
+
+# --------------------------------------------------------------------------- stage 3: write the script
+
+TONE_REFERENCE = """Anna: Have you ever noticed how, like, completely exhausting it is to live inside your own head sometimes?
+Ben: Oh, yeah. Constantly.
+Anna: Like, you're lying in bed, trying to sleep, and suddenly your brain decides to write a five-act tragedy about an email you sent three days ago.
+Ben: Or you're spinning a massive conspiracy theory about why a coworker looked at you funny in the hallway.
+Anna: Okay, I like this. So my anxious brain is essentially TikTok.
+Ben: Essentially, yes. The algorithm's only goal is to keep you engaged, so it throws provocative content at you, like "Did I leave the stove on?"
+Anna: Now, I want to push back on this a little. Telling me the essence of my mind is emptiness sounds, well, kind of depressing. Like a sensory deprivation tank. How is that a good thing?
+Ben: Great question, because "empty" here doesn't mean dead. Think of a computer's RAM before you open any apps. It's clear, ready, and nothing is lagging."""
+
+
+def build_write_prompt(today: dt.date, plan: dict, by_id: dict[str, dict], articles: dict[str, str],
+                       recent: list[dict], dutch_theme: str, dzogchen_theme: str, dutch_level: str) -> str:
+    T = TARGET_WORDS
+    w = {k: int(T * v) for k, v in
+         dict(hook=0.05, random=0.12, news=0.45, dutch=0.12, dzogchen=0.18, close=0.05).items()}
+    blocks = []
+    for code, label in REGIONS.items():
+        lst = plan["picks"].get(code, [])
+        lines = [f"## {label} ({code}): {len(lst)} stories"]
+        for p in lst:
+            i = by_id[p["id"]]
+            lines.append(f"[{p['id']}] {p['depth'].upper()} ({i['source']}) {p['headline']}")
+            if p["angle"]:
+                lines.append(f"  Connection: {p['angle']}")
+            lines.append(f"  Original title: {i['title']}")
+            lines.append(f"  Text: {articles.get(p['id']) or i['summary']}")
+        blocks.append("\n".join(lines))
+
+    if plan["through_line"]:
+        theme = (f"THROUGH-LINE (the idea tying today together): {plan['through_line']}\n"
+                 f"RANDOM TOPIC (opens the episode as a story): {plan['random_topic']}"
+                 + (f" ({plan['random_why']})" if plan["random_why"] else ""))
+    else:
+        theme = ("No plan was supplied. First choose a through-line yourself: one idea connecting the news, "
+                 "the Dzogchen theme and a surprising true random topic of your choice (a story or mystery with "
+                 f"concrete details). Do NOT reuse these recent topics/themes:\n{format_recent(recent)}")
+
+    return f"""You write the script for a daily two-host podcast. Date: {today.isoformat()}. Output is spoken English.
+
+{theme}
+
+HOSTS
+- Anna: the listener's stand-in. Curious, quick, a bit sceptical. Asks "wait, what does that mean?", pushes back ("I want to push back on that a little"), makes most of the jokes, reacts honestly.
+- Ben: the explainer. Knows the facts, gives dates, numbers and concrete details, explains everything with everyday analogies (tech, kitchen, traffic, apps), dry humour. Explains any jargon in half a sentence.
+
+STYLE (this matters more than anything)
+- Smart but easy: concrete details beat generalities. Playful, lightly joking now and then (about one joke per 150 words); jokes come from observation, never from mocking victims or tragedies.
+- Conversation, not a list. Many very short turns ("Right." "Oh, wow." "Exactly.") as their own turns, occasional interruptions, rhetorical questions before explanations, direct address to the listener now and then ("for you listening").
+- Every transition says WHY the next item follows (contrast, echo, cause, irony). Never "next story" or "moving on". Call back to earlier items later in the episode.
+- No "welcome to another exciting episode" filler. Say "welcome to today's briefing" once, at most.
+- Tone reference (do NOT reuse its content or wording):
+{TONE_REFERENCE}
+
+LENGTH: about {T} words of spoken text in total, which is a HARD MINIMUM. A short script is a failure. If you run low, deepen the explanations, analogies and banter instead of wrapping up early.
+
+RUN OF SHOW (budgets in words)
+1. HOOK (~{w['hook']}): Anna opens with a relatable, funny observation that sets up the through-line, then a one-breath promise of today's route. Straight in.
+2. RANDOM TOPIC (~{w['random']}): tell it as a mini-mystery or story with concrete details; Ben explains the mechanism with an analogy; end by stating the through-line in plain words. Use only well-established facts; no exact statistics you are unsure of.
+3. NEWS (~{w['news']}): regions in order CZ, NL, EU, WORLD, each opened with a natural transition. For each region: the DEEP story gets ~150-200 words (what happened, background, why it matters, one concrete detail, and its connection to the through-line); the QUICK stories get 2-3 sentences each, grouped as a rapid-fire run, with Anna asking at least one pushback question per region. Cover ALL listed stories ({sum(len(v) for v in plan['picks'].values())} total). Mention the source by name now and then. Use ONLY facts in the supplied text; if a story only has a headline, keep it short and don't invent details. Source text may be Czech or Dutch: translate to English.
+4. DUTCH LESSON (~{w['dutch']}): theme "{dutch_theme}", level {dutch_level}. Open with a playful link to the through-line. Teach 6 phrases: Dutch phrase, meaning, an English-speaker pronunciation tip, one example sentence. Anna plays the learner who tries to say them, Ben corrects lightly. Wrap EVERY Dutch word or phrase in [nl]...[/nl], e.g. [nl]Goedemorgen[/nl].
+5. DZOGCHEN LESSON (~{w['dzogchen']}): theme "{dzogchen_theme}". This is the silver lining of the episode: a lens that re-reads the day's stories. Anna asks the jargon or sceptic question, Ben explains with one modern analogy, at least two callbacks to stories heard earlier, and one tiny practical thing to try today (30 seconds). Stick to widely taught, non-sectarian points; do NOT invent quotes or attribute quotes to named teachers (say "teachers in the Dzogchen tradition say"). Explain Tibetan terms when used. Set "style" to "calm, slower, warm" on these turns.
+6. CLOSE (~{w['close']}): one-breath recap of the route ("we went from X to Y to Z"), one sentence of takeaway for the listener, a dry sign-off joke. No meditation segment.
+
+STORIES (IDs in brackets):
+{chr(10).join(blocks)}
+
+OUTPUT: only valid JSON, no markdown fences:
+{{
+  "title": "catchy episode title, max 80 chars, no date",
+  "turns": [{{"speaker": "Anna", "text": "spoken words only, no stage directions, no markdown", "style": "optional, max 6 words, e.g. amused / mock-serious / calm, slower, warm"}}, ...]
+}}
+"speaker" must be exactly "Anna" or "Ben". Write numbers and abbreviations the way they are spoken.
+"""
+
+
+SPEAKER_ALIASES = {"anna": "Anna", "host a": "Anna", "a": "Anna", "ben": "Ben", "host b": "Ben", "b": "Ben"}
+
+
 def validate_script(data: dict) -> None:
-    if not isinstance(data.get("turns"), list) or len(data["turns"]) < 10:
-        raise ValueError("script has too few turns")
-    for t in data["turns"]:
-        if t.get("speaker") not in HOSTS or not isinstance(t.get("text"), str) or not t["text"].strip():
-            raise ValueError(f"bad turn: {t!r}")
-    data.setdefault("used_ids", [])
-    data.setdefault("covered_stories", [])
-    data.setdefault("random_topic", "")
-    data.setdefault("title", "Daily Briefing")
+    turns = data.get("turns")
+    if not isinstance(turns, list):
+        raise ValueError("no turns list")
+    good = []
+    for t in turns:
+        if not isinstance(t, dict) or not isinstance(t.get("text"), str) or not t["text"].strip():
+            continue
+        sp = SPEAKER_ALIASES.get(str(t.get("speaker", "")).strip().lower())
+        if sp not in HOSTS:
+            continue
+        turn = {"speaker": sp, "text": t["text"].strip()}
+        if isinstance(t.get("style"), str) and t["style"].strip():
+            turn["style"] = t["style"].strip()[:60]
+        good.append(turn)
+    bad = len(turns) - len(good)
+    if len(good) < 10 or bad > max(2, int(0.05 * len(turns))):
+        raise ValueError(f"script too broken: {len(good)} usable turns, {bad} bad")
+    data["turns"] = good
+    data["title"] = clean(str(data.get("title") or "Daily Briefing"), 80)
 
 
 def word_count(data: dict) -> int:
     return sum(len(re.sub(r"\[/?nl\]", "", t["text"]).split()) for t in data["turns"])
-
-
-def call_text_model(client, prompt: str) -> str:
-    from google.genai import types
-    last = None
-    for model in TEXT_MODELS:
-        try:
-            resp = client.models.generate_content(
-                model=model, contents=prompt,
-                config=types.GenerateContentConfig(
-                    response_mime_type="application/json", temperature=0.9, max_output_tokens=30000))
-            if resp.text:
-                log(f"  text model: {model}")
-                return resp.text
-        except Exception as ex:
-            last = ex
-            log(f"  text model {model} failed: {str(ex)[:200]}")
-    raise RuntimeError(f"all text models failed: {last}")
 
 
 def generate_script(client, prompt: str) -> dict:
@@ -256,16 +470,16 @@ def generate_script(client, prompt: str) -> dict:
             data = extract_json(call_text_model(client, prompt))
             validate_script(data)
         except Exception as ex:
-            log(f"  script attempt {attempt + 1} invalid: {ex}")
+            log(f"  script attempt {attempt + 1} invalid: {str(ex)[:200]}")
             continue
         words = word_count(data)
         log(f"  script attempt {attempt + 1}: {words} words")
         if best is None or words > word_count(best):
             best = data
-        if words >= TARGET_WORDS * 0.75:
+        if words >= TARGET_WORDS * MIN_RATIO:
             return data
         prompt += (f"\n\nYour previous draft had only {words} words. Write at least {TARGET_WORDS} words: "
-                   "more depth per story, more banter, fuller lessons. Same JSON format.")
+                   "more depth per story, longer analogies, more banter, fuller lessons. Same JSON format.")
     if best is None:
         raise RuntimeError("could not get a valid script from the model")
     return best
@@ -317,7 +531,7 @@ def tts_gemini(client, turns: list[dict], workdir: Path) -> list[Path]:
     for n, chunk in enumerate(chunks, 1):
         # Newer TTS models need one text part per turn, each tagged with its speaker.
         parts = [{"text": strip_tags(t["text"]),
-                  "speech_metadata": {"speaker": t["speaker"], "style": "relaxed, warm, witty podcast banter"}}
+                  "speech_metadata": {"speaker": t["speaker"], "style": t.get("style") or DEFAULT_STYLE}}
                  for t in chunk]
         contents = [{"role": "user", "parts": parts}]
         data = None
@@ -484,7 +698,8 @@ def build_feed(root: Path, base: str, feed_dir: str, state: dict) -> None:
 
 
 def make_notes(script: dict, dutch: str, dzogchen: str) -> str:
-    lines = ["News:"] + [f"- {s}" for s in script["covered_stories"]]
+    lines = [f"Theme: {script['through_line']}"] if script.get("through_line") else []
+    lines += ["News:"] + [f"- {s}" for s in script["covered_stories"]]
     if script["random_topic"]:
         lines.append(f"Random topic: {script['random_topic']}")
     lines += [f"Dutch: {dutch}", f"Dzogchen: {dzogchen}"]
@@ -496,8 +711,9 @@ def make_notes(script: dict, dutch: str, dzogchen: str) -> str:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--site", default="site")
-    ap.add_argument("--dry-run", action="store_true", help="fetch feeds and print prompt only")
-    ap.add_argument("--no-audio", action="store_true", help="write the script only; no state changes")
+    ap.add_argument("--dry-run", action="store_true", help="fetch feeds and print the planning prompt only")
+    ap.add_argument("--no-audio", action="store_true",
+                    help="plan + write the script only (writes script.txt and plan.json); no state changes")
     ap.add_argument("--force", action="store_true", default=bool(os.getenv("FORCE")))
     args = ap.parse_args()
 
@@ -533,6 +749,7 @@ def main() -> int:
     if not any(items.values()):
         log("No news items fetched at all; aborting.")
         return 1
+    by_id = {f"{code}{n}": i for code, lst in items.items() for n, i in enumerate(lst, 1)}
 
     if existing:                                  # forced re-run keeps the same lesson themes
         d_idx, z_idx = existing["dutch_idx"], existing["dzogchen_idx"]
@@ -541,9 +758,9 @@ def main() -> int:
         z_idx = state["dzogchen_next"] % len(curriculum["dzogchen"])
     dutch_theme, dzogchen_theme = curriculum["dutch"][d_idx], curriculum["dzogchen"][z_idx]
 
-    prompt = build_prompt(today, items, recent, dutch_theme, dzogchen_theme, curriculum["dutch_level"])
+    plan_prompt = build_plan_prompt(today, items, recent, dutch_theme, dzogchen_theme)
     if args.dry_run:
-        print(prompt)
+        print(plan_prompt)
         return 0
 
     api_key = os.getenv("GEMINI_API_KEY")
@@ -553,14 +770,21 @@ def main() -> int:
     from google import genai
     client = genai.Client(api_key=api_key)
 
+    log("Planning episode...")
+    plan = make_plan(client, plan_prompt, items, by_id)
+    log("Fetching article text...")
+    articles = fetch_articles(plan, by_id)
     log("Writing script...")
-    script = generate_script(client, prompt)
+    write_prompt = build_write_prompt(today, plan, by_id, articles, recent,
+                                      dutch_theme, dzogchen_theme, curriculum["dutch_level"])
+    script = generate_script(client, write_prompt)
 
     if args.no_audio:
         text = "\n\n".join(f"{t['speaker']}: {t['text']}" for t in script["turns"])
         Path("script.txt").write_text(text, encoding="utf-8")
+        Path("plan.json").write_text(json.dumps(plan, ensure_ascii=False, indent=1), encoding="utf-8")
         print(text)
-        log(f"\n{word_count(script)} words -> script.txt")
+        log(f"\n{word_count(script)} words (~{word_count(script) / 150:.0f} min) -> script.txt, plan.json")
         return 0
 
     fname = f"{today.isoformat()}.mp3"
@@ -569,15 +793,17 @@ def main() -> int:
     engine = make_audio(client, script["turns"], out)
     log(f"  audio engine: {engine}")
 
-    by_id = {f"{code}{n}": i for code, lst in items.items() for n, i in enumerate(lst, 1)}
-    used = [by_id[x] for x in script["used_ids"] if x in by_id]
+    picked = [p for lst in plan["picks"].values() for p in lst]
+    used = [by_id[p["id"]] for p in picked]
+    stories = [p["headline"] for p in picked]
+    meta = {"covered_stories": stories, "random_topic": plan["random_topic"], "through_line": plan["through_line"]}
     entry = {
         "date": today.isoformat(), "title": script["title"], "file": fname,
         "published": now.isoformat(), "size": out.stat().st_size, "duration": duration_seconds(out),
-        "stories": script["covered_stories"], "random_topic": script["random_topic"],
+        "stories": stories, "random_topic": plan["random_topic"], "through_line": plan["through_line"],
         "links": [i["link"] for i in used], "item_titles": [i["title"] for i in used],
         "dutch_idx": d_idx, "dzogchen_idx": z_idx,
-        "notes": make_notes(script, dutch_theme, dzogchen_theme), "engine": engine,
+        "notes": make_notes(meta, dutch_theme, dzogchen_theme), "engine": engine,
     }
     state["episodes"] = [e for e in state["episodes"] if e["date"] != today.isoformat()] + [entry]
     if not existing:
