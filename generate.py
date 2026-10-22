@@ -315,34 +315,41 @@ def tts_gemini(client, turns: list[dict], workdir: Path) -> list[Path]:
     paths: list[Path] = []
     model_idx = 0
     for n, chunk in enumerate(chunks, 1):
-        text = ("TTS the following conversation between Anna and Ben. Relaxed, warm, witty podcast banter, "
-                "natural pacing; Dutch words pronounced correctly in Dutch:\n" +
-                "\n".join(f"{t['speaker']}: {strip_tags(t['text'])}" for t in chunk))
-        pcm = None
-        for attempt in range(5):
+        # Newer TTS models need one text part per turn, each tagged with its speaker.
+        parts = [{"text": strip_tags(t["text"]),
+                  "speech_metadata": {"speaker": t["speaker"], "style": "relaxed, warm, witty podcast banter"}}
+                 for t in chunk]
+        contents = [{"role": "user", "parts": parts}]
+        data = None
+        for attempt in range(4):
             model = TTS_MODELS[min(model_idx, len(TTS_MODELS) - 1)]
             try:
                 resp = client.models.generate_content(
-                    model=model, contents=text,
+                    model=model, contents=contents,
                     config=types.GenerateContentConfig(response_modalities=["AUDIO"], speech_config=speech))
-                pcm = resp.candidates[0].content.parts[0].inline_data.data
-                if pcm:
+                data = resp.candidates[0].content.parts[0].inline_data.data
+                if data:
                     break
             except Exception as ex:
                 msg = str(ex)
-                log(f"  TTS chunk {n}/{len(chunks)} attempt {attempt + 1} on {model}: {msg[:160]}")
+                log(f"  TTS chunk {n}/{len(chunks)} attempt {attempt + 1} on {model}: {msg[:300]}")
                 if ("NOT_FOUND" in msg or "404" in msg) and model_idx < len(TTS_MODELS) - 1:
                     model_idx += 1          # model name retired: next one in the list
                     continue
+                if "INVALID_ARGUMENT" in msg or "PERMISSION_DENIED" in msg:
+                    break                   # permanent error: retrying only wastes time
                 time.sleep(30 * (attempt + 1))
-        if not pcm:
+        if not data:
             raise RuntimeError(f"Gemini TTS failed on chunk {n}")
         wav = workdir / f"chunk_{n:03d}.wav"
-        with wave.open(str(wav), "wb") as w:
-            w.setnchannels(1)
-            w.setsampwidth(2)
-            w.setframerate(24000)
-            w.writeframes(pcm)
+        if data[:4] == b"RIFF":              # newer models return a complete WAV file
+            wav.write_bytes(data)
+        else:                                # older models return raw 24 kHz 16-bit mono PCM
+            with wave.open(str(wav), "wb") as w:
+                w.setnchannels(1)
+                w.setsampwidth(2)
+                w.setframerate(24000)
+                w.writeframes(data)
         paths.append(wav)
         log(f"  TTS chunk {n}/{len(chunks)} ok")
         if n < len(chunks):
