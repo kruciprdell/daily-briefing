@@ -4,6 +4,8 @@ on:
   schedule:
     # 03:30 UTC = 05:30 CEST / 04:30 CET. GitHub may delay cron runs by 10-30 min.
     - cron: "30 3 * * *"
+    # Backup run one hour later. generate.py skips it if today's episode already exists.
+    - cron: "30 4 * * *"
   workflow_dispatch:
     inputs:
       force:
@@ -63,7 +65,6 @@ jobs:
           git add -A
           git commit -q -m "Episode $(date -u +%F)"
           git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" gh-pages
-
 
       - name: Keepalive (monthly commit so GitHub never pauses the schedule)
         continue-on-error: true
