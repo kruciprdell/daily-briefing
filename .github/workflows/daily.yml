@@ -1,0 +1,64 @@
+name: daily-podcast
+
+on:
+  schedule:
+    # 03:30 UTC = 05:30 CEST / 04:30 CET. GitHub may delay cron runs by 10-30 min.
+    - cron: "30 3 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Regenerate today's episode even if it exists"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-podcast
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          ffmpeg -version | head -1
+
+      - name: Restore previous site (episodes + state) from gh-pages
+        run: |
+          mkdir -p site
+          if git fetch --depth=1 origin gh-pages; then
+            git archive FETCH_HEAD | tar -x -C site
+          else
+            echo "No gh-pages branch yet - first run."
+          fi
+
+      - name: Generate episode
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          FEED_DIR: ${{ vars.FEED_DIR || 'podcast' }}
+          SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+          FORCE: ${{ inputs.force && '1' || '' }}
+        run: python generate.py --site site
+
+      - name: Publish as a single-commit gh-pages branch (keeps repo small)
+        run: |
+          cd site
+          touch .nojekyll
+          git init -q -b gh-pages
+          git config user.name "podcast-bot"
+          git config user.email "podcast-bot@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Episode $(date -u +%F)"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" gh-pages
