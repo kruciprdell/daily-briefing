@@ -1,0 +1,4 @@
+feedparser>=6.0
+google-genai>=1.0
+edge-tts>=6.1
+tzdata

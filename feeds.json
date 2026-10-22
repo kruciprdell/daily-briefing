@@ -1,0 +1,22 @@
+{
+  "CZ": [
+    "https://www.irozhlas.cz/rss/irozhlas/section/zpravy-domov",
+    "https://ct24.ceskatelevize.cz/rss/hlavni-zpravy",
+    "https://www.novinky.cz/rss"
+  ],
+  "NL": [
+    "https://feeds.nos.nl/nosnieuwsalgemeen",
+    "https://feeds.nos.nl/nosnieuwsbinnenland",
+    "https://www.dutchnews.nl/feed/"
+  ],
+  "EU": [
+    "https://www.euronews.com/rss?level=theme&name=news",
+    "https://feeds.bbci.co.uk/news/world/europe/rss.xml",
+    "https://www.politico.eu/feed/"
+  ],
+  "WORLD": [
+    "https://feeds.bbci.co.uk/news/world/rss.xml",
+    "https://www.theguardian.com/world/rss",
+    "https://www.aljazeera.com/xml/rss/all.xml"
+  ]
+}
