@@ -62,6 +62,7 @@ FACT_CHECK = os.getenv("FACT_CHECK", "1") != "0"           # second pass that ch
 T0 = time.time()
 TTS_CHUNK_CHARS = 2800
 TTS_PAUSE_SECONDS = int(os.getenv("TTS_PAUSE", "22"))   # free-tier TTS has a low requests/min cap
+TTS_ATTEMPTS = int(os.getenv("TTS_ATTEMPTS", "6"))       # tries per chunk before a model is given up on
 HOSTS = ("Anna", "Ben")
 REGIONS = {"CZ": "Czechia", "NL": "Netherlands", "EU": "Europe", "WORLD": "World"}
 
@@ -638,8 +639,21 @@ def make_silence_wav(workdir: Path, seconds: float = SECTION_PAUSE) -> Path:
     return path
 
 
-def tts_gemini(client, turns: list[dict], workdir: Path) -> list[Path]:
+class ModelUnavailable(RuntimeError):
+    """This TTS model cannot be used any more today (retired name, or its daily quota is used up)."""
+
+
+def quota_info(msg: str) -> dict:
+    """Read a 429 error: is it a per-day limit, and how long does Google say to wait?"""
+    m = re.search(r"retryDelay['\"]?\s*:\s*['\"]?(\d+(?:\.\d+)?)s", msg)
+    return {"daily": bool(re.search(r"PerDay|per_day|requests_per_day", msg, re.I)),
+            "delay": float(m.group(1)) if m else None}
+
+
+def tts_gemini(client, turns: list[dict], workdir: Path, model: str | None = None) -> list[Path]:
+    """Synthesize the whole episode with ONE model, so an episode never mixes voices."""
     from google.genai import types
+    model = model or TTS_MODELS[0]
     voices = {"Anna": "Kore", "Ben": "Puck"}
     speech = types.SpeechConfig(multi_speaker_voice_config=types.MultiSpeakerVoiceConfig(
         speaker_voice_configs=[
@@ -648,7 +662,6 @@ def tts_gemini(client, turns: list[dict], workdir: Path) -> list[Path]:
             for name, v in voices.items()]))
     chunks = chunk_turns(turns)
     paths: list[Path] = []
-    model_idx = 0
     for n, chunk in enumerate(chunks, 1):
         # Newer TTS models need one text part per turn, each tagged with its speaker.
         parts = [{"text": strip_tags(t["text"]),
@@ -656,8 +669,8 @@ def tts_gemini(client, turns: list[dict], workdir: Path) -> list[Path]:
                  for t in chunk]
         contents = [{"role": "user", "parts": parts}]
         data = None
-        for attempt in range(4):
-            model = TTS_MODELS[min(model_idx, len(TTS_MODELS) - 1)]
+        for attempt in range(1, TTS_ATTEMPTS + 1):
+            wait = 10.0
             try:
                 resp = client.models.generate_content(
                     model=model, contents=contents,
@@ -665,17 +678,26 @@ def tts_gemini(client, turns: list[dict], workdir: Path) -> list[Path]:
                 data = resp.candidates[0].content.parts[0].inline_data.data
                 if data:
                     break
+                log(f"  TTS chunk {n}/{len(chunks)} attempt {attempt} on {model}: empty audio")
             except Exception as ex:
                 msg = str(ex)
-                log(f"  TTS chunk {n}/{len(chunks)} attempt {attempt + 1} on {model}: {msg[:300]}")
-                if ("NOT_FOUND" in msg or "404" in msg) and model_idx < len(TTS_MODELS) - 1:
-                    model_idx += 1          # model name retired: next one in the list
-                    continue
+                log(f"  TTS chunk {n}/{len(chunks)} attempt {attempt} on {model}: {msg[:300]}")
+                if "NOT_FOUND" in msg or "404" in msg:
+                    raise ModelUnavailable(f"{model} not found")
                 if "INVALID_ARGUMENT" in msg or "PERMISSION_DENIED" in msg:
-                    break                   # permanent error: retrying only wastes time
-                time.sleep(30 * (attempt + 1))
+                    raise RuntimeError(f"Gemini TTS rejected the request on chunk {n}")   # permanent
+                if "429" in msg or "RESOURCE_EXHAUSTED" in msg:
+                    q = quota_info(msg)
+                    if q["daily"]:
+                        raise ModelUnavailable(f"{model} daily quota used up")
+                    wait = min((q["delay"] + 3) if q["delay"] else 30.0 * attempt, 150.0)
+                else:
+                    wait = 20.0 * attempt
+            if attempt < TTS_ATTEMPTS:
+                log(f"  waiting {wait:.0f}s before retrying chunk {n}")
+                time.sleep(wait)
         if not data:
-            raise RuntimeError(f"Gemini TTS failed on chunk {n}")
+            raise RuntimeError(f"Gemini TTS failed on chunk {n} ({model})")
         wav = workdir / f"chunk_{n:03d}.wav"
         if data[:4] == b"RIFF":              # newer models return a complete WAV file
             wav.write_bytes(data)
@@ -764,16 +786,23 @@ def duration_seconds(path: Path) -> float:
 
 
 def make_audio(client, turns: list[dict], out: Path) -> str:
+    """Try each Gemini TTS model in order, each from scratch (one voice per episode), then Edge TTS.
+    Returns the engine used: a Gemini model name, or "edge"."""
     with tempfile.TemporaryDirectory() as tmp:
         work = Path(tmp)
-        engine = "gemini"
-        try:
-            if client is None:
-                raise RuntimeError("no Gemini client")
-            parts = tts_gemini(client, turns, work)
-        except Exception as ex:
-            log(f"Gemini TTS unavailable ({str(ex)[:200]}); falling back to Edge TTS")
-            engine = "edge"
+        parts, engine = None, "edge"
+        if client is not None:
+            for model in TTS_MODELS:
+                sub = work / re.sub(r"[^A-Za-z0-9.-]", "_", model)
+                sub.mkdir()
+                try:
+                    parts = tts_gemini(client, turns, sub, model)
+                    engine = model
+                    break
+                except Exception as ex:
+                    log(f"Gemini TTS model {model} unusable ({str(ex)[:200]}); trying the next option")
+        if parts is None:
+            log("All Gemini TTS models failed; falling back to Edge TTS")
             parts = tts_edge(turns, work)
         to_mp3(parts, out)
     return engine
@@ -958,6 +987,13 @@ def main() -> int:
     engine = make_audio(client, script["turns"], out)
     log(f"  audio engine: {engine}")
     stamp("audio finished")
+    title = script["title"]
+    if engine == "edge":
+        title += " [backup voices]"
+        print("::warning title=Backup voices::Gemini TTS was unavailable, so this episode uses the flatter Edge voices.", flush=True)
+    elif engine != TTS_MODELS[0]:
+        title += " [alt voices]"
+        print(f"::warning title=Alternative voice model::{TTS_MODELS[0]} was unavailable; this episode used {engine}.", flush=True)
 
     picked = [p for lst in plan["picks"].values() for p in lst]
     used = [by_id[p["id"]] for p in picked]
@@ -966,7 +1002,7 @@ def main() -> int:
              "source": by_id[p["id"]]["source"]} for code, lst in plan["picks"].items() for p in lst]
     meta = {"covered_stories": stories, "random_topic": plan["random_topic"], "through_line": plan["through_line"]}
     entry = {
-        "date": today.isoformat(), "title": script["title"], "file": fname,
+        "date": today.isoformat(), "title": title, "file": fname,
         "published": now.isoformat(), "size": out.stat().st_size, "duration": duration_seconds(out),
         "stories": stories, "random_topic": plan["random_topic"], "through_line": plan["through_line"],
         "links": [i["link"] for i in used], "item_titles": [i["title"] for i in used],
