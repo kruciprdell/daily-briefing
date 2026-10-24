@@ -57,6 +57,9 @@ DEFAULT_STYLE = "relaxed, warm, witty podcast banter"
 BREAK_SECTIONS = {"dutch", "dzogchen"}                     # a short silence is inserted before these segments
 SECTION_PAUSE = float(os.getenv("SECTION_PAUSE", "1.3"))   # seconds
 SECTIONS = {"hook", "random", "news", "dutch", "dzogchen", "close"}
+ACCENT = os.getenv("TTS_ACCENT", "British English accent")  # appended to every line's delivery style; empty = off
+FACT_CHECK = os.getenv("FACT_CHECK", "1") != "0"           # second pass that checks the script against the sources
+T0 = time.time()
 TTS_CHUNK_CHARS = 2800
 TTS_PAUSE_SECONDS = int(os.getenv("TTS_PAUSE", "22"))   # free-tier TTS has a low requests/min cap
 HOSTS = ("Anna", "Ben")
@@ -65,6 +68,10 @@ REGIONS = {"CZ": "Czechia", "NL": "Netherlands", "EU": "Europe", "WORLD": "World
 
 def log(*a):
     print(*a, file=sys.stderr, flush=True)
+
+
+def stamp(msg: str) -> None:
+    log(f"[{(time.time() - T0) / 60:.1f} min] {msg}")
 
 
 # --------------------------------------------------------------------------- feeds
@@ -399,7 +406,7 @@ def build_write_prompt(today: dt.date, plan: dict, by_id: dict[str, dict], artic
                  "the Dzogchen theme and a surprising true random topic of your choice (a story or mystery with "
                  f"concrete details). Do NOT reuse these recent topics/themes:\n{format_recent(recent)}")
 
-    return f"""You write the script for a daily two-host podcast. Date: {today.isoformat()}. Output is spoken English.
+    return f"""You write the script for a daily two-host podcast. Date: {today.isoformat()}. Output is spoken British English.
 
 {theme}
 
@@ -408,7 +415,9 @@ HOSTS
 - Ben: the explainer. Knows the facts, gives dates, numbers and concrete details, explains everything with everyday analogies (tech, kitchen, traffic, apps), dry humour. Explains any jargon in half a sentence.
 
 STYLE (this matters more than anything)
+- Spoken British English: British vocabulary, idiom and humour (understatement, dry irony, gentle teasing). Natural, never a cartoon: no "cheerio", no forced slang. Avoid Americanisms ("gotten", "awesome", "you guys").
 - Smart but easy: concrete details beat generalities. Playful, lightly joking now and then (about one joke per 150 words); jokes come from observation, never from mocking victims or tragedies.
+- Running banter between the two: Anna teases Ben for being the know-it-all, Ben answers with dry understatement. Each part of the show (including both lessons) has at least one small joke exchange, and at least two callbacks to an earlier joke or story. Keep every joke light and short; the information still comes first.
 - Conversation, not a list. Many very short turns ("Right." "Oh, wow." "Exactly.") as their own turns, occasional interruptions, rhetorical questions before explanations, direct address to the listener now and then ("for you listening").
 - Every transition says WHY the next item follows (contrast, echo, cause, irony). Never "next story" or "moving on". Call back to earlier items later in the episode.
 - No "welcome to another exciting episode" filler. Say "welcome to today's briefing" once, at most.
@@ -497,6 +506,90 @@ def generate_script(client, prompt: str) -> dict:
     return best
 
 
+# --------------------------------------------------------------------------- stage 4: fact-check
+
+def label_turns(turns: list[dict]) -> list[str]:
+    labels, cur = [], "hook"
+    for t in turns:
+        cur = t.get("section") or cur
+        labels.append(cur)
+    return labels
+
+
+def build_fact_check_prompt(turns: list[dict], labels: list[str], plan: dict, by_id: dict[str, dict],
+                            articles: dict[str, str]) -> str | None:
+    sources = []
+    for lst in plan["picks"].values():
+        for p in lst:
+            sources.append(f"[{p['id']}] {p['headline']}\n{articles.get(p['id']) or by_id[p['id']]['summary']}")
+    lines = []
+    for i, (t, lab) in enumerate(zip(turns, labels)):
+        kind = "NEWS" if lab == "news" else "GENERAL" if lab in ("random", "dzogchen") else None
+        if kind:
+            lines.append(f"[{i}] ({kind}) {t['speaker']}: {t['text']}")
+    if not any("(NEWS)" in l for l in lines):
+        return None
+    return f"""You are the fact-checker for a podcast script. Two hosts, Anna and Ben, talk in a relaxed, witty way. You check only the lines below; each has an index in square brackets.
+
+NEWS lines must be supported by the SOURCES. For each NEWS line, check every concrete claim: names, numbers, dates, places, quotes, causes, outcomes. If a claim is not supported by the sources, or contradicts them, rewrite that line so it only says what the sources support: remove or soften the claim. Never add facts that are not in the sources.
+
+GENERAL lines (the random topic and the Dzogchen lesson) cannot be checked against the sources. Only fix claims that are likely wrong or too precise: exact statistics, precise dates unless famous, quotes attributed to a named person or teacher, and superlatives ("first", "only", "record"). Replace them with safer wording. Do not touch anything else.
+
+Rules for every rewrite: keep the same speaker's voice, the jokes and the banter, roughly the same length, British English. Do not touch lines that are fine.
+
+SOURCES:
+{chr(10).join(sources)}
+
+LINES TO CHECK:
+{chr(10).join(lines)}
+
+OUTPUT: only valid JSON, no markdown fences. Include ONLY lines that need a change:
+{{"fixes": [{{"turn": 12, "text": "the corrected line, spoken words only", "reason": "max 12 words"}}]}}
+If everything is fine return {{"fixes": []}}.
+"""
+
+
+def apply_fixes(turns: list[dict], labels: list[str], fixes) -> list[dict]:
+    applied = []
+    if not isinstance(fixes, list):
+        return applied
+    for f in fixes:
+        try:
+            i = int(f["turn"])
+            text = str(f["text"]).strip()
+        except (KeyError, TypeError, ValueError):
+            continue
+        if not (0 <= i < len(turns)) or labels[i] not in ("news", "random", "dzogchen") or not text:
+            continue
+        old_words = len(turns[i]["text"].split())
+        new_words = len(text.split())
+        if new_words < 3 or new_words > old_words * 1.6 + 10:
+            continue
+        turns[i]["text"] = text
+        applied.append({"turn": i, "section": labels[i], "reason": clean(str(f.get("reason") or ""), 120)})
+    return applied
+
+
+def fact_check(client, script: dict, plan: dict, by_id: dict[str, dict],
+               articles: dict[str, str]) -> tuple[dict, list[dict]]:
+    """Never blocks the episode: any failure leaves the script as it was."""
+    try:
+        labels = label_turns(script["turns"])
+        prompt = build_fact_check_prompt(script["turns"], labels, plan, by_id, articles)
+        if prompt is None:
+            log("  fact-check skipped: no news section markers in the script")
+            return script, []
+        raw = extract_json(call_text_model(client, prompt, temperature=0.2, max_tokens=16000))
+        applied = apply_fixes(script["turns"], labels, raw.get("fixes"))
+        log(f"  fact-check: {len(applied)} line(s) corrected")
+        for a in applied[:15]:
+            log(f"    turn {a['turn']} ({a['section']}): {a['reason']}")
+        return script, applied
+    except Exception as ex:
+        log(f"  fact-check failed ({str(ex)[:200]}); keeping the script unchanged")
+        return script, []
+
+
 # --------------------------------------------------------------------------- audio
 
 def strip_tags(text: str) -> str:
@@ -529,6 +622,11 @@ def chunk_turns(turns: list[dict], limit: int = TTS_CHUNK_CHARS) -> list[list[di
     return chunks
 
 
+def turn_style(t: dict) -> str:
+    base = t.get("style") or DEFAULT_STYLE
+    return f"{base}, {ACCENT}" if ACCENT else base
+
+
 def make_silence_wav(workdir: Path, seconds: float = SECTION_PAUSE) -> Path:
     path = workdir / "break.wav"
     if not path.exists():
@@ -554,7 +652,7 @@ def tts_gemini(client, turns: list[dict], workdir: Path) -> list[Path]:
     for n, chunk in enumerate(chunks, 1):
         # Newer TTS models need one text part per turn, each tagged with its speaker.
         parts = [{"text": strip_tags(t["text"]),
-                  "speech_metadata": {"speaker": t["speaker"], "style": t.get("style") or DEFAULT_STYLE}}
+                  "speech_metadata": {"speaker": t["speaker"], "style": turn_style(t)}}
                  for t in chunk]
         contents = [{"role": "user", "parts": parts}]
         data = None
@@ -833,14 +931,18 @@ def main() -> int:
     from google import genai
     client = genai.Client(api_key=api_key)
 
-    log("Planning episode...")
+    stamp("Planning episode...")
     plan = make_plan(client, plan_prompt, items, by_id)
-    log("Fetching article text...")
+    stamp("Fetching article text...")
     articles = fetch_articles(plan, by_id)
-    log("Writing script...")
+    stamp("Writing script...")
     write_prompt = build_write_prompt(today, plan, by_id, articles, recent,
                                       dutch_theme, dzogchen_theme, curriculum["dutch_level"])
     script = generate_script(client, write_prompt)
+    fixes: list[dict] = []
+    if FACT_CHECK:
+        stamp("Fact-checking script...")
+        script, fixes = fact_check(client, script, plan, by_id, articles)
 
     if args.no_audio:
         text = "\n\n".join(f"{t['speaker']}: {t['text']}" for t in script["turns"])
@@ -852,9 +954,10 @@ def main() -> int:
 
     fname = f"{today.isoformat()}.mp3"
     out = root / "episodes" / fname
-    log("Generating audio...")
+    stamp("Generating audio...")
     engine = make_audio(client, script["turns"], out)
     log(f"  audio engine: {engine}")
+    stamp("audio finished")
 
     picked = [p for lst in plan["picks"].values() for p in lst]
     used = [by_id[p["id"]] for p in picked]
@@ -867,7 +970,7 @@ def main() -> int:
         "published": now.isoformat(), "size": out.stat().st_size, "duration": duration_seconds(out),
         "stories": stories, "random_topic": plan["random_topic"], "through_line": plan["through_line"],
         "links": [i["link"] for i in used], "item_titles": [i["title"] for i in used],
-        "dutch_idx": d_idx, "dzogchen_idx": z_idx,
+        "dutch_idx": d_idx, "dzogchen_idx": z_idx, "fact_check": fixes,
         "notes": make_notes(meta, dutch_theme, dzogchen_theme), "engine": engine,
         "notes_data": {"through_line": plan["through_line"], "random_topic": plan["random_topic"], "news": news,
                        "dutch_theme": dutch_theme, "dutch_phrases": script.get("dutch_phrases", []),
