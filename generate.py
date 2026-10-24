@@ -60,7 +60,7 @@ SECTIONS = {"hook", "random", "news", "dutch", "dzogchen", "close"}
 ACCENT = os.getenv("TTS_ACCENT", "British English accent")  # appended to every line's delivery style; empty = off
 FACT_CHECK = os.getenv("FACT_CHECK", "1") != "0"           # second pass that checks the script against the sources
 T0 = time.time()
-TTS_CHUNK_CHARS = 2800
+TTS_CHUNK_CHARS = int(os.getenv("TTS_CHUNK_CHARS", "6000"))   # free tier: 10 TTS requests/day per model, so few big requests
 TTS_PAUSE_SECONDS = int(os.getenv("TTS_PAUSE", "22"))   # free-tier TTS has a low requests/min cap
 TTS_ATTEMPTS = int(os.getenv("TTS_ATTEMPTS", "6"))       # tries per chunk before a model is given up on
 HOSTS = ("Anna", "Ben")
