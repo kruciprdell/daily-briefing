@@ -56,8 +56,7 @@ jobs:
           FORCE: ${{ inputs.force && '1' || '' }}
         run: python generate.py --site site
 
-      - name: Publish as a 
-single-commit gh-pages branch (keeps repo small)
+      - name: Publish as a single-commit gh-pages branch (keeps repo small)
         run: |
           cd site
           touch .nojekyll
@@ -68,8 +67,7 @@ single-commit gh-pages branch (keeps repo small)
           git commit -q -m "Episode $(date -u +%F)"
           git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" gh-pages
 
-      - name: Keepalive (monthly 
-commit so GitHub never pauses the schedule)
+      - name: Keepalive (monthly commit so GitHub never pauses the schedule)
         continue-on-error: true
         run: |
           last=$(git log -1 --format=%ct)
