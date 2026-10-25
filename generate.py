@@ -57,7 +57,7 @@ DEFAULT_STYLE = "relaxed, warm, witty podcast banter"
 BREAK_SECTIONS = {"dutch", "dzogchen"}                     # a short silence is inserted before these segments
 SECTION_PAUSE = float(os.getenv("SECTION_PAUSE", "1.3"))   # seconds
 SECTIONS = {"hook", "random", "news", "dutch", "dzogchen", "close"}
-ACCENT = os.getenv("TTS_ACCENT", "British English accent")  # appended to every line's delivery style; empty = off
+ACCENT = os.getenv("TTS_ACCENT", "speaking with a clear British English accent, not American")  # appended to every line's delivery style; empty = off
 FACT_CHECK = os.getenv("FACT_CHECK", "1") != "0"           # second pass that checks the script against the sources
 T0 = time.time()
 TTS_CHUNK_CHARS = int(os.getenv("TTS_CHUNK_CHARS", "6000"))   # free tier: 10 TTS requests/day per model, so few big requests
@@ -625,7 +625,10 @@ def chunk_turns(turns: list[dict], limit: int = TTS_CHUNK_CHARS) -> list[list[di
 
 def turn_style(t: dict) -> str:
     base = t.get("style") or DEFAULT_STYLE
-    return f"{base}, {ACCENT}" if ACCENT else base
+    base = f"{base}, {ACCENT}" if ACCENT else base
+    if t.get("section") == "dutch" or t.get("dutch"):
+        return base + "; say every Dutch word and phrase with authentic native Dutch pronunciation, not English"
+    return base + "; pronounce Czech and Dutch names and places the way a native speaker would"
 
 
 def make_silence_wav(workdir: Path, seconds: float = SECTION_PAUSE) -> Path:
