@@ -2,10 +2,11 @@ name: daily-podcast
 
 on:
   schedule:
-    # 03:30 UTC = 05:30 CEST / 04:30 CET. GitHub may delay cron runs by 10-30 min.
-    - cron: "30 3 * * *"
+    # Free Gemini voice quota resets at 07:00-08:00 UTC, so the backups run after that.
+    # GitHub may delay cron runs by 10-30 min.
+    - cron: "45 8 * * *"
     # Backup run one hour later. generate.py skips it if today's episode already exists.
-    - cron: "30 4 * * *"
+    - cron: "45 9 * * *"
   workflow_dispatch:
     inputs:
       force:
@@ -55,7 +56,8 @@ jobs:
           FORCE: ${{ inputs.force && '1' || '' }}
         run: python generate.py --site site
 
-      - name: Publish as a single-commit gh-pages branch (keeps repo small)
+      - name: Publish as a 
+single-commit gh-pages branch (keeps repo small)
         run: |
           cd site
           touch .nojekyll
@@ -66,7 +68,8 @@ jobs:
           git commit -q -m "Episode $(date -u +%F)"
           git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" gh-pages
 
-      - name: Keepalive (monthly commit so GitHub never pauses the schedule)
+      - name: Keepalive (monthly 
+commit so GitHub never pauses the schedule)
         continue-on-error: true
         run: |
           last=$(git log -1 --format=%ct)
