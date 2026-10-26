@@ -961,7 +961,10 @@ def main() -> int:
         log("GEMINI_API_KEY is not set.")
         return 1
     from google import genai
-    client = genai.Client(api_key=api_key)
+    from google.genai import types as genai_types
+    # a hung request must fail fast and be retried, not eat the 60-minute limit
+    client = genai.Client(api_key=api_key, http_options=genai_types.HttpOptions(
+        timeout=int(os.getenv("API_TIMEOUT_SECONDS", "300")) * 1000))
 
     stamp("Planning episode...")
     plan = make_plan(client, plan_prompt, items, by_id)
