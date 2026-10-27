@@ -657,7 +657,7 @@ def tts_gemini(client, turns: list[dict], workdir: Path, model: str | None = Non
     """Synthesize the whole episode with ONE model, so an episode never mixes voices."""
     from google.genai import types
     model = model or TTS_MODELS[0]
-    voices = {"Anna": "Kore", "Ben": "Puck"}
+    voices = {"Anna": os.getenv("ANNA_VOICE", "Kore"), "Ben": os.getenv("BEN_VOICE", "Charon")}   # Charon = deeper male voice
     speech = types.SpeechConfig(multi_speaker_voice_config=types.MultiSpeakerVoiceConfig(
         speaker_voice_configs=[
             types.SpeakerVoiceConfig(speaker=name, voice_config=types.VoiceConfig(
@@ -780,12 +780,20 @@ def to_mp3(parts: list[Path], out: Path) -> None:
 
 
 def duration_seconds(path: Path) -> float:
-    r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
-                        "-of", "default=nw=1:nk=1", str(path)], capture_output=True, text=True)
     try:
+        r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                            "-of", "default=nw=1:nk=1", str(path)], capture_output=True, text=True)
         return float(r.stdout.strip())
-    except ValueError:
-        return path.stat().st_size / (64000 / 8)
+    except (FileNotFoundError, ValueError):
+        pass
+    try:                                           # no ffprobe (static ffmpeg build): read it from ffmpeg
+        r = subprocess.run(["ffmpeg", "-i", str(path)], capture_output=True, text=True)
+        m = re.search(r"Duration:\s*(\d+):(\d+):(\d+(?:\.\d+)?)", r.stderr)
+        if m:
+            return int(m[1]) * 3600 + int(m[2]) * 60 + float(m[3])
+    except FileNotFoundError:
+        pass
+    return path.stat().st_size / (64000 / 8)
 
 
 def make_audio(client, turns: list[dict], out: Path) -> str:
