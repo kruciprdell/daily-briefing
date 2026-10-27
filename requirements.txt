@@ -3,3 +3,4 @@ google-genai>=2.25
 edge-tts>=6.1
 trafilatura>=1.12
 tzdata
+imageio-ffmpeg>=0.5
