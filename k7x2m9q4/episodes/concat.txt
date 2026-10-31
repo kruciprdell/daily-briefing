@@ -1,0 +1,7 @@
+file '/tmp/tmpii14xf5_/gemini-3.8-flash-tts/chunk_001.wav'
+file '/tmp/tmpii14xf5_/gemini-3.8-flash-tts/chunk_002.wav'
+file '/tmp/tmpii14xf5_/gemini-3.8-flash-tts/chunk_003.wav'
+file '/tmp/tmpii14xf5_/gemini-3.8-flash-tts/break.wav'
+file '/tmp/tmpii14xf5_/gemini-3.8-flash-tts/chunk_004.wav'
+file '/tmp/tmpii14xf5_/gemini-3.8-flash-tts/break.wav'
+file '/tmp/tmpii14xf5_/gemini-3.8-flash-tts/chunk_005.wav'

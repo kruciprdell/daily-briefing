@@ -1,0 +1,2541 @@
+{
+ "episodes": [
+  {
+   "date": "2026-10-22",
+   "title": "Phantom Martians, Digital Underwear, and the Stories We Tell Ourselves",
+   "file": "2026-10-22.mp3",
+   "published": "2026-10-22T22:27:00.653356+02:00",
+   "size": 13659885,
+   "duration": 1707.456,
+   "stories": [
+    "Massive student protests grip Belgrade before elections",
+    "STAN turns to committee over political misconduct",
+    "The Insider exposes Russian Doppelgänger disinformation network",
+    "New online Energy Compass helps consumers evaluate providers",
+    "German court hands down prison sentence for illegal waste dumping in Czechia",
+    "PHP vulnerability knocks major government and corporate sites offline",
+    "Gulf states fear new war and seek protection outside the US",
+    "Dutch gambling regulator hits illegal casino with record €37m fine",
+    "Intoxicated Amsterdam driver found transporting pythons in console",
+    "Autumn weather picks up with heavy winds and possible storm Austen",
+    "Student protests challenge 12 years of Vučić rule in Serbia",
+    "7.0-magnitude earthquake strikes Tibet, causing panic",
+    "Ukraine hit by fresh missile strikes following peace talk announcements",
+    "First human case of Shamonda virus detected in France",
+    "At least four dead after severe storm brings flooding to southern France",
+    "Have core Republican talking points shifted ahead of the vote?",
+    "Amy Acton responds to contentious Ohio campaign ad",
+    "UK to relax post-2008 accountability rules for City bosses",
+    "Zuckerberg wins Meta deal to navigate California billionaire tax",
+    "Influencer Clavicular pleads not guilty to rape charge"
+   ],
+   "random_topic": "The War of the Worlds Panic That Never Really Happened",
+   "through_line": "Our minds rush to construct elaborate narratives of threat and certainty when facing the unknown, much like automated systems and political machines amplifying division.",
+   "links": [
+    "https://www.novinky.cz/clanek/zahranicni-evropa-obri-protest-studentu-v-belehrade-pred-nedelnimi-volbami-byly-v-ulicich-statisice-lidi-40604439",
+    "https://www.irozhlas.cz/zpravy-domov/verim-ze-se-sevcik-poucil-ve-slusne-spolecnosti-kdyz-clovek-udela-chybu-tak-se_2610222144_vsn",
+    "https://ct24.ceskatelevize.cz/clanek/svet/putinovi-dvojnici-the-insider-popsal-fungovani-kremelske-dezinformacni-skupiny-378922",
+    "https://www.irozhlas.cz/zpravy-domov/srovnavac-energii-cen-a-dodavatelu-vysoka-skole-ekonomicka_2610222058_zfr",
+    "https://ct24.ceskatelevize.cz/clanek/regiony/za-vyvezeni-odpadu-do-ceska-padl-trest-45-roku-vezeni-378911",
+    "https://nos.nl/l/2636214",
+    "https://nos.nl/l/2636258",
+    "https://www.dutchnews.nl/2026/10/gambling-regulator-hits-illegal-casino-with-record-e37m-fine/",
+    "https://nos.nl/l/2636253",
+    "https://nos.nl/l/2636248",
+    "https://www.bbc.co.uk/news/articles/cmq8n3v94ql3o?at_medium=RSS&at_campaign=rss",
+    "https://www.euronews.com/video/2026/10/22/china-panic-as-70-magnitude-earthquake-rocks-tibet",
+    "https://www.bbc.co.uk/news/videos/c9146p1vx888o?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.co.uk/news/articles/c6reyx1d9ge9o?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.co.uk/news/articles/cm5ynl4v4wgwo?at_medium=RSS&at_campaign=rss",
+    "https://www.aljazeera.com/news/2026/10/22/epstein-iran-and-drain-the-swamp-have-republicans-shifted-before-vote?traffic_source=rss",
+    "https://www.bbc.co.uk/news/articles/c6z981l59wnwo?at_medium=RSS&at_campaign=rss",
+    "https://www.theguardian.com/business/2026/oct/22/uk-relax-post-2008-rules-hold-city-bosses-accountable-wrongdoing",
+    "https://www.bbc.co.uk/news/articles/cky83vwnyglno?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.co.uk/news/articles/cqwy71ldj3w9o?at_medium=RSS&at_campaign=rss"
+   ],
+   "item_titles": [
+    "Obří protest studentů v Bělehradě. Před nedělními volbami byly v ulicích statisíce lidí",
+    "Věřím, že se Ševčík poučil. Ve slušné společnosti když člověk udělá chybu, tak se má omluvit, říká Oborná",
+    "Putinovi „Dvojníci“. The Insider popsal fungování kremelské dezinformační skupiny",
+    "Jak vybrat dodavatele energií? Nový Energetický kompas je dostupný online a zdarma",
+    "Za vyvezení odpadu do Česka padl v Německu trest 4,5 roku vězení",
+    "Podcast De Dag: de kwetsbaarheid van PHP, 'de onderbroek' van het internet",
+    "Golfstaten vrezen voor nieuwe oorlog, zoeken bescherming buiten de VS",
+    "Gambling regulator hits illegal casino with record €37m fine",
+    "Amsterdamse autobestuurder onder invloed vervoerde pythons in middenconsole",
+    "Herfstweer komt op gang: veel wind dit weekend, mogelijk met eerste storm",
+    "Why a student protest movement is challenging 12 years of Vučić rule in Serbia",
+    "China: Panic as 7.0-magnitude earthquake rocks Tibet",
+    "Ukraine hit by strikes after Russia agrees to new peace talks",
+    "First human case of Shamonda virus detected in France, officials say",
+    "At least four dead after storm brings flooding to southern France",
+    "Epstein, Iran and ‘drain the swamp’: Have Republicans shifted before vote?",
+    "'This is despicable': Amy Acton responds to Ohio attack ad featuring her estranged mother",
+    "UK to relax post-2008 rules that hold City bosses accountable for wrongdoing",
+    "Zuckerberg wins Meta deal to help him foot bill for possible California billionaire tax",
+    "'Looksmaxxing' influencer Clavicular pleads not guilty to rape charge"
+   ],
+   "dutch_idx": 0,
+   "dzogchen_idx": 0,
+   "notes": "Theme: Our minds rush to construct elaborate narratives of threat and certainty when facing the unknown, much like automated systems and political machines amplifying division.\nNews:\n- Massive student protests grip Belgrade before elections\n- STAN turns to committee over political misconduct\n- The Insider exposes Russian Doppelgänger disinformation network\n- New online Energy Compass helps consumers evaluate providers\n- German court hands down prison sentence for illegal waste dumping in Czechia\n- PHP vulnerability knocks major government and corporate sites offline\n- Gulf states fear new war and seek protection outside the US\n- Dutch gambling regulator hits illegal casino with record €37m fine\n- Intoxicated Amsterdam driver found transporting pythons in console\n- Autumn weather picks up with heavy winds and possible storm Austen\n- Student protests challenge 12 years of Vučić rule in Serbia\n- 7.0-magnitude earthquake strikes Tibet, causing panic\n- Ukraine hit by fresh missile strikes following peace talk announcements\n- First human case of Shamonda virus detected in France\n- At least four dead after severe storm brings flooding to southern France\n- Have core Republican talking points shifted ahead of the vote?\n- Amy Acton responds to contentious Ohio campaign ad\n- UK to relax post-2008 accountability rules for City bosses\n- Zuckerberg wins Meta deal to navigate California billionaire tax\n- Influencer Clavicular pleads not guilty to rape charge\nRandom topic: The War of the Worlds Panic That Never Really Happened\nDutch: Greetings and introductions\nDzogchen: Nature of mind: awareness that is already present",
+   "engine": "edge",
+   "notes_data": {
+    "through_line": "Our minds rush to construct elaborate narratives of threat and certainty when facing the unknown, much like automated systems and political machines amplifying division.",
+    "random_topic": "The War of the Worlds Panic That Never Really Happened",
+    "news": [
+     {
+      "region": "Czechia",
+      "headline": "Massive student protests grip Belgrade before elections",
+      "link": "https://www.novinky.cz/clanek/zahranicni-evropa-obri-protest-studentu-v-belehrade-pred-nedelnimi-volbami-byly-v-ulicich-statisice-lidi-40604439",
+      "source": "Novinky - nejnovější články"
+     },
+     {
+      "region": "Czechia",
+      "headline": "STAN turns to committee over political misconduct",
+      "link": "https://www.irozhlas.cz/zpravy-domov/verim-ze-se-sevcik-poucil-ve-slusne-spolecnosti-kdyz-clovek-udela-chybu-tak-se_2610222144_vsn",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Czechia",
+      "headline": "The Insider exposes Russian Doppelgänger disinformation network",
+      "link": "https://ct24.ceskatelevize.cz/clanek/svet/putinovi-dvojnici-the-insider-popsal-fungovani-kremelske-dezinformacni-skupiny-378922",
+      "source": "ČT24 — Výběr redakce"
+     },
+     {
+      "region": "Czechia",
+      "headline": "New online Energy Compass helps consumers evaluate providers",
+      "link": "https://www.irozhlas.cz/zpravy-domov/srovnavac-energii-cen-a-dodavatelu-vysoka-skole-ekonomicka_2610222058_zfr",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Czechia",
+      "headline": "German court hands down prison sentence for illegal waste dumping in Czechia",
+      "link": "https://ct24.ceskatelevize.cz/clanek/regiony/za-vyvezeni-odpadu-do-ceska-padl-trest-45-roku-vezeni-378911",
+      "source": "ČT24 — Výběr redakce"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "PHP vulnerability knocks major government and corporate sites offline",
+      "link": "https://nos.nl/l/2636214",
+      "source": "NOS Binnenland"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Gulf states fear new war and seek protection outside the US",
+      "link": "https://nos.nl/l/2636258",
+      "source": "NOS Nieuws"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Dutch gambling regulator hits illegal casino with record €37m fine",
+      "link": "https://www.dutchnews.nl/2026/10/gambling-regulator-hits-illegal-casino-with-record-e37m-fine/",
+      "source": "DutchNews.nl"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Intoxicated Amsterdam driver found transporting pythons in console",
+      "link": "https://nos.nl/l/2636253",
+      "source": "NOS Nieuws"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Autumn weather picks up with heavy winds and possible storm Austen",
+      "link": "https://nos.nl/l/2636248",
+      "source": "NOS Binnenland"
+     },
+     {
+      "region": "Europe",
+      "headline": "Student protests challenge 12 years of Vučić rule in Serbia",
+      "link": "https://www.bbc.co.uk/news/articles/cmq8n3v94ql3o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "Europe",
+      "headline": "7.0-magnitude earthquake strikes Tibet, causing panic",
+      "link": "https://www.euronews.com/video/2026/10/22/china-panic-as-70-magnitude-earthquake-rocks-tibet",
+      "source": "News | Euronews RSS"
+     },
+     {
+      "region": "Europe",
+      "headline": "Ukraine hit by fresh missile strikes following peace talk announcements",
+      "link": "https://www.bbc.co.uk/news/videos/c9146p1vx888o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "Europe",
+      "headline": "First human case of Shamonda virus detected in France",
+      "link": "https://www.bbc.co.uk/news/articles/c6reyx1d9ge9o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "Europe",
+      "headline": "At least four dead after severe storm brings flooding to southern France",
+      "link": "https://www.bbc.co.uk/news/articles/cm5ynl4v4wgwo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "Have core Republican talking points shifted ahead of the vote?",
+      "link": "https://www.aljazeera.com/news/2026/10/22/epstein-iran-and-drain-the-swamp-have-republicans-shifted-before-vote?traffic_source=rss",
+      "source": "Al Jazeera – Breaking News, World News and Video from Al Jaz"
+     },
+     {
+      "region": "World",
+      "headline": "Amy Acton responds to contentious Ohio campaign ad",
+      "link": "https://www.bbc.co.uk/news/articles/c6z981l59wnwo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "UK to relax post-2008 accountability rules for City bosses",
+      "link": "https://www.theguardian.com/business/2026/oct/22/uk-relax-post-2008-rules-hold-city-bosses-accountable-wrongdoing",
+      "source": "World news | The Guardian"
+     },
+     {
+      "region": "World",
+      "headline": "Zuckerberg wins Meta deal to navigate California billionaire tax",
+      "link": "https://www.bbc.co.uk/news/articles/cky83vwnyglno?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "Influencer Clavicular pleads not guilty to rape charge",
+      "link": "https://www.bbc.co.uk/news/articles/cqwy71ldj3w9o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     }
+    ],
+    "dutch_theme": "Greetings and introductions",
+    "dutch_phrases": [
+     {
+      "nl": "Aangenaam kennis te maken",
+      "en": "Pleased to meet you"
+     },
+     {
+      "nl": "Hoe gaat het met je?",
+      "en": "How are you doing?"
+     },
+     {
+      "nl": "Mag ik me even voorstellen?",
+      "en": "May I introduce myself?"
+     },
+     {
+      "nl": "Waar kom je vandaan?",
+      "en": "Where do you come from?"
+     },
+     {
+      "nl": "Tot ziens en een fijne dag verder",
+      "en": "Goodbye and have a nice rest of your day"
+     },
+     {
+      "nl": "Wat leuk om je te ontmoeten",
+      "en": "How nice to meet you"
+     }
+    ],
+    "dzogchen_theme": "Nature of mind: awareness that is already present"
+   }
+  },
+  {
+   "date": "2026-10-23",
+   "title": "Clever Horses and Naked Truths",
+   "file": "2026-10-23.mp3",
+   "published": "2026-10-23T10:46:52.313229+02:00",
+   "size": 11018541,
+   "duration": 1377.288,
+   "stories": [
+    "Czech Coalition Pushes to Abolish Public Broadcast Concession Fees",
+    "Joint Municipal Schools Proposed to Solve Local Classroom Deficits",
+    "Prague Airport Boss Resigns After Just Three Months in Office",
+    "Bezdružice Chateau Goes to Auction for Seventh Time at 45 Million Crowns",
+    "President Petr Pavel Floated as Potential European Negotiator for Ukraine",
+    "Dutch Intelligence Monitored Jared Kushner's Multi-Million Financial Flows",
+    "Dutch Femicide Analysis Shows Mental Illness Outweighs Migration Factors",
+    "Albert Heijn Resumes Home Delivery Two Weeks After Paralyzing Cyberattack",
+    "Transport Unions Pause Regional Bus and Rail Strikes for Two Weeks",
+    "Moderna-Merck Melanoma Shot Slashes Cancer Recurrence Risk by 40 Percent",
+    "Europe Scrambles to Shield International Criminal Court from US Sanctions",
+    "Ukraine Reports Starlink Restrictions Persist Despite Trump Claims",
+    "France Extends Night Curfews and Bans Protests Across Major Cities",
+    "Friedrich Merz Warns Germany Faces Aggressive Russian Espionage",
+    "Chaos and Physical Clashes Erupt Inside Albanian Parliament",
+    "BBC Investigation Shows Sudan's RSF Deliberately Targeted Hospitals",
+    "Ugandan Airport Identified as Nexus for Cross-Border Ebola Cases",
+    "Depleted Global Oil Reserves Heighten Vulnerability to Gulf War Shock",
+    "Donald Trump Ordered to Face Deposition Under Oath in BBC Lawsuit",
+    "UK Government Declines to Publish Household Crisis Stockpile Checklist"
+   ],
+   "random_topic": "Clever Hans and the Illusion of Animal Arithmetic",
+   "through_line": "When we strip away fabricated narratives and political spin, we are forced to confront the unvarnished reality operating underneath.",
+   "links": [
+    "https://www.novinky.cz/clanek/domaci-snemovna-ma-necekane-jednat-o-zruseni-koncesionarskych-poplatku-40604508",
+    "https://www.irozhlas.cz/zpravy-domov/svazkove-skoly-mohly-vyresit-nedostatek-mist-ve-vzdelavani-s-jejich-financovanim_2610230957_adn",
+    "https://ct24.ceskatelevize.cz/clanek/domaci/rezignoval-sef-prazskeho-letiste-lasak-378931",
+    "https://www.irozhlas.cz/zpravy-domov/zamek-ktery-nikdo-nechce-bezdruzice-jsou-posedme-na-prodej-vcetne-parku-jdou-do_2610230933_brz",
+    "https://ct24.ceskatelevize.cz/clanek/svet/petr-pavel-je-mezi-favority-na-evropskeho-vyjednavace-o-ukrajine-pise-the-telegraph-378929",
+    "https://www.dutchnews.nl/2026/10/dutch-spies-hacked-jared-kushners-phone-alleges-book/",
+    "https://nos.nl/l/2636282",
+    "https://nos.nl/l/2636302",
+    "https://www.dutchnews.nl/2026/10/unions-call-off-bus-and-regional-train-strikes-for-two-weeks/",
+    "https://nos.nl/l/2636289",
+    "https://www.politico.eu/podcast/brussels-playbook-podcast/can-europe-save-the-worlds-war-crimes-court-from-trump/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "https://www.bbc.co.uk/news/articles/cq74pjpmx0e8o?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.co.uk/news/articles/cvde8g40xx42o?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.co.uk/news/articles/cmx28y5e04ggo?at_medium=RSS&at_campaign=rss",
+    "https://www.euronews.com/video/2026/10/23/albania-parliament-descends-into-chaos-as-mps-clash-over-protests",
+    "https://www.bbc.co.uk/news/articles/c54g1kxw4nvvo?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.co.uk/news/articles/cmwy4wlzqz3zo?at_medium=RSS&at_campaign=rss",
+    "https://www.aljazeera.com/news/2026/10/23/are-global-oil-reserves-sufficient-to-withstand-renewed-us-iran-war?traffic_source=rss",
+    "https://www.bbc.co.uk/news/articles/cmy0ryjx7741o?at_medium=RSS&at_campaign=rss",
+    "https://www.theguardian.com/politics/live/2026/oct/23/uk-warnings-stockpile-storm-austen-treasury-autumn-budget-latest-news-updates"
+   ],
+   "item_titles": [
+    "Sněmovna má nečekaně jednat o zrušení koncesionářských poplatků",
+    "Svazkové školy by mohly vyřešit nedostatek míst ve vzdělávání. S jejich financováním by měl pomoct stát",
+    "Rezignoval šéf pražského letiště Lašák",
+    "Zámek, který nikdo nechce. Bezdružice jsou posedmé na prodej, včetně parku jdou do aukce za 45 milionů",
+    "Petr Pavel je mezi favority na evropského vyjednavače o Ukrajině, píše The Telegraph",
+    "Dutch spies hacked Jared Kushner’s phone, alleges book",
+    "Partijen wijzen naar migratie, maar vooral ggz-achtergrond lijkt voorspeller van femicide",
+    "Klanten Albert Heijn kunnen weer boodschappen laten bezorgen",
+    "Unions call off bus and regional train strikes for two weeks",
+    "Veelbelovende prik bij behandeling verkleint risico op terugkeer huidkanker",
+    "Can Europe save the world’s war crimes court from Trump?",
+    "Ukraine says Starlink still restricted after Trump says limits lifted",
+    "Paris extends curfew as Marseille and Lyon ban protests after riots",
+    "Germany target of 'intensive' espionage, Merz says after suspected Russian spy arrest",
+    "Albania: Parliament descends into chaos as MPs clash over protests",
+    "Hospitals deliberately targeted by Sudan's RSF fighters, BBC finds",
+    "Nigeria and Kenya Ebola patients may have crossed paths at Uganda airport, officials say",
+    "Are global oil reserves sufficient to withstand renewed US-Iran war?",
+    "Trump ordered to answer questions under oath in BBC lawsuit",
+    "Government won’t put together ‘shopping list’ for public to stockpile for emergency – UK politics live"
+   ],
+   "dutch_idx": 1,
+   "dzogchen_idx": 1,
+   "notes": "Theme: When we strip away fabricated narratives and political spin, we are forced to confront the unvarnished reality operating underneath.\nNews:\n- Czech Coalition Pushes to Abolish Public Broadcast Concession Fees\n- Joint Municipal Schools Proposed to Solve Local Classroom Deficits\n- Prague Airport Boss Resigns After Just Three Months in Office\n- Bezdružice Chateau Goes to Auction for Seventh Time at 45 Million Crowns\n- President Petr Pavel Floated as Potential European Negotiator for Ukraine\n- Dutch Intelligence Monitored Jared Kushner's Multi-Million Financial Flows\n- Dutch Femicide Analysis Shows Mental Illness Outweighs Migration Factors\n- Albert Heijn Resumes Home Delivery Two Weeks After Paralyzing Cyberattack\n- Transport Unions Pause Regional Bus and Rail Strikes for Two Weeks\n- Moderna-Merck Melanoma Shot Slashes Cancer Recurrence Risk by 40 Percent\n- Europe Scrambles to Shield International Criminal Court from US Sanctions\n- Ukraine Reports Starlink Restrictions Persist Despite Trump Claims\n- France Extends Night Curfews and Bans Protests Across Major Cities\n- Friedrich Merz Warns Germany Faces Aggressive Russian Espionage\n- Chaos and Physical Clashes Erupt Inside Albanian Parliament\n- BBC Investigation Shows Sudan's RSF Deliberately Targeted Hospitals\n- Ugandan Airport Identified as Nexus for Cross-Border Ebola Cases\n- Depleted Global Oil Reserves Heighten Vulnerability to Gulf War Shock\n- Donald Trump Ordered to Face Deposition Under Oath in BBC Lawsuit\n- UK Government Declines to Publish Household Crisis Stockpile Checklist\nRandom topic: Clever Hans and the Illusion of Animal Arithmetic\nDutch: Numbers 0-20 and prices\nDzogchen: Ordinary mind vs rigpa (naked awareness)",
+   "engine": "gemini",
+   "notes_data": {
+    "through_line": "When we strip away fabricated narratives and political spin, we are forced to confront the unvarnished reality operating underneath.",
+    "random_topic": "Clever Hans and the Illusion of Animal Arithmetic",
+    "news": [
+     {
+      "region": "Czechia",
+      "headline": "Czech Coalition Pushes to Abolish Public Broadcast Concession Fees",
+      "link": "https://www.novinky.cz/clanek/domaci-snemovna-ma-necekane-jednat-o-zruseni-koncesionarskych-poplatku-40604508",
+      "source": "Novinky - nejnovější články"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Joint Municipal Schools Proposed to Solve Local Classroom Deficits",
+      "link": "https://www.irozhlas.cz/zpravy-domov/svazkove-skoly-mohly-vyresit-nedostatek-mist-ve-vzdelavani-s-jejich-financovanim_2610230957_adn",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Prague Airport Boss Resigns After Just Three Months in Office",
+      "link": "https://ct24.ceskatelevize.cz/clanek/domaci/rezignoval-sef-prazskeho-letiste-lasak-378931",
+      "source": "ČT24 — Výběr redakce"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Bezdružice Chateau Goes to Auction for Seventh Time at 45 Million Crowns",
+      "link": "https://www.irozhlas.cz/zpravy-domov/zamek-ktery-nikdo-nechce-bezdruzice-jsou-posedme-na-prodej-vcetne-parku-jdou-do_2610230933_brz",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Czechia",
+      "headline": "President Petr Pavel Floated as Potential European Negotiator for Ukraine",
+      "link": "https://ct24.ceskatelevize.cz/clanek/svet/petr-pavel-je-mezi-favority-na-evropskeho-vyjednavace-o-ukrajine-pise-the-telegraph-378929",
+      "source": "ČT24 — Výběr redakce"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Dutch Intelligence Monitored Jared Kushner's Multi-Million Financial Flows",
+      "link": "https://www.dutchnews.nl/2026/10/dutch-spies-hacked-jared-kushners-phone-alleges-book/",
+      "source": "DutchNews.nl"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Dutch Femicide Analysis Shows Mental Illness Outweighs Migration Factors",
+      "link": "https://nos.nl/l/2636282",
+      "source": "NOS Binnenland"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Albert Heijn Resumes Home Delivery Two Weeks After Paralyzing Cyberattack",
+      "link": "https://nos.nl/l/2636302",
+      "source": "NOS Nieuws"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Transport Unions Pause Regional Bus and Rail Strikes for Two Weeks",
+      "link": "https://www.dutchnews.nl/2026/10/unions-call-off-bus-and-regional-train-strikes-for-two-weeks/",
+      "source": "DutchNews.nl"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Moderna-Merck Melanoma Shot Slashes Cancer Recurrence Risk by 40 Percent",
+      "link": "https://nos.nl/l/2636289",
+      "source": "NOS Nieuws"
+     },
+     {
+      "region": "Europe",
+      "headline": "Europe Scrambles to Shield International Criminal Court from US Sanctions",
+      "link": "https://www.politico.eu/podcast/brussels-playbook-podcast/can-europe-save-the-worlds-war-crimes-court-from-trump/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+      "source": "POLITICO"
+     },
+     {
+      "region": "Europe",
+      "headline": "Ukraine Reports Starlink Restrictions Persist Despite Trump Claims",
+      "link": "https://www.bbc.co.uk/news/articles/cq74pjpmx0e8o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "Europe",
+      "headline": "France Extends Night Curfews and Bans Protests Across Major Cities",
+      "link": "https://www.bbc.co.uk/news/articles/cvde8g40xx42o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "Europe",
+      "headline": "Friedrich Merz Warns Germany Faces Aggressive Russian Espionage",
+      "link": "https://www.bbc.co.uk/news/articles/cmx28y5e04ggo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "Europe",
+      "headline": "Chaos and Physical Clashes Erupt Inside Albanian Parliament",
+      "link": "https://www.euronews.com/video/2026/10/23/albania-parliament-descends-into-chaos-as-mps-clash-over-protests",
+      "source": "News | Euronews RSS"
+     },
+     {
+      "region": "World",
+      "headline": "BBC Investigation Shows Sudan's RSF Deliberately Targeted Hospitals",
+      "link": "https://www.bbc.co.uk/news/articles/c54g1kxw4nvvo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "Ugandan Airport Identified as Nexus for Cross-Border Ebola Cases",
+      "link": "https://www.bbc.co.uk/news/articles/cmwy4wlzqz3zo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "Depleted Global Oil Reserves Heighten Vulnerability to Gulf War Shock",
+      "link": "https://www.aljazeera.com/news/2026/10/23/are-global-oil-reserves-sufficient-to-withstand-renewed-us-iran-war?traffic_source=rss",
+      "source": "Al Jazeera – Breaking News, World News and Video from Al Jaz"
+     },
+     {
+      "region": "World",
+      "headline": "Donald Trump Ordered to Face Deposition Under Oath in BBC Lawsuit",
+      "link": "https://www.bbc.co.uk/news/articles/cmy0ryjx7741o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "UK Government Declines to Publish Household Crisis Stockpile Checklist",
+      "link": "https://www.theguardian.com/politics/live/2026/oct/23/uk-warnings-stockpile-storm-austen-treasury-autumn-budget-latest-news-updates",
+      "source": "World news | The Guardian"
+     }
+    ],
+    "dutch_theme": "Numbers 0-20 and prices",
+    "dutch_phrases": [
+     {
+      "nl": "Hoeveel kost dit?",
+      "en": "How much does this cost?"
+     },
+     {
+      "nl": "Het kost twaalf euro.",
+      "en": "It costs twelve euros."
+     },
+     {
+      "nl": "Ik heb drie appels.",
+      "en": "I have three apples."
+     },
+     {
+      "nl": "Dat is vijftien euro, alstublieft.",
+      "en": "That is fifteen euros, please."
+     },
+     {
+      "nl": "Heeft u wisselgeld?",
+      "en": "Do you have change?"
+     },
+     {
+      "nl": "Het is helemaal gratis.",
+      "en": "It is completely free."
+     }
+    ],
+    "dzogchen_theme": "Ordinary mind vs rigpa (naked awareness)"
+   }
+  },
+  {
+   "date": "2026-10-24",
+   "title": "Moon Bats, Midnight Votes and the Storm in Your Teacup",
+   "file": "2026-10-24.mp3",
+   "published": "2026-10-24T14:39:50.051610+02:00",
+   "size": 13168941,
+   "duration": 1646.088,
+   "stories": [
+    "President Pavel questions motives behind abrupt public media fee vote",
+    "Insolvent electrician jailed for space-business scams",
+    "Rope-access restoration saves mediaeval Radyně castle wall",
+    "Canteen survey shows parents demand more vegetable variety",
+    "Slovakia holds critical regional and municipal elections",
+    "Police face privacy debate after publishing suspect photos",
+    "Zookeeper seriously injured in panther attack at Beekse Bergen",
+    "Storm Austen leaves trail of downed trees in southern provinces",
+    "Finland halts Google's illegal clearance of hundreds of trees",
+    "Former CDA politician and journalist Sytze Faber dies at 89",
+    "France deploys 70000 police officers ahead of nationwide protests",
+    "Deadly strike reported on factory in Russia's Oryol region",
+    "Germany weighs economic future after high-stakes investment summit",
+    "Global cybersecurity agencies scramble over critical AI software flaw",
+    "Freed US citizen suffered torture in Russian jail",
+    "Arrest made following fire at Hitler's Eagle's Nest retreat",
+    "Ukraine confirms Starlink network connection is now stable",
+    "US health authorities report surge in measles cases",
+    "Storm Boelo threatens UK with 80mph gusts and heavy rain",
+    "New Trump rule permits bear baiting with human foods in Alaska"
+   ],
+   "random_topic": "The 19th-Century Great Moon Hoax",
+   "through_line": "When we react to sudden disruptions by constructing urgent, fearful narratives, we mistake our own mental turbulence for objective reality.",
+   "links": [
+    "https://ct24.ceskatelevize.cz/clanek/domaci/zpusob-jednani-o-poplatcich-dle-pavla-budi-pochyby-o-zamerech-predkladatelu-378978",
+    "https://www.novinky.cz/clanek/krimi-elektrikar-v-insolvenci-obral-lidi-o-miliony-historkami-o-vesmirnem-byznysu-dostal-sest-let-40604549",
+    "https://www.irozhlas.cz/zpravy-domov/radyni-pred-destem-mohla-chranit-sklenena-strecha_2610241154_zfr",
+    "https://www.novinky.cz/clanek/domaci-rodice-pozaduji-ve-skolnich-jidelnach-vice-zeleniny-a-pestrost-kantyny-se-jim-to-chystaji-splnit-40604665",
+    "https://ct24.ceskatelevize.cz/clanek/svet/slovensko-voli-vedeni-kraju-mest-a-vesnic-v-bratislave-se-ceka-tesny-souboj-378973",
+    "https://nos.nl/l/2636447",
+    "https://nos.nl/l/2636461",
+    "https://nos.nl/l/2636426",
+    "https://nos.nl/l/2636454",
+    "https://nos.nl/l/2636424",
+    "https://www.bbc.co.uk/news/articles/cj62yv5k0w4yo?at_medium=RSS&at_campaign=rss",
+    "https://www.euronews.com/2026/10/24/footage-shows-smoke-plumes-after-deadly-strike-on-russian-factory",
+    "https://www.politico.eu/podcast/berlin-playbook-podcast/ein-spaziergang-mit-martin-blessing/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "https://www.politico.eu/article/the-cyber-flaw-scramble-that-brought-the-ai-threat-to-life/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "https://www.bbc.co.uk/news/articles/cx7vpmn6qzmlo?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.co.uk/news/articles/cr93zwjw1k4qo?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.co.uk/news/articles/cwkg5md14j8go?at_medium=RSS&at_campaign=rss",
+    "https://www.theguardian.com/us-news/2026/oct/24/measles-outbreak-reporting",
+    "https://www.theguardian.com/world/2026/oct/24/storm-boelo-80mph-winds-heavy-rain-northern-uk",
+    "https://www.theguardian.com/us-news/2026/oct/24/trump-administration-alaska-bear-hunting-bait"
+   ],
+   "item_titles": [
+    "Způsob jednání o poplatcích dle Pavla budí pochyby o záměrech předkladatelů",
+    "Elektrikář v insolvenci obral lidi o miliony historkami o vesmírném byznysu, dostal šest let",
+    "Záchrana hradu jako horolezecká výprava. Smělé plány vidí Radyni v budoucnu se skleněnou střechou",
+    "Rodiče požadují ve školních jídelnách více zeleniny a pestrost. Kantýny se jim to chystají splnit",
+    "Slovensko volí vedení krajů, měst a vesnic. V Bratislavě se čeká těsný souboj",
+    "Politie spoort verdachten op dankzij verspreiden foto's, maar experts zien gevaren",
+    "Verzorgster safaripark Beekse Bergen gewond na aanval panter",
+    "Bomen omgewaaid door Austen, vanavond opnieuw zware windstoten",
+    "Google kapt illegaal 250.000 bomen, Finnen vragen strengere regels datacenters",
+    "Sytze Faber (89), voormalig CDA-Kamerlid en journalist, overleden",
+    "France prepares for day of protest a week after nationwide riots",
+    "Footage shows smoke plumes after deadly strike on Russian factory",
+    "Ein Spaziergang mit Martin Blessing",
+    "Inside the cyber flaw scramble that brought the AI threat to life",
+    "Freed US citizen was tortured in Russian jail, former Ukrainian prisoners say",
+    "Arrest made after fire at Hitler's mountaintop Eagle's Nest retreat",
+    "Ukraine says Starlink connection 'now stable' after network limits",
+    "Additional 178 cases of measles reported by US health authorities amid outbreak",
+    "Storm Boelo to bring gusts of up to 80mph and heavy rain to parts of UK",
+    "New Trump rule allows hunters to bait bears in Alaska with doughnuts, bacon and more"
+   ],
+   "dutch_idx": 2,
+   "dzogchen_idx": 2,
+   "fact_check": [
+    {
+     "turn": 7,
+     "section": "random",
+     "reason": "softened superlative claim about newspaper circulation"
+    },
+    {
+     "turn": 17,
+     "section": "news",
+     "reason": "removed unsupported claims regarding ČT24 and direct budget manipulation"
+    },
+    {
+     "turn": 19,
+     "section": "news",
+     "reason": "removed unsupported claim of a six-year prison sentence"
+    },
+    {
+     "turn": 47,
+     "section": "news",
+     "reason": "removed unsupported reference to Euronews and drone strike"
+    },
+    {
+     "turn": 55,
+     "section": "news",
+     "reason": "corrected over two hundred firefighters to some two hundred emergency personnel"
+    }
+   ],
+   "notes": "Theme: When we react to sudden disruptions by constructing urgent, fearful narratives, we mistake our own mental turbulence for objective reality.\nNews:\n- President Pavel questions motives behind abrupt public media fee vote\n- Insolvent electrician jailed for space-business scams\n- Rope-access restoration saves mediaeval Radyně castle wall\n- Canteen survey shows parents demand more vegetable variety\n- Slovakia holds critical regional and municipal elections\n- Police face privacy debate after publishing suspect photos\n- Zookeeper seriously injured in panther attack at Beekse Bergen\n- Storm Austen leaves trail of downed trees in southern provinces\n- Finland halts Google's illegal clearance of hundreds of trees\n- Former CDA politician and journalist Sytze Faber dies at 89\n- France deploys 70000 police officers ahead of nationwide protests\n- Deadly strike reported on factory in Russia's Oryol region\n- Germany weighs economic future after high-stakes investment summit\n- Global cybersecurity agencies scramble over critical AI software flaw\n- Freed US citizen suffered torture in Russian jail\n- Arrest made following fire at Hitler's Eagle's Nest retreat\n- Ukraine confirms Starlink network connection is now stable\n- US health authorities report surge in measles cases\n- Storm Boelo threatens UK with 80mph gusts and heavy rain\n- New Trump rule permits bear baiting with human foods in Alaska\nRandom topic: The 19th-Century Great Moon Hoax\nDutch: Politeness: alstublieft, dank je, sorry\nDzogchen: Sky and clouds: mind and thoughts",
+   "engine": "edge",
+   "notes_data": {
+    "through_line": "When we react to sudden disruptions by constructing urgent, fearful narratives, we mistake our own mental turbulence for objective reality.",
+    "random_topic": "The 19th-Century Great Moon Hoax",
+    "news": [
+     {
+      "region": "Czechia",
+      "headline": "President Pavel questions motives behind abrupt public media fee vote",
+      "link": "https://ct24.ceskatelevize.cz/clanek/domaci/zpusob-jednani-o-poplatcich-dle-pavla-budi-pochyby-o-zamerech-predkladatelu-378978",
+      "source": "ČT24 — Výběr redakce"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Insolvent electrician jailed for space-business scams",
+      "link": "https://www.novinky.cz/clanek/krimi-elektrikar-v-insolvenci-obral-lidi-o-miliony-historkami-o-vesmirnem-byznysu-dostal-sest-let-40604549",
+      "source": "Novinky - nejnovější články"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Rope-access restoration saves mediaeval Radyně castle wall",
+      "link": "https://www.irozhlas.cz/zpravy-domov/radyni-pred-destem-mohla-chranit-sklenena-strecha_2610241154_zfr",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Canteen survey shows parents demand more vegetable variety",
+      "link": "https://www.novinky.cz/clanek/domaci-rodice-pozaduji-ve-skolnich-jidelnach-vice-zeleniny-a-pestrost-kantyny-se-jim-to-chystaji-splnit-40604665",
+      "source": "Novinky - nejnovější články"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Slovakia holds critical regional and municipal elections",
+      "link": "https://ct24.ceskatelevize.cz/clanek/svet/slovensko-voli-vedeni-kraju-mest-a-vesnic-v-bratislave-se-ceka-tesny-souboj-378973",
+      "source": "ČT24 — Výběr redakce"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Police face privacy debate after publishing suspect photos",
+      "link": "https://nos.nl/l/2636447",
+      "source": "NOS Binnenland"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Zookeeper seriously injured in panther attack at Beekse Bergen",
+      "link": "https://nos.nl/l/2636461",
+      "source": "NOS Nieuws"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Storm Austen leaves trail of downed trees in southern provinces",
+      "link": "https://nos.nl/l/2636426",
+      "source": "NOS Binnenland"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Finland halts Google's illegal clearance of hundreds of trees",
+      "link": "https://nos.nl/l/2636454",
+      "source": "NOS Nieuws"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Former CDA politician and journalist Sytze Faber dies at 89",
+      "link": "https://nos.nl/l/2636424",
+      "source": "NOS Binnenland"
+     },
+     {
+      "region": "Europe",
+      "headline": "France deploys 70000 police officers ahead of nationwide protests",
+      "link": "https://www.bbc.co.uk/news/articles/cj62yv5k0w4yo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "Europe",
+      "headline": "Deadly strike reported on factory in Russia's Oryol region",
+      "link": "https://www.euronews.com/2026/10/24/footage-shows-smoke-plumes-after-deadly-strike-on-russian-factory",
+      "source": "News | Euronews RSS"
+     },
+     {
+      "region": "Europe",
+      "headline": "Germany weighs economic future after high-stakes investment summit",
+      "link": "https://www.politico.eu/podcast/berlin-playbook-podcast/ein-spaziergang-mit-martin-blessing/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+      "source": "POLITICO"
+     },
+     {
+      "region": "Europe",
+      "headline": "Global cybersecurity agencies scramble over critical AI software flaw",
+      "link": "https://www.politico.eu/article/the-cyber-flaw-scramble-that-brought-the-ai-threat-to-life/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+      "source": "POLITICO"
+     },
+     {
+      "region": "Europe",
+      "headline": "Freed US citizen suffered torture in Russian jail",
+      "link": "https://www.bbc.co.uk/news/articles/cx7vpmn6qzmlo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "Arrest made following fire at Hitler's Eagle's Nest retreat",
+      "link": "https://www.bbc.co.uk/news/articles/cr93zwjw1k4qo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "Ukraine confirms Starlink network connection is now stable",
+      "link": "https://www.bbc.co.uk/news/articles/cwkg5md14j8go?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "US health authorities report surge in measles cases",
+      "link": "https://www.theguardian.com/us-news/2026/oct/24/measles-outbreak-reporting",
+      "source": "World news | The Guardian"
+     },
+     {
+      "region": "World",
+      "headline": "Storm Boelo threatens UK with 80mph gusts and heavy rain",
+      "link": "https://www.theguardian.com/world/2026/oct/24/storm-boelo-80mph-winds-heavy-rain-northern-uk",
+      "source": "World news | The Guardian"
+     },
+     {
+      "region": "World",
+      "headline": "New Trump rule permits bear baiting with human foods in Alaska",
+      "link": "https://www.theguardian.com/us-news/2026/oct/24/trump-administration-alaska-bear-hunting-bait",
+      "source": "World news | The Guardian"
+     }
+    ],
+    "dutch_theme": "Politeness: alstublieft, dank je, sorry",
+    "dutch_phrases": [
+     {
+      "nl": "alstublieft",
+      "en": "please / here you go (formal)"
+     },
+     {
+      "nl": "alsjeblieft",
+      "en": "please / here you go (informal)"
+     },
+     {
+      "nl": "dank u wel",
+      "en": "thank you very much (formal)"
+     },
+     {
+      "nl": "dank je",
+      "en": "thank you (informal)"
+     },
+     {
+      "nl": "het spijt me",
+      "en": "I am sorry"
+     },
+     {
+      "nl": "sorry",
+      "en": "sorry / excuse me"
+     }
+    ],
+    "dzogchen_theme": "Sky and clouds: mind and thoughts"
+   }
+  },
+  {
+   "date": "2026-10-25",
+   "title": "The Monsters in the Static and the Art of Not Panicking [alt voices]",
+   "file": "2026-10-25.mp3",
+   "published": "2026-10-25T05:01:24.903181+01:00",
+   "size": 12688365,
+   "duration": 1586.016,
+   "stories": [
+    "Analysts call rushed late-night vote on public media fees extremely unusual",
+    "Crowds gather in Brno and other cities to support Czech TV and Radio",
+    "Ukraine drone detectors and first aid courses respond to security worsening",
+    "Logging in Chlumec allegedly damages Stations of the Cross path",
+    "Pirates to propose removal of Okamura from Chamber chair",
+    "Cabinet invites seven opposition parties for tax plan negotiations",
+    "Strong winds cause damage and disruption across various locations",
+    "More sleep on Sunday as clocks go back an hour",
+    "Fresh disturbances break out during Walibi Fright Nights",
+    "High crowds at Gelderland gas station with stunt prices",
+    "Almost 1,000 arrested as clashes follow mass protests across France",
+    "Young protesters clash with police on Rome streets",
+    "Starlink connection restored at high speed in Ukraine, defense minister says",
+    "Israel removes Palestinian families from Hebron after soldier deaths",
+    "Fire engulfs Hitler’s former Eagle’s Nest retreat in Germany",
+    "AFP boss says politicians' heated rhetoric is fuelling threats against MPs",
+    "Thousands rally in Turkiye over journalist arrests and media shutdowns",
+    "Myanmar's Aung San Suu Kyi sounds strong but is isolated",
+    "Bulgarians vote for president in shadow of Russia's war in Ukraine",
+    "California leader calls attack on noncitizen voting weaponizing the law"
+   ],
+   "random_topic": "The 1938 War of the Worlds Radio Broadcast Panic",
+   "through_line": "When we react to sudden disruptions by constructing urgent, fearful narratives, we mistake our own mental turbulence for objective reality.",
+   "links": [
+    "https://ct24.ceskatelevize.cz/clanek/domaci/krajne-neobvykle-hodnoti-analytici-a-politologove-nocni-jednani-o-poplatcich-378977",
+    "https://ct24.ceskatelevize.cz/clanek/domaci/lide-v-brne-a-dalsich-mestech-se-sesli-aby-podporili-ct-a-cro-378983",
+    "https://ct24.ceskatelevize.cz/clanek/svet/detektory-dronu-i-kurzy-prvni-pomoci-ukrajinci-reaguji-na-zhorseni-bezpecnosti-378981",
+    "https://www.irozhlas.cz/zpravy-domov/tezba-dreva-v-chlumci-mela-ponicit-zastaveni-krizove-cesty-poskozena-je-i-stezka_2610241336_mkm",
+    "https://www.irozhlas.cz/zpravy-domov/tomio-okamura-odvolani-z-cela-snemovny-pirati-hrib_2610241534_tec",
+    "https://nos.nl/l/2636518",
+    "https://nos.nl/l/2636535",
+    "https://www.dutchnews.nl/2026/10/more-sleep-on-sunday-as-clocks-go-back-an-hour/",
+    "https://nos.nl/l/2636536",
+    "https://nos.nl/l/2636486",
+    "https://www.bbc.co.uk/news/articles/c95ynd587ynzo?at_medium=RSS&at_campaign=rss",
+    "https://www.euronews.com/2026/10/24/young-protesters-clash-with-police-on-rome-streets",
+    "https://www.politico.eu/article/starlink-connection-high-speed-ukraine-defense-minister-yevhenii-khmara/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "https://www.euronews.com/2026/10/24/israel-removes-around-250-palestinian-families-from-west-bank-city-of-hebron-after-soldier",
+    "https://www.euronews.com/2026/10/24/fire-engulfs-hitlers-former-eagles-nest-retreat-in-germany",
+    "https://www.theguardian.com/australia-news/2026/oct/25/afp-commissioner-krissy-barrett-threats-mps-political-debate-ntwnfb",
+    "https://www.aljazeera.com/video/newsfeed/2026/10/25/10-25-turkiye-media-crackdown-sv?traffic_source=rss",
+    "https://www.theguardian.com/world/2026/oct/25/myanmar-aung-san-suu-kyi-speaks-son-pr-move",
+    "https://www.aljazeera.com/news/2026/10/25/bulgarians-vote-for-president-in-shadow-of-russias-war-in-ukraine?traffic_source=rss",
+    "https://www.theguardian.com/us-news/2026/oct/24/california-noncitizen-voting-trump-administration"
+   ],
+   "item_titles": [
+    "Krajně neobvyklé, hodnotí analytici a politologové noční jednání o poplatcích",
+    "Lidé v Brně a dalších městech se sešli, aby podpořili ČT a ČRo",
+    "Detektory dronů i kurzy první pomoci. Ukrajinci reagují na zhoršení bezpečnosti",
+    "Těžba dřeva v Chlumci měla poničit zastavení křížové cesty. Poškozená je i stezka nebo polámané stromy",
+    "‚Bezprecedentní zásah proti občanské společnosti.‘ Piráti navrhnou odvolání Okamury z čela Sněmovny",
+    "Kabinet nodigt zeven oppositiepartijen uit voor onderhandelingen belastingplan",
+    "Op verschillende plekken overlast door harde wind",
+    "More sleep on Sunday as clocks go back an hour",
+    "Opnieuw ongeregeldheden tijdens Walibi Fright Nights",
+    "Topdrukte bij Gelders tankstation met stuntprijzen: uur lang tanken voor 1 euro",
+    "Almost 1,000 arrested as clashes follow another day of mass protests across France",
+    "Young protesters clash with police on Rome streets",
+    "Starlink connection restored at high speed in Ukraine, defense minister says",
+    "Israel removes around 250 Palestinian families from West Bank city of Hebron after soldier deaths",
+    "Fire engulfs Hitler’s former Eagle’s Nest retreat in Germany",
+    "AFP boss says politicians’ heated rhetoric is fuelling threats against MPs",
+    "Thousands rally in Turkiye over journalist arrests, media shutdowns",
+    "Myanmar’s Aung San Suu Kyi ‘sounds strong’ but is isolated, son says",
+    "Bulgarians vote for president in shadow of Russia’s war in Ukraine",
+    "California leader calls attack on alleged noncitizen voting ‘weaponizing the law’"
+   ],
+   "dutch_idx": 3,
+   "dzogchen_idx": 3,
+   "fact_check": [
+    {
+     "turn": 11,
+     "section": "random",
+     "reason": "Replace overly precise statistics on announcements and late tuning with safer wording."
+    },
+    {
+     "turn": 23,
+     "section": "news",
+     "reason": "Source cites strong social consensus in Scandinavia, not constitutional safety buffers."
+    },
+    {
+     "turn": 37,
+     "section": "news",
+     "reason": "Claims about workers starving and the country dissolving are not in source."
+    },
+    {
+     "turn": 61,
+     "section": "news",
+     "reason": "Source does not state that the attack involved a car."
+    }
+   ],
+   "notes": "Theme: When we react to sudden disruptions by constructing urgent, fearful narratives, we mistake our own mental turbulence for objective reality.\nNews:\n- Analysts call rushed late-night vote on public media fees extremely unusual\n- Crowds gather in Brno and other cities to support Czech TV and Radio\n- Ukraine drone detectors and first aid courses respond to security worsening\n- Logging in Chlumec allegedly damages Stations of the Cross path\n- Pirates to propose removal of Okamura from Chamber chair\n- Cabinet invites seven opposition parties for tax plan negotiations\n- Strong winds cause damage and disruption across various locations\n- More sleep on Sunday as clocks go back an hour\n- Fresh disturbances break out during Walibi Fright Nights\n- High crowds at Gelderland gas station with stunt prices\n- Almost 1,000 arrested as clashes follow mass protests across France\n- Young protesters clash with police on Rome streets\n- Starlink connection restored at high speed in Ukraine, defense minister says\n- Israel removes Palestinian families from Hebron after soldier deaths\n- Fire engulfs Hitler’s former Eagle’s Nest retreat in Germany\n- AFP boss says politicians' heated rhetoric is fuelling threats against MPs\n- Thousands rally in Turkiye over journalist arrests and media shutdowns\n- Myanmar's Aung San Suu Kyi sounds strong but is isolated\n- Bulgarians vote for president in shadow of Russia's war in Ukraine\n- California leader calls attack on noncitizen voting weaponizing the law\nRandom topic: The 1938 War of the Worlds Radio Broadcast Panic\nDutch: Ordering coffee at a cafe\nDzogchen: Thoughts as waves: arising and dissolving on their own",
+   "engine": "gemini-3.8-flash-lite-tts",
+   "notes_data": {
+    "through_line": "When we react to sudden disruptions by constructing urgent, fearful narratives, we mistake our own mental turbulence for objective reality.",
+    "random_topic": "The 1938 War of the Worlds Radio Broadcast Panic",
+    "news": [
+     {
+      "region": "Czechia",
+      "headline": "Analysts call rushed late-night vote on public media fees extremely unusual",
+      "link": "https://ct24.ceskatelevize.cz/clanek/domaci/krajne-neobvykle-hodnoti-analytici-a-politologove-nocni-jednani-o-poplatcich-378977",
+      "source": "ČT24 — Výběr redakce"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Crowds gather in Brno and other cities to support Czech TV and Radio",
+      "link": "https://ct24.ceskatelevize.cz/clanek/domaci/lide-v-brne-a-dalsich-mestech-se-sesli-aby-podporili-ct-a-cro-378983",
+      "source": "ČT24 — Výběr redakce"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Ukraine drone detectors and first aid courses respond to security worsening",
+      "link": "https://ct24.ceskatelevize.cz/clanek/svet/detektory-dronu-i-kurzy-prvni-pomoci-ukrajinci-reaguji-na-zhorseni-bezpecnosti-378981",
+      "source": "ČT24 — Výběr redakce"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Logging in Chlumec allegedly damages Stations of the Cross path",
+      "link": "https://www.irozhlas.cz/zpravy-domov/tezba-dreva-v-chlumci-mela-ponicit-zastaveni-krizove-cesty-poskozena-je-i-stezka_2610241336_mkm",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Pirates to propose removal of Okamura from Chamber chair",
+      "link": "https://www.irozhlas.cz/zpravy-domov/tomio-okamura-odvolani-z-cela-snemovny-pirati-hrib_2610241534_tec",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Cabinet invites seven opposition parties for tax plan negotiations",
+      "link": "https://nos.nl/l/2636518",
+      "source": "NOS Nieuws"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Strong winds cause damage and disruption across various locations",
+      "link": "https://nos.nl/l/2636535",
+      "source": "NOS Binnenland"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "More sleep on Sunday as clocks go back an hour",
+      "link": "https://www.dutchnews.nl/2026/10/more-sleep-on-sunday-as-clocks-go-back-an-hour/",
+      "source": "DutchNews.nl"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Fresh disturbances break out during Walibi Fright Nights",
+      "link": "https://nos.nl/l/2636536",
+      "source": "NOS Nieuws"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "High crowds at Gelderland gas station with stunt prices",
+      "link": "https://nos.nl/l/2636486",
+      "source": "NOS Binnenland"
+     },
+     {
+      "region": "Europe",
+      "headline": "Almost 1,000 arrested as clashes follow mass protests across France",
+      "link": "https://www.bbc.co.uk/news/articles/c95ynd587ynzo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "Europe",
+      "headline": "Young protesters clash with police on Rome streets",
+      "link": "https://www.euronews.com/2026/10/24/young-protesters-clash-with-police-on-rome-streets",
+      "source": "News | Euronews RSS"
+     },
+     {
+      "region": "Europe",
+      "headline": "Starlink connection restored at high speed in Ukraine, defense minister says",
+      "link": "https://www.politico.eu/article/starlink-connection-high-speed-ukraine-defense-minister-yevhenii-khmara/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+      "source": "POLITICO"
+     },
+     {
+      "region": "Europe",
+      "headline": "Israel removes Palestinian families from Hebron after soldier deaths",
+      "link": "https://www.euronews.com/2026/10/24/israel-removes-around-250-palestinian-families-from-west-bank-city-of-hebron-after-soldier",
+      "source": "News | Euronews RSS"
+     },
+     {
+      "region": "Europe",
+      "headline": "Fire engulfs Hitler’s former Eagle’s Nest retreat in Germany",
+      "link": "https://www.euronews.com/2026/10/24/fire-engulfs-hitlers-former-eagles-nest-retreat-in-germany",
+      "source": "News | Euronews RSS"
+     },
+     {
+      "region": "World",
+      "headline": "AFP boss says politicians' heated rhetoric is fuelling threats against MPs",
+      "link": "https://www.theguardian.com/australia-news/2026/oct/25/afp-commissioner-krissy-barrett-threats-mps-political-debate-ntwnfb",
+      "source": "World news | The Guardian"
+     },
+     {
+      "region": "World",
+      "headline": "Thousands rally in Turkiye over journalist arrests and media shutdowns",
+      "link": "https://www.aljazeera.com/video/newsfeed/2026/10/25/10-25-turkiye-media-crackdown-sv?traffic_source=rss",
+      "source": "Al Jazeera – Breaking News, World News and Video from Al Jaz"
+     },
+     {
+      "region": "World",
+      "headline": "Myanmar's Aung San Suu Kyi sounds strong but is isolated",
+      "link": "https://www.theguardian.com/world/2026/oct/25/myanmar-aung-san-suu-kyi-speaks-son-pr-move",
+      "source": "World news | The Guardian"
+     },
+     {
+      "region": "World",
+      "headline": "Bulgarians vote for president in shadow of Russia's war in Ukraine",
+      "link": "https://www.aljazeera.com/news/2026/10/25/bulgarians-vote-for-president-in-shadow-of-russias-war-in-ukraine?traffic_source=rss",
+      "source": "Al Jazeera – Breaking News, World News and Video from Al Jaz"
+     },
+     {
+      "region": "World",
+      "headline": "California leader calls attack on noncitizen voting weaponizing the law",
+      "link": "https://www.theguardian.com/us-news/2026/oct/24/california-noncitizen-voting-trump-administration",
+      "source": "World news | The Guardian"
+     }
+    ],
+    "dutch_theme": "Ordering coffee at a cafe",
+    "dutch_phrases": [
+     {
+      "nl": "Mag ik een cappuccino, alstublieft?",
+      "en": "May I have a cappuccino, please?"
+     },
+     {
+      "nl": "Heeft u ook havermelk?",
+      "en": "Do you also have oat milk?"
+     },
+     {
+      "nl": "Voor hier of meenemen?",
+      "en": "For here or to take away?"
+     },
+     {
+      "nl": "Mag ik de rekening?",
+      "en": "May I have the bill?"
+     },
+     {
+      "nl": "Kan ik pinnen?",
+      "en": "Can I pay by card?"
+     },
+     {
+      "nl": "Houd het wisselgeld maar.",
+      "en": "Keep the change."
+     }
+    ],
+    "dzogchen_theme": "Thoughts as waves: arising and dissolving on their own"
+   }
+  },
+  {
+   "date": "2026-10-26",
+   "title": "Delusions, Dutch Soup, and the Art of Letting Stories Dissolve [alt voices]",
+   "file": "2026-10-26.mp3",
+   "published": "2026-10-26T16:29:11.939778+01:00",
+   "size": 13099629,
+   "duration": 1637.424,
+   "stories": [
+    "Secret government move to abolish public media fees stuns politicians",
+    "Zlín municipal coalition talks complicate over council mandates",
+    "State enterprise Diamo questions environment ministry over Heřmanice slag heap",
+    "Opposition turns to Constitutional Court over limits on presidential power",
+    "Kladno environmental center opens new pavilion for educational classes",
+    "Supermarket price gap widens between name brands and budget items",
+    "Rotterdam man arrested for football ticket phishing and identity fraud",
+    "Cornelius Haga Lyceum faces financial penalties if reforms lag",
+    "Number of trainee teachers for Frisian language doubles in historic drive",
+    "Blood bank Sanquin locks away free iced biscuits after donors overindulge",
+    "Veteran Serbian ruler Vučić loses election to student protest movement",
+    "Von der Leyen's big Commission shake-up moves closer",
+    "Belgium postpones terrace smoking ban to give restaurants adjustment time",
+    "German politicians slam Audi CEO's appearance at Trump rally",
+    "Trump officials back Orbán bid for UN secretary-general role",
+    "Anthropic warns of catastrophic AI risks ahead of share listing",
+    "Mecca defence alliance members travel to Tehran to defuse regional tensions",
+    "Rohingya refugees dismantle homes amid eviction threats in Kashmir",
+    "Chris Brown given suspended eight-month prison sentence over nightclub attack",
+    "UK sanctions Sudanese military leaders over campaign of sexual violence"
+   ],
+   "random_topic": "The 1903 Tichborne Claimant Trial and Mass Delusion",
+   "through_line": "When we react to sudden disruptions by constructing urgent, fearful narratives, we mistake our own mental turbulence for objective reality.",
+   "links": [
+    "https://www.novinky.cz/clanek/domaci-tah-se-zrusenim-poplatku-se-chystal-tajne-vedely-o-nem-jen-vladni-spicky-40605066",
+    "https://www.irozhlas.cz/zpravy-domov/zastupci-koalicniho-trojbloku-chteji-o-kreslo-navic-ve-zline-se-povolebni_2610261553_eml",
+    "https://www.irozhlas.cz/zpravy-domov/diamo-chce-proverit-postup-ministerstva-zivotniho-prostredi-u-hermanicke-haldy_2610261546_ntu",
+    "https://ct24.ceskatelevize.cz/clanek/domaci/vyjadreni-opozice-k-omezeni-pravomoci-prezidenta-379024",
+    "https://www.irozhlas.cz/zpravy-domov/naucne-ekologicke-stredisko-v-kladne-ma-pavilon-za-26-milionu-cabarna-se_2610261515_eml",
+    "https://nos.nl/l/2636736",
+    "https://nos.nl/l/2636776",
+    "https://nos.nl/l/2636773",
+    "https://www.dutchnews.nl/2026/10/protecting-frisian-trainee-teacher-numbers-more-than-double/",
+    "https://www.dutchnews.nl/2026/10/sugar-rush-blood-bank-acts-to-stem-flow-of-free-iced-biscuits/",
+    "https://www.bbc.co.uk/news/articles/cw5yn3xlprpmo?at_medium=RSS&at_campaign=rss",
+    "https://www.politico.eu/article/ursula-von-der-leyen-big-eu-commission-shake-up-moves-a-step-closer/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "https://www.politico.eu/article/belgium-postpones-terrace-smoking-ban/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "https://www.politico.eu/article/donald-trump-midterms-germany-gernot-dollner-unions-audi-ceo/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "https://www.euronews.com/2026/10/26/trump-officials-back-orban-bid-for-un-secretary-general-wsj-reports",
+    "https://www.bbc.co.uk/news/articles/cq398p1wd1evo?at_medium=RSS&at_campaign=rss",
+    "https://www.aljazeera.com/news/2026/10/26/mecca-defence-alliance-members-in-tehran-to-defuse-iran-us-yemen-tensions?traffic_source=rss",
+    "https://www.aljazeera.com/video/newsfeed/2026/10/26/rohingya-deported-disputed-kashmir-region?traffic_source=rss",
+    "https://www.bbc.co.uk/news/articles/cq3dje4g4d5jo?at_medium=RSS&at_campaign=rss",
+    "https://www.theguardian.com/global-development/2026/oct/26/uk-sanctions-sudanese-military-leaders-implicated-in-el-fasher-campaign-of"
+   ],
+   "item_titles": [
+    "Tah se zrušením poplatků se chystal tajně, věděly o něm jen vládní špičky",
+    "Zástupci koaličního trojbloku chtějí o křeslo navíc. Ve Zlíně se povolební jednání zkomplikovala",
+    "Diamo chce prověřit postup ministerstva životního prostředí u heřmanické haldy. Úřad stopnul řízení",
+    "Opozice se kvůli omezení pravomoci prezidenta obrací na Ústavní soud",
+    "Naučné ekologické středisko v Kladně má pavilon za 26 milionů. Čabárna se rozrostla o dvě učebny",
+    "A-merken in de supermarkt weer duurder, budgetmerken juist goedkoper",
+    "Rotterdammer verdacht van identiteitsfraude na voetbalkaartjeszwendel",
+    "Haga Lyceum moet van staatssecretaris verbeteren, anders dreigt financiële straf",
+    "Protecting Frisian: trainee teacher numbers more than double",
+    "Sugar rush: blood bank acts to stem flow of free iced biscuits",
+    "Celebrations in Serbia after veteran ruler Vučić loses election to student-led protest movement",
+    "Von der Leyen’s big Commission shake-up moves a step closer",
+    "Belgium postpones terrace smoking ban",
+    "‘Disturbing and pathetic’: German politicians slam Audi CEO’s appearance at Trump rally",
+    "Trump officials back Orbán bid for UN secretary-general, WSJ reports",
+    "Anthropic warns of 'catastrophic risk' to humankind ahead of blockbuster share listing",
+    "Mecca defence alliance members in Tehran to defuse Iran-US, Yemen tensions",
+    "Rohingya dismantle homes amid eviction threat in disputed Kashmir region",
+    "Chris Brown given suspended eight-month prison sentence over nightclub attack",
+    "UK sanctions Sudanese military leaders implicated in El Fasher ‘campaign of rape’"
+   ],
+   "dutch_idx": 4,
+   "dzogchen_idx": 4,
+   "fact_check": [
+    {
+     "turn": 21,
+     "section": "news",
+     "reason": "Source states bill was discussed in first reading, not passed."
+    },
+    {
+     "turn": 31,
+     "section": "news",
+     "reason": "Source specifies a second classroom was added, not two new ones."
+    },
+    {
+     "turn": 61,
+     "section": "news",
+     "reason": "Source states results are preliminary with 97 percent counted, not final."
+    },
+    {
+     "turn": 69,
+     "section": "news",
+     "reason": "Source quotes lawmaker calling appearance a disgrace and new low."
+    }
+   ],
+   "notes": "Theme: When we react to sudden disruptions by constructing urgent, fearful narratives, we mistake our own mental turbulence for objective reality.\nNews:\n- Secret government move to abolish public media fees stuns politicians\n- Zlín municipal coalition talks complicate over council mandates\n- State enterprise Diamo questions environment ministry over Heřmanice slag heap\n- Opposition turns to Constitutional Court over limits on presidential power\n- Kladno environmental center opens new pavilion for educational classes\n- Supermarket price gap widens between name brands and budget items\n- Rotterdam man arrested for football ticket phishing and identity fraud\n- Cornelius Haga Lyceum faces financial penalties if reforms lag\n- Number of trainee teachers for Frisian language doubles in historic drive\n- Blood bank Sanquin locks away free iced biscuits after donors overindulge\n- Veteran Serbian ruler Vučić loses election to student protest movement\n- Von der Leyen's big Commission shake-up moves closer\n- Belgium postpones terrace smoking ban to give restaurants adjustment time\n- German politicians slam Audi CEO's appearance at Trump rally\n- Trump officials back Orbán bid for UN secretary-general role\n- Anthropic warns of catastrophic AI risks ahead of share listing\n- Mecca defence alliance members travel to Tehran to defuse regional tensions\n- Rohingya refugees dismantle homes amid eviction threats in Kashmir\n- Chris Brown given suspended eight-month prison sentence over nightclub attack\n- UK sanctions Sudanese military leaders over campaign of sexual violence\nRandom topic: The 1903 Tichborne Claimant Trial and Mass Delusion\nDutch: Supermarket shopping\nDzogchen: Self-liberation (rang grol): not suppressing, not following",
+   "engine": "gemini-3.8-flash-lite-tts",
+   "notes_data": {
+    "through_line": "When we react to sudden disruptions by constructing urgent, fearful narratives, we mistake our own mental turbulence for objective reality.",
+    "random_topic": "The 1903 Tichborne Claimant Trial and Mass Delusion",
+    "news": [
+     {
+      "region": "Czechia",
+      "headline": "Secret government move to abolish public media fees stuns politicians",
+      "link": "https://www.novinky.cz/clanek/domaci-tah-se-zrusenim-poplatku-se-chystal-tajne-vedely-o-nem-jen-vladni-spicky-40605066",
+      "source": "Novinky - nejnovější články"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Zlín municipal coalition talks complicate over council mandates",
+      "link": "https://www.irozhlas.cz/zpravy-domov/zastupci-koalicniho-trojbloku-chteji-o-kreslo-navic-ve-zline-se-povolebni_2610261553_eml",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Czechia",
+      "headline": "State enterprise Diamo questions environment ministry over Heřmanice slag heap",
+      "link": "https://www.irozhlas.cz/zpravy-domov/diamo-chce-proverit-postup-ministerstva-zivotniho-prostredi-u-hermanicke-haldy_2610261546_ntu",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Opposition turns to Constitutional Court over limits on presidential power",
+      "link": "https://ct24.ceskatelevize.cz/clanek/domaci/vyjadreni-opozice-k-omezeni-pravomoci-prezidenta-379024",
+      "source": "ČT24 — Výběr redakce"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Kladno environmental center opens new pavilion for educational classes",
+      "link": "https://www.irozhlas.cz/zpravy-domov/naucne-ekologicke-stredisko-v-kladne-ma-pavilon-za-26-milionu-cabarna-se_2610261515_eml",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Supermarket price gap widens between name brands and budget items",
+      "link": "https://nos.nl/l/2636736",
+      "source": "NOS Binnenland"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Rotterdam man arrested for football ticket phishing and identity fraud",
+      "link": "https://nos.nl/l/2636776",
+      "source": "NOS Nieuws"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Cornelius Haga Lyceum faces financial penalties if reforms lag",
+      "link": "https://nos.nl/l/2636773",
+      "source": "NOS Nieuws"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Number of trainee teachers for Frisian language doubles in historic drive",
+      "link": "https://www.dutchnews.nl/2026/10/protecting-frisian-trainee-teacher-numbers-more-than-double/",
+      "source": "DutchNews.nl"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Blood bank Sanquin locks away free iced biscuits after donors overindulge",
+      "link": "https://www.dutchnews.nl/2026/10/sugar-rush-blood-bank-acts-to-stem-flow-of-free-iced-biscuits/",
+      "source": "DutchNews.nl"
+     },
+     {
+      "region": "Europe",
+      "headline": "Veteran Serbian ruler Vučić loses election to student protest movement",
+      "link": "https://www.bbc.co.uk/news/articles/cw5yn3xlprpmo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "Europe",
+      "headline": "Von der Leyen's big Commission shake-up moves closer",
+      "link": "https://www.politico.eu/article/ursula-von-der-leyen-big-eu-commission-shake-up-moves-a-step-closer/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+      "source": "POLITICO"
+     },
+     {
+      "region": "Europe",
+      "headline": "Belgium postpones terrace smoking ban to give restaurants adjustment time",
+      "link": "https://www.politico.eu/article/belgium-postpones-terrace-smoking-ban/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+      "source": "POLITICO"
+     },
+     {
+      "region": "Europe",
+      "headline": "German politicians slam Audi CEO's appearance at Trump rally",
+      "link": "https://www.politico.eu/article/donald-trump-midterms-germany-gernot-dollner-unions-audi-ceo/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+      "source": "POLITICO"
+     },
+     {
+      "region": "Europe",
+      "headline": "Trump officials back Orbán bid for UN secretary-general role",
+      "link": "https://www.euronews.com/2026/10/26/trump-officials-back-orban-bid-for-un-secretary-general-wsj-reports",
+      "source": "News | Euronews RSS"
+     },
+     {
+      "region": "World",
+      "headline": "Anthropic warns of catastrophic AI risks ahead of share listing",
+      "link": "https://www.bbc.co.uk/news/articles/cq398p1wd1evo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "Mecca defence alliance members travel to Tehran to defuse regional tensions",
+      "link": "https://www.aljazeera.com/news/2026/10/26/mecca-defence-alliance-members-in-tehran-to-defuse-iran-us-yemen-tensions?traffic_source=rss",
+      "source": "Al Jazeera – Breaking News, World News and Video from Al Jaz"
+     },
+     {
+      "region": "World",
+      "headline": "Rohingya refugees dismantle homes amid eviction threats in Kashmir",
+      "link": "https://www.aljazeera.com/video/newsfeed/2026/10/26/rohingya-deported-disputed-kashmir-region?traffic_source=rss",
+      "source": "Al Jazeera – Breaking News, World News and Video from Al Jaz"
+     },
+     {
+      "region": "World",
+      "headline": "Chris Brown given suspended eight-month prison sentence over nightclub attack",
+      "link": "https://www.bbc.co.uk/news/articles/cq3dje4g4d5jo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "UK sanctions Sudanese military leaders over campaign of sexual violence",
+      "link": "https://www.theguardian.com/global-development/2026/oct/26/uk-sanctions-sudanese-military-leaders-implicated-in-el-fasher-campaign-of",
+      "source": "World news | The Guardian"
+     }
+    ],
+    "dutch_theme": "Supermarket shopping",
+    "dutch_phrases": [
+     {
+      "nl": "Waar is de melk?",
+      "en": "Where is the milk?"
+     },
+     {
+      "nl": "Is dit in de aanbieding?",
+      "en": "Is this on sale?"
+     },
+     {
+      "nl": "Mag ik pinnen?",
+      "en": "Can I pay by card?"
+     },
+     {
+      "nl": "Ik zoek een goedkoper alternatief.",
+      "en": "I am looking for a cheaper alternative."
+     },
+     {
+      "nl": "Heeft u een tasje voor mij?",
+      "en": "Do you have a bag for me?"
+     },
+     {
+      "nl": "Geen bonnetje, dank u.",
+      "en": "No receipt, thank you."
+     }
+    ],
+    "dzogchen_theme": "Self-liberation (rang grol): not suppressing, not following"
+   }
+  },
+  {
+   "date": "2026-10-27",
+   "title": "The Squeeze Effect: Why Forcing Control Escalates Chaos",
+   "file": "2026-10-27.mp3",
+   "published": "2026-10-27T09:16:00.250878+01:00",
+   "size": 11855469,
+   "duration": 1481.904,
+   "stories": [
+    "Czechs neglect long-term care savings despite rising aging population",
+    "Czech regions roll back student and senior transport discounts",
+    "Firms remain uncertain about Czech cybersecurity compliance a year after law update",
+    "Large Czech stores mandated to close for October 28 state holiday",
+    "Brno pauses cemetery renovations ahead of All Souls' Day",
+    "Dutch government plans AI expansion to cut civil service workforce",
+    "Bird flu outbreak in Groningen forces culling of 45,000 poultry",
+    "Dutch cabinet resumes high-stakes budget negotiations with opposition",
+    "Substantial minority of Dutch citizens report feeling disadvantaged",
+    "Non-EU parcel imports into Netherlands drop 32 percent after EU surcharges",
+    "Von der Leyen prepares major European Commission administrative overhaul",
+    "US-brokered ceasefire takes effect in occupied Ukrainian town of Oleshky",
+    "Hundreds gather in Marseille for anti-racism protest following fatal shooting",
+    "Polling shows French public rejection of Marine Le Pen continues to ease",
+    "UK Chancellor balances economic trade-offs ahead of 2026 budget announcement",
+    "Israelis head to polls in pivotal election challenging Netanyahu's tenure",
+    "India evacuates 400,000 people as severe Cyclone Arnab approaches coast",
+    "Melting Alpine glaciers expose cache of First World War explosives",
+    "Global coalition warns of imminent famine risk in Sudan",
+    "UK officials held dozens of AI industry talks but none with environmental groups"
+   ],
+   "random_topic": "The Cobra Effect and the Pitfalls of Forced Control",
+   "through_line": "Attempting to forcibly control fluctuating situations through rigid rules or panicked intervention often deepens friction, whereas letting go of rigid control allows for clearer adaptation.",
+   "links": [
+    "https://ct24.ceskatelevize.cz/clanek/domaci/dlouhodobou-peci-bude-potrebovat-stale-vice-lidi-penize-si-odklada-jen-ctvrtina-378962",
+    "https://www.irozhlas.cz/zpravy-domov/regiony-kde-zvitezilo-ano-zavedlo-slevy-na-jizdnem-pro-studenty-a-seniory-kraje_2610270700_mkm",
+    "https://www.irozhlas.cz/zpravy-domov/v-cesku-uz-rok-plati-zakon-o-kyberneticke-bezpecnosti-mnoho-firem-stale-nevi_2610270828_adn",
+    "https://www.irozhlas.cz/zpravy-domov/obchody-28-10-2026-rijen-zavrene-otevrene-statni-svatek_2610270749_ako",
+    "https://www.irozhlas.cz/zpravy-domov/na-trojici-hrbitovu-v-brne-uticha-ruch-stavebnich-stroju-mista-se-pripravuji-na_2610270600_ako",
+    "https://www.dutchnews.nl/2026/10/van-der-burg-plans-to-use-more-ai-so-government-can-cut-payroll/",
+    "https://nos.nl/l/2636843",
+    "https://www.dutchnews.nl/2026/10/cabinet-under-pressure-from-both-sides-as-budget-talks-resume/",
+    "https://nos.nl/l/2636817",
+    "https://www.dutchnews.nl/2026/10/international-parcels-drop-by-32-after-eu-imposes-surcharge/",
+    "https://www.politico.eu/podcast/brussels-playbook-podcast/inside-von-der-leyens-commission-shake-up/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "https://www.bbc.co.uk/news/articles/ck20wjnv3w0jo?at_medium=RSS&at_campaign=rss",
+    "https://www.euronews.com/video/2026/10/26/france-crowds-fill-marseilles-old-port-in-anti-racism-protest",
+    "https://www.politico.eu/article/barometre-du-rejet-le-pen-toujours-moins-rejetee/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "https://www.politico.eu/podcast/politics-at-sam-and-annes/budget-2026-cheaper-gherkins-but-bigger-bills/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "https://www.theguardian.com/world/live/2026/oct/27/israel-elections-knesset-netanyahu-likud-eisenkot-gaza-latest-updates",
+    "https://www.aljazeera.com/news/2026/10/27/india-evacuates-tens-of-thousands-as-very-severe-cyclone-arnab-nears?traffic_source=rss",
+    "https://www.theguardian.com/world/2026/oct/27/melting-glaciers-dolomites-first-world-war-munitions-italy",
+    "https://www.aljazeera.com/news/2026/10/27/us-eu-and-30-countries-warn-of-famine-risk-in-sudan-call-for-aid?traffic_source=rss",
+    "https://www.theguardian.com/uk-news/2026/oct/27/uk-government-environmental-groups-ai-datacentres-expansion-plans-investigation"
+   ],
+   "item_titles": [
+    "Dlouhodobou péči bude potřebovat stále více lidí. Peníze si odkládá jen čtvrtina",
+    "Regiony pod vedením ANO zavedly loni slevu na jízdném, teď od ní většina krajů ustupuje",
+    "V Česku už rok platí zákon o kybernetické bezpečnosti. Mnoho firem stále neví, jestli pod něj spadají",
+    "Velké obchody zůstanou ve státní svátek zavřené. Za porušení napoprvé hrozí až milionová pokuta",
+    "Na trojici hřbitovů v Brně utichá ruch stavebních strojů. Místa se připravují na Dušičky",
+    "Van der Burg plans to use more AI so government can cut payroll",
+    "Vogelgriep bij Gronings pluimveebedrijf, 45.000 dieren geruimd",
+    "Cabinet under pressure from both sides as budget talks resume",
+    "Onderzoek: aanzienlijke groep Nederlanders voelt zich achtergesteld",
+    "International parcels drop by 32% after EU imposes surcharge",
+    "Inside von der Leyen’s Commission shake-up",
+    "Truce begins in Ukraine city where residents ate weeds to survive",
+    "France: crowds fill Marseille's Old Port in anti-racism protest",
+    "BAROMÈTRE DU REJET : Le Pen, toujours moins rejetée",
+    "Budget 2026: Cheaper gherkins but bigger bills?",
+    "Israel election live: polls open in most consequential vote in country’s history",
+    "India evacuates tens of thousands as ‘very severe’ Cyclone Arnab nears",
+    "Melting glaciers in Dolomites reveal cache of first world war munitions",
+    "US, EU and 30 countries warn of famine risk in Sudan, call for aid",
+    "UK government met 137 businesses over AI datacentres – but no environmental groups"
+   ],
+   "dutch_idx": 5,
+   "dzogchen_idx": 5,
+   "fact_check": [
+    {
+     "turn": 21,
+     "section": "news",
+     "reason": "The source does not state that Jiří Horecký gave his warning on ČT24."
+    },
+    {
+     "turn": 23,
+     "section": "news",
+     "reason": "The 2050 statistics (three in ten over 65, one in eleven over 80) come from the Deloitte study, not from Ladislav Dušek."
+    },
+    {
+     "turn": 33,
+     "section": "news",
+     "reason": "The source does not mention any fines for stores violating the holiday closure law."
+    },
+    {
+     "turn": 65,
+     "section": "news",
+     "reason": "The source states the protest was in Marseille, but does not specify the Old Port."
+    }
+   ],
+   "notes": "Theme: Attempting to forcibly control fluctuating situations through rigid rules or panicked intervention often deepens friction, whereas letting go of rigid control allows for clearer adaptation.\nNews:\n- Czechs neglect long-term care savings despite rising aging population\n- Czech regions roll back student and senior transport discounts\n- Firms remain uncertain about Czech cybersecurity compliance a year after law update\n- Large Czech stores mandated to close for October 28 state holiday\n- Brno pauses cemetery renovations ahead of All Souls' Day\n- Dutch government plans AI expansion to cut civil service workforce\n- Bird flu outbreak in Groningen forces culling of 45,000 poultry\n- Dutch cabinet resumes high-stakes budget negotiations with opposition\n- Substantial minority of Dutch citizens report feeling disadvantaged\n- Non-EU parcel imports into Netherlands drop 32 percent after EU surcharges\n- Von der Leyen prepares major European Commission administrative overhaul\n- US-brokered ceasefire takes effect in occupied Ukrainian town of Oleshky\n- Hundreds gather in Marseille for anti-racism protest following fatal shooting\n- Polling shows French public rejection of Marine Le Pen continues to ease\n- UK Chancellor balances economic trade-offs ahead of 2026 budget announcement\n- Israelis head to polls in pivotal election challenging Netanyahu's tenure\n- India evacuates 400,000 people as severe Cyclone Arnab approaches coast\n- Melting Alpine glaciers expose cache of First World War explosives\n- Global coalition warns of imminent famine risk in Sudan\n- UK officials held dozens of AI industry talks but none with environmental groups\nRandom topic: The Cobra Effect and the Pitfalls of Forced Control\nDutch: Time, days, months\nDzogchen: Non-grasping: letting experience be as it is",
+   "engine": "gemini-3.8-flash-tts",
+   "notes_data": {
+    "through_line": "Attempting to forcibly control fluctuating situations through rigid rules or panicked intervention often deepens friction, whereas letting go of rigid control allows for clearer adaptation.",
+    "random_topic": "The Cobra Effect and the Pitfalls of Forced Control",
+    "news": [
+     {
+      "region": "Czechia",
+      "headline": "Czechs neglect long-term care savings despite rising aging population",
+      "link": "https://ct24.ceskatelevize.cz/clanek/domaci/dlouhodobou-peci-bude-potrebovat-stale-vice-lidi-penize-si-odklada-jen-ctvrtina-378962",
+      "source": "ČT24 — Výběr redakce"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Czech regions roll back student and senior transport discounts",
+      "link": "https://www.irozhlas.cz/zpravy-domov/regiony-kde-zvitezilo-ano-zavedlo-slevy-na-jizdnem-pro-studenty-a-seniory-kraje_2610270700_mkm",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Firms remain uncertain about Czech cybersecurity compliance a year after law update",
+      "link": "https://www.irozhlas.cz/zpravy-domov/v-cesku-uz-rok-plati-zakon-o-kyberneticke-bezpecnosti-mnoho-firem-stale-nevi_2610270828_adn",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Large Czech stores mandated to close for October 28 state holiday",
+      "link": "https://www.irozhlas.cz/zpravy-domov/obchody-28-10-2026-rijen-zavrene-otevrene-statni-svatek_2610270749_ako",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Brno pauses cemetery renovations ahead of All Souls' Day",
+      "link": "https://www.irozhlas.cz/zpravy-domov/na-trojici-hrbitovu-v-brne-uticha-ruch-stavebnich-stroju-mista-se-pripravuji-na_2610270600_ako",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Dutch government plans AI expansion to cut civil service workforce",
+      "link": "https://www.dutchnews.nl/2026/10/van-der-burg-plans-to-use-more-ai-so-government-can-cut-payroll/",
+      "source": "DutchNews.nl"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Bird flu outbreak in Groningen forces culling of 45,000 poultry",
+      "link": "https://nos.nl/l/2636843",
+      "source": "NOS Nieuws"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Dutch cabinet resumes high-stakes budget negotiations with opposition",
+      "link": "https://www.dutchnews.nl/2026/10/cabinet-under-pressure-from-both-sides-as-budget-talks-resume/",
+      "source": "DutchNews.nl"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Substantial minority of Dutch citizens report feeling disadvantaged",
+      "link": "https://nos.nl/l/2636817",
+      "source": "NOS Binnenland"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Non-EU parcel imports into Netherlands drop 32 percent after EU surcharges",
+      "link": "https://www.dutchnews.nl/2026/10/international-parcels-drop-by-32-after-eu-imposes-surcharge/",
+      "source": "DutchNews.nl"
+     },
+     {
+      "region": "Europe",
+      "headline": "Von der Leyen prepares major European Commission administrative overhaul",
+      "link": "https://www.politico.eu/podcast/brussels-playbook-podcast/inside-von-der-leyens-commission-shake-up/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+      "source": "POLITICO"
+     },
+     {
+      "region": "Europe",
+      "headline": "US-brokered ceasefire takes effect in occupied Ukrainian town of Oleshky",
+      "link": "https://www.bbc.co.uk/news/articles/ck20wjnv3w0jo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "Europe",
+      "headline": "Hundreds gather in Marseille for anti-racism protest following fatal shooting",
+      "link": "https://www.euronews.com/video/2026/10/26/france-crowds-fill-marseilles-old-port-in-anti-racism-protest",
+      "source": "News | Euronews RSS"
+     },
+     {
+      "region": "Europe",
+      "headline": "Polling shows French public rejection of Marine Le Pen continues to ease",
+      "link": "https://www.politico.eu/article/barometre-du-rejet-le-pen-toujours-moins-rejetee/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+      "source": "POLITICO"
+     },
+     {
+      "region": "Europe",
+      "headline": "UK Chancellor balances economic trade-offs ahead of 2026 budget announcement",
+      "link": "https://www.politico.eu/podcast/politics-at-sam-and-annes/budget-2026-cheaper-gherkins-but-bigger-bills/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+      "source": "POLITICO"
+     },
+     {
+      "region": "World",
+      "headline": "Israelis head to polls in pivotal election challenging Netanyahu's tenure",
+      "link": "https://www.theguardian.com/world/live/2026/oct/27/israel-elections-knesset-netanyahu-likud-eisenkot-gaza-latest-updates",
+      "source": "World news | The Guardian"
+     },
+     {
+      "region": "World",
+      "headline": "India evacuates 400,000 people as severe Cyclone Arnab approaches coast",
+      "link": "https://www.aljazeera.com/news/2026/10/27/india-evacuates-tens-of-thousands-as-very-severe-cyclone-arnab-nears?traffic_source=rss",
+      "source": "Al Jazeera – Breaking News, World News and Video from Al Jaz"
+     },
+     {
+      "region": "World",
+      "headline": "Melting Alpine glaciers expose cache of First World War explosives",
+      "link": "https://www.theguardian.com/world/2026/oct/27/melting-glaciers-dolomites-first-world-war-munitions-italy",
+      "source": "World news | The Guardian"
+     },
+     {
+      "region": "World",
+      "headline": "Global coalition warns of imminent famine risk in Sudan",
+      "link": "https://www.aljazeera.com/news/2026/10/27/us-eu-and-30-countries-warn-of-famine-risk-in-sudan-call-for-aid?traffic_source=rss",
+      "source": "Al Jazeera – Breaking News, World News and Video from Al Jaz"
+     },
+     {
+      "region": "World",
+      "headline": "UK officials held dozens of AI industry talks but none with environmental groups",
+      "link": "https://www.theguardian.com/uk-news/2026/oct/27/uk-government-environmental-groups-ai-datacentres-expansion-plans-investigation",
+      "source": "World news | The Guardian"
+     }
+    ],
+    "dutch_theme": "Time, days, months",
+    "dutch_phrases": [
+     {
+      "nl": "Vandaag is het maandag.",
+      "en": "Today is Monday."
+     },
+     {
+      "nl": "Volgende maand",
+      "en": "Next month"
+     },
+     {
+      "nl": "Hoe laat is it?",
+      "en": "What time is it?"
+     },
+     {
+      "nl": "Ik heb geen tijd.",
+      "en": "I have no time."
+     },
+     {
+      "nl": "Tot morgen!",
+      "en": "See you tomorrow!"
+     },
+     {
+      "nl": "In het weekend",
+      "en": "At the weekend"
+     }
+    ],
+    "dzogchen_theme": "Non-grasping: letting experience be as it is"
+   }
+  },
+  {
+   "date": "2026-10-28",
+   "title": "Fixating on the Hazard: How Narrow Focus Trashes Your Reality",
+   "file": "2026-10-28.mp3",
+   "published": "2026-10-28T09:15:46.464642+01:00",
+   "size": 11032940,
+   "duration": 1379.09,
+   "stories": [
+    "National Theatre drama union declares strike alert over cultural freedom concerns",
+    "Parliamentary budget committee opens debate on 2027 state spending plan",
+    "Regional Czech breweries abandon historic sites amid rising production costs",
+    "Vysočina farmers revive partridge populations by breaking up crop monocultures",
+    "Czech leaders mark 108th Independence Day at Prague's Vítkov memorial",
+    "CBS data reveals social housing allocated to refugees remained flat at eight percent",
+    "Zoo sector mourns veteran Beekse Bergen keeper who died following leopard attack",
+    "Party for the Animals submits renewed legislative bid to ban un-stunned ritual slaughter",
+    "Dutch prosecutors seek up to ten years for operators of counterfeit opioid website",
+    "Survey reveals declining acceptance of LGBTQ+ athletes in Dutch sports clubs",
+    "Finnish and Norwegian leaders open direct lines to Putin, sparking EU divide",
+    "European prosecutors press von der Leyen over missing Pfizer vaccine communications",
+    "Humanitarian truce in Oleshky expands across wider Kherson frontline",
+    "Russian drone strikes spark major fires in residential Kharkiv, injuring five",
+    "Three-time Grand Slam champion Stan Wawrinka ends tennis career in Basel",
+    "Israeli election count points to renewed parliamentary deadlock",
+    "Egyptian court orders closure of independent news outlet Mada Masr and fines editor",
+    "King Charles confirms Commonwealth summit will address legacy of slavery",
+    "High-profile US real estate moguls the Alexander brothers sentenced to 30 years",
+    "Former wife of Zimbabwe's vice president freed after seven-year murder case collapses"
+   ],
+   "random_topic": "Target Fixation in Aviation: Why Staring at the Hazard Makes You Crash",
+   "through_line": "Hyper-focusing on a single target blinds us to the wider environment, whereas staying non-distracted and open allows us to navigate complex realities without losing our bearings.",
+   "links": [
+    "https://ct24.ceskatelevize.cz/clanek/kultura/odbory-cinohry-narodniho-divadla-vyhlasily-stavkovou-pohotovost-379078",
+    "https://ct24.ceskatelevize.cz/clanek/ekonomika/snemovni-vybory-zacaly-projednavat-navrh-rozpoctu-pridano-muze-dostat-sport-379073",
+    "https://ct24.ceskatelevize.cz/clanek/ekonomika/pivovary-pod-tlakem-preskupuji-sve-kapacity-a-opousti-tradicni-mista-379074",
+    "https://www.irozhlas.cz/zpravy-domov/koroptve-zpatky-na-pole-zemedelci-zmenili-zpusob-hospodareni-vetsinou-se-navrat_2610280600_aha",
+    "https://www.novinky.cz/clanek/domaci-politici-si-na-vitkove-pripominaji-vznik-samostatneho-statu-40605333",
+    "https://nos.nl/l/2636959",
+    "https://nos.nl/l/2636963",
+    "https://nos.nl/l/2636965",
+    "https://nos.nl/l/2636928",
+    "https://www.dutchnews.nl/2026/10/sports-club-members-becoming-less-tolerant-of-homosexuality/",
+    "https://www.politico.eu/podcast/brussels-playbook-podcast/the-putin-call-dividing-eu-leaders/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "https://www.politico.eu/article/ursula-von-der-leyen-eppo-european-public-prosectors-office-pfizergate-vaccine-coronavirus/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "https://www.bbc.co.uk/news/articles/c6lye1w9p2l8o?at_medium=RSS&at_campaign=rss",
+    "https://www.euronews.com/video/2026/10/28/ukraine-massive-fire-engulfs-buildings-after-russian-strike-on-kharkiv",
+    "https://www.bbc.co.uk/sport/tennis/articles/crlykgp51ej4o?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.co.uk/news/videos/cm79p5pxqey2o?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.co.uk/news/articles/cw8rz14k1jvxo?at_medium=RSS&at_campaign=rss",
+    "https://www.theguardian.com/world/2026/oct/28/king-charles-confirms-he-will-discuss-legacy-of-slavery-at-commonwealth-summit",
+    "https://www.bbc.co.uk/news/articles/cqn498mng08ro?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.co.uk/news/articles/c6e3xgq11jqlo?at_medium=RSS&at_campaign=rss"
+   ],
+   "item_titles": [
+    "Odbory činohry Národního divadla vyhlásily stávkovou pohotovost",
+    "Sněmovní výbory začaly projednávat návrh rozpočtu, přidáno může dostat sport",
+    "Pivovary pod tlakem přeskupují své kapacity a opouští tradiční místa",
+    "Koroptve zpátky na pole. Zemědělci změnili způsob hospodaření, většinou se návrat povedl",
+    "Politici si na Vítkově připomínají vznik samostatného státu",
+    "CBS: aantal woningen naar statushouders blijft gelijk",
+    "Dierentuinbranche geschokt na dodelijke panteraanval in Beekse Bergen",
+    "PvdD doet nieuwe poging om onverdoofd slachten te verbieden",
+    "OM eist hoge straffen tegen medewerkers illegale medicijnensite",
+    "Sports club members becoming less tolerant of homosexuality",
+    "The Putin call dividing EU leaders",
+    "EU prosecutors still have questions for von der Leyen over Pfizergate",
+    "Ceasefire extended across Ukraine's Kherson region, officials say",
+    "Ukraine: massive fire engulfs buildings after Russian strike on Kharkiv",
+    "Goodbye to the everyman who gatecrashed the greats",
+    "Watch: What happens now after close vote in Israeli election?",
+    "Egypt court fines journalist Lina Attalah and orders news site's closure",
+    "King Charles to discuss legacy of slavery with Commonwealth leaders at summit",
+    "Alexander brothers each sentenced to 30 years in prison in sex trafficking case",
+    "Ex-wife of Zimbabwe's vice-president freed after collapse of attempted murder case"
+   ],
+   "dutch_idx": 6,
+   "dzogchen_idx": 6,
+   "fact_check": [
+    {
+     "turn": 17,
+     "section": "news",
+     "reason": "bill was sent to second reading, not through it; stage crew not mentioned"
+    },
+    {
+     "turn": 23,
+     "section": "news",
+     "reason": "source does not say sports agency gets billions, only some extra funds"
+    },
+    {
+     "turn": 39,
+     "section": "news",
+     "reason": "source states nitazenes are stronger than oxycodone, not morphine"
+    },
+    {
+     "turn": 45,
+     "section": "news",
+     "reason": "source does not specify eastern and central European nations"
+    },
+    {
+     "turn": 47,
+     "section": "news",
+     "reason": "unsupported arguments attributed to Stubb, Støre and critics"
+    },
+    {
+     "turn": 49,
+     "section": "news",
+     "reason": "source does not record Stubb making that specific argument"
+    },
+    {
+     "turn": 57,
+     "section": "news",
+     "reason": "source only says polls closed and count points to deadlock"
+    },
+    {
+     "turn": 59,
+     "section": "news",
+     "reason": "source does not mention Netanyahu, coalitions, or specific domestic policies"
+    }
+   ],
+   "notes": "Theme: Hyper-focusing on a single target blinds us to the wider environment, whereas staying non-distracted and open allows us to navigate complex realities without losing our bearings.\nNews:\n- National Theatre drama union declares strike alert over cultural freedom concerns\n- Parliamentary budget committee opens debate on 2027 state spending plan\n- Regional Czech breweries abandon historic sites amid rising production costs\n- Vysočina farmers revive partridge populations by breaking up crop monocultures\n- Czech leaders mark 108th Independence Day at Prague's Vítkov memorial\n- CBS data reveals social housing allocated to refugees remained flat at eight percent\n- Zoo sector mourns veteran Beekse Bergen keeper who died following leopard attack\n- Party for the Animals submits renewed legislative bid to ban un-stunned ritual slaughter\n- Dutch prosecutors seek up to ten years for operators of counterfeit opioid website\n- Survey reveals declining acceptance of LGBTQ+ athletes in Dutch sports clubs\n- Finnish and Norwegian leaders open direct lines to Putin, sparking EU divide\n- European prosecutors press von der Leyen over missing Pfizer vaccine communications\n- Humanitarian truce in Oleshky expands across wider Kherson frontline\n- Russian drone strikes spark major fires in residential Kharkiv, injuring five\n- Three-time Grand Slam champion Stan Wawrinka ends tennis career in Basel\n- Israeli election count points to renewed parliamentary deadlock\n- Egyptian court orders closure of independent news outlet Mada Masr and fines editor\n- King Charles confirms Commonwealth summit will address legacy of slavery\n- High-profile US real estate moguls the Alexander brothers sentenced to 30 years\n- Former wife of Zimbabwe's vice president freed after seven-year murder case collapses\nRandom topic: Target Fixation in Aviation: Why Staring at the Hazard Makes You Crash\nDutch: Asking for directions\nDzogchen: Non-distraction vs concentration",
+   "engine": "gemini-3.8-flash-tts",
+   "notes_data": {
+    "through_line": "Hyper-focusing on a single target blinds us to the wider environment, whereas staying non-distracted and open allows us to navigate complex realities without losing our bearings.",
+    "random_topic": "Target Fixation in Aviation: Why Staring at the Hazard Makes You Crash",
+    "news": [
+     {
+      "region": "Czechia",
+      "headline": "National Theatre drama union declares strike alert over cultural freedom concerns",
+      "link": "https://ct24.ceskatelevize.cz/clanek/kultura/odbory-cinohry-narodniho-divadla-vyhlasily-stavkovou-pohotovost-379078",
+      "source": "ČT24 — Výběr redakce"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Parliamentary budget committee opens debate on 2027 state spending plan",
+      "link": "https://ct24.ceskatelevize.cz/clanek/ekonomika/snemovni-vybory-zacaly-projednavat-navrh-rozpoctu-pridano-muze-dostat-sport-379073",
+      "source": "ČT24 — Výběr redakce"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Regional Czech breweries abandon historic sites amid rising production costs",
+      "link": "https://ct24.ceskatelevize.cz/clanek/ekonomika/pivovary-pod-tlakem-preskupuji-sve-kapacity-a-opousti-tradicni-mista-379074",
+      "source": "ČT24 — Výběr redakce"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Vysočina farmers revive partridge populations by breaking up crop monocultures",
+      "link": "https://www.irozhlas.cz/zpravy-domov/koroptve-zpatky-na-pole-zemedelci-zmenili-zpusob-hospodareni-vetsinou-se-navrat_2610280600_aha",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Czech leaders mark 108th Independence Day at Prague's Vítkov memorial",
+      "link": "https://www.novinky.cz/clanek/domaci-politici-si-na-vitkove-pripominaji-vznik-samostatneho-statu-40605333",
+      "source": "Novinky - nejnovější články"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "CBS data reveals social housing allocated to refugees remained flat at eight percent",
+      "link": "https://nos.nl/l/2636959",
+      "source": "NOS Nieuws"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Zoo sector mourns veteran Beekse Bergen keeper who died following leopard attack",
+      "link": "https://nos.nl/l/2636963",
+      "source": "NOS Binnenland"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Party for the Animals submits renewed legislative bid to ban un-stunned ritual slaughter",
+      "link": "https://nos.nl/l/2636965",
+      "source": "NOS Nieuws"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Dutch prosecutors seek up to ten years for operators of counterfeit opioid website",
+      "link": "https://nos.nl/l/2636928",
+      "source": "NOS Binnenland"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Survey reveals declining acceptance of LGBTQ+ athletes in Dutch sports clubs",
+      "link": "https://www.dutchnews.nl/2026/10/sports-club-members-becoming-less-tolerant-of-homosexuality/",
+      "source": "DutchNews.nl"
+     },
+     {
+      "region": "Europe",
+      "headline": "Finnish and Norwegian leaders open direct lines to Putin, sparking EU divide",
+      "link": "https://www.politico.eu/podcast/brussels-playbook-podcast/the-putin-call-dividing-eu-leaders/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+      "source": "POLITICO"
+     },
+     {
+      "region": "Europe",
+      "headline": "European prosecutors press von der Leyen over missing Pfizer vaccine communications",
+      "link": "https://www.politico.eu/article/ursula-von-der-leyen-eppo-european-public-prosectors-office-pfizergate-vaccine-coronavirus/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+      "source": "POLITICO"
+     },
+     {
+      "region": "Europe",
+      "headline": "Humanitarian truce in Oleshky expands across wider Kherson frontline",
+      "link": "https://www.bbc.co.uk/news/articles/c6lye1w9p2l8o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "Europe",
+      "headline": "Russian drone strikes spark major fires in residential Kharkiv, injuring five",
+      "link": "https://www.euronews.com/video/2026/10/28/ukraine-massive-fire-engulfs-buildings-after-russian-strike-on-kharkiv",
+      "source": "News | Euronews RSS"
+     },
+     {
+      "region": "Europe",
+      "headline": "Three-time Grand Slam champion Stan Wawrinka ends tennis career in Basel",
+      "link": "https://www.bbc.co.uk/sport/tennis/articles/crlykgp51ej4o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "Israeli election count points to renewed parliamentary deadlock",
+      "link": "https://www.bbc.co.uk/news/videos/cm79p5pxqey2o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "Egyptian court orders closure of independent news outlet Mada Masr and fines editor",
+      "link": "https://www.bbc.co.uk/news/articles/cw8rz14k1jvxo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "King Charles confirms Commonwealth summit will address legacy of slavery",
+      "link": "https://www.theguardian.com/world/2026/oct/28/king-charles-confirms-he-will-discuss-legacy-of-slavery-at-commonwealth-summit",
+      "source": "World news | The Guardian"
+     },
+     {
+      "region": "World",
+      "headline": "High-profile US real estate moguls the Alexander brothers sentenced to 30 years",
+      "link": "https://www.bbc.co.uk/news/articles/cqn498mng08ro?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "Former wife of Zimbabwe's vice president freed after seven-year murder case collapses",
+      "link": "https://www.bbc.co.uk/news/articles/c6e3xgq11jqlo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     }
+    ],
+    "dutch_theme": "Asking for directions",
+    "dutch_phrases": [
+     {
+      "nl": "Pardon, mag ik u iets vragen?",
+      "en": "Excuse me, may I ask you something?"
+     },
+     {
+      "nl": "Waar is het station?",
+      "en": "Where is the station?"
+     },
+     {
+      "nl": "Is het ver lopen?",
+      "en": "Is it a long walk?"
+     },
+     {
+      "nl": "Gaat u hier rechtsaf.",
+      "en": "Turn right here."
+     },
+     {
+      "nl": "Het is aan de linkerkant.",
+      "en": "It is on the left side."
+     },
+     {
+      "nl": "Ik ben de weg kwijt.",
+      "en": "I am lost."
+     }
+    ],
+    "dzogchen_theme": "Non-distraction vs concentration"
+   }
+  },
+  {
+   "date": "2026-10-29",
+   "title": "Hands Off the Yoke: The Perils of Over-Correction",
+   "file": "2026-10-29.mp3",
+   "published": "2026-10-29T09:15:43.177935+01:00",
+   "size": 13147244,
+   "duration": 1643.38,
+   "stories": [
+    "President Pavel Warns Against Reckless Changes and Ignoring Deep Crises",
+    "Volkswagen Profit Collapses 98% While Czech Subsidiary Škoda Grows",
+    "Czech Mortgage Rates Rise Again Towards Six Percent",
+    "Ostrava Tram Line Bypasses Environmental Impact Assessment After Law Change",
+    "Student Union Declares Strike Over Plan to Abolish Public Media Fees",
+    "Netherlands Reliant on China for Seven Critical Raw Materials",
+    "Shell Quarterly Profits Double to $12.1 Billion Amid Middle East Volatility",
+    "Elderly Emergency Alarm Buttons Risk Failure as 2G Network Shuts Down",
+    "Right-Wing Opposition Trio Forms Joint Bloc in Cabinet Tax Talks",
+    "Boxtel Local Councillor Arrested on Suspicion of Election Fraud",
+    "High-Speed Train Collision Kills at Least 68 in Southern Spain",
+    "EU and Canada Launch Future Alliance at Montreal Summit",
+    "Perception and Information Control Become Primary Front Line in Middle East Conflict",
+    "Debate Intensifies Over Three-Year Delay to EU Methane Rules",
+    "King Charles Joins Bahamas Street Dance During Caribbean Tour",
+    "AI Micro-Drama Edits of Classic Soap Neighbours Spark Industry Alarm",
+    "Hello Kitty Maker Cuts Ties With Japanese Spy Drama Following Beijing Backlash",
+    "El Salvador Sends 2,000 Troops to Haiti After UN Peacekeepers Ambushed",
+    "Hackers Leak Personal Details of 41,000 US Immigration Officers",
+    "UK Chancellor Vows Stricter Welfare Rules for Unemployed Youth"
+   ],
+   "random_topic": "Pilot-Induced Oscillations: How Over-Correcting Minor Errors Causes Disastrous Crashes",
+   "through_line": "Compulsively over-correcting every minor flaw or disturbance often escalates tiny wobbles into system failure, whereas stepping back allows natural stability to restore itself.",
+   "links": [
+    "https://ct24.ceskatelevize.cz/clanek/domaci/predavani-statnich-vyznamenani-prezidentem-republiky-379088",
+    "https://ct24.ceskatelevize.cz/clanek/ekonomika/volkswagen-hlasi-vyrazny-propad-zisku-skoda-naopak-rust-379097",
+    "https://www.novinky.cz/clanek/ekonomika-banky-znovu-zdrazily-hypoteky-sazby-splhaji-k-sesti-procentum-40605281",
+    "https://www.irozhlas.cz/zpravy-domov/novela-umozni-v-ostrave-porube-stavbu-tramvajove-trati-bez-povoleni-eia-mistni_2610290700_jkd",
+    "https://ct24.ceskatelevize.cz/clanek/domaci/studenti-vyhlasili-stavku-kvuli-ruseni-poplatku-pro-ct-a-cro-379086",
+    "https://www.dutchnews.nl/2026/10/china-controls-key-materials-for-dutch-chips-defence-and-energy/",
+    "https://nos.nl/l/2637120",
+    "https://nos.nl/l/2637029",
+    "https://nos.nl/l/2637113",
+    "https://nos.nl/l/2637091",
+    "https://www.bbc.co.uk/news/articles/c6p3g84kjqjlo?at_medium=RSS&at_campaign=rss",
+    "https://www.politico.eu/podcast/brussels-playbook-podcast/the-great-eu-canada-lovefest/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "https://www.politico.eu/sponsored-content/in-the-middle-east-the-next-front-line-is-the-narrative/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "https://www.politico.eu/sponsored-content/dont-turn-a-methane-pause-into-a-retreat/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "https://www.euronews.com/video/2026/10/29/bahamas-king-charles-iii-dances-with-locals-during-caribbean-visit",
+    "https://www.bbc.co.uk/news/articles/cj1dw9znd1q1o?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.co.uk/news/articles/cry4x177jlnyo?at_medium=RSS&at_campaign=rss",
+    "https://www.aljazeera.com/news/2026/10/29/el-salvador-pledges-more-than-2000-soldiers-as-haiti-delays-elections?traffic_source=rss",
+    "https://www.bbc.co.uk/news/articles/cq8jzkpjr28vo?at_medium=RSS&at_campaign=rss",
+    "https://www.theguardian.com/uk-news/2026/oct/29/healey-cut-welfare-bill-tough-approach-young-people-accept-jobs"
+   ],
+   "item_titles": [
+    "Pavel varoval před přehlížením krizí a neuváženými změnami. Ocenil Janžurovou či Formana",
+    "Volkswagen hlásí výrazný propad zisku, Škoda naopak růst",
+    "Banky znovu zdražily hypotéky, sazby šplhají k šesti procentům",
+    "Novela umožní v Ostravě-Porubě stavbu tramvajové trati bez povolení EIA. Místní proti ní roky protestují",
+    "Studenti vyhlásili stávku kvůli rušení poplatků pro ČT a ČRo",
+    "China controls key materials for Dutch chips, defence and energy",
+    "Oorlog in Midden-Oosten leidt opnieuw tot enorme winst bij Shell",
+    "Tienduizenden noodknoppen ouderen straks defect door stoppen 2G-netwerk",
+    "JA21, BBB en SGP stellen samen eisen en zetten kabinet nog meer onder druk",
+    "D66-raadslid (38) uit Boxtel aangehouden op verdenking van verkiezingsfraude",
+    "High-speed train crash kills at least 68 people in Spain",
+    "The great EU-Canada lovefest",
+    "In the Middle East, the next front line is the narrative",
+    "Don’t turn a methane pause into a retreat",
+    "Bahamas: King Charles III dances with locals during Caribbean visit",
+    "'Like cutting up a Picasso': AI microdrama edit of Neighbours worries actors and crew",
+    "Hello Kitty maker cuts ties with Japanese spy drama after China backlash",
+    "El Salvador pledges more than 2,000 soldiers as Haiti delays elections",
+    "Details of thousands of US immigration agents leaked in major hack",
+    "Healey vows to cut welfare bill before next election with ‘tough’ approach to young people"
+   ],
+   "dutch_idx": 7,
+   "dzogchen_idx": 7,
+   "fact_check": [],
+   "notes": "Theme: Compulsively over-correcting every minor flaw or disturbance often escalates tiny wobbles into system failure, whereas stepping back allows natural stability to restore itself.\nNews:\n- President Pavel Warns Against Reckless Changes and Ignoring Deep Crises\n- Volkswagen Profit Collapses 98% While Czech Subsidiary Škoda Grows\n- Czech Mortgage Rates Rise Again Towards Six Percent\n- Ostrava Tram Line Bypasses Environmental Impact Assessment After Law Change\n- Student Union Declares Strike Over Plan to Abolish Public Media Fees\n- Netherlands Reliant on China for Seven Critical Raw Materials\n- Shell Quarterly Profits Double to $12.1 Billion Amid Middle East Volatility\n- Elderly Emergency Alarm Buttons Risk Failure as 2G Network Shuts Down\n- Right-Wing Opposition Trio Forms Joint Bloc in Cabinet Tax Talks\n- Boxtel Local Councillor Arrested on Suspicion of Election Fraud\n- High-Speed Train Collision Kills at Least 68 in Southern Spain\n- EU and Canada Launch Future Alliance at Montreal Summit\n- Perception and Information Control Become Primary Front Line in Middle East Conflict\n- Debate Intensifies Over Three-Year Delay to EU Methane Rules\n- King Charles Joins Bahamas Street Dance During Caribbean Tour\n- AI Micro-Drama Edits of Classic Soap Neighbours Spark Industry Alarm\n- Hello Kitty Maker Cuts Ties With Japanese Spy Drama Following Beijing Backlash\n- El Salvador Sends 2,000 Troops to Haiti After UN Peacekeepers Ambushed\n- Hackers Leak Personal Details of 41,000 US Immigration Officers\n- UK Chancellor Vows Stricter Welfare Rules for Unemployed Youth\nRandom topic: Pilot-Induced Oscillations: How Over-Correcting Minor Errors Causes Disastrous Crashes\nDutch: Public transport: OV-chipkaart, trains\nDzogchen: Non-meditation: nothing to fix or achieve",
+   "engine": "gemini-3.8-flash-tts",
+   "notes_data": {
+    "through_line": "Compulsively over-correcting every minor flaw or disturbance often escalates tiny wobbles into system failure, whereas stepping back allows natural stability to restore itself.",
+    "random_topic": "Pilot-Induced Oscillations: How Over-Correcting Minor Errors Causes Disastrous Crashes",
+    "news": [
+     {
+      "region": "Czechia",
+      "headline": "President Pavel Warns Against Reckless Changes and Ignoring Deep Crises",
+      "link": "https://ct24.ceskatelevize.cz/clanek/domaci/predavani-statnich-vyznamenani-prezidentem-republiky-379088",
+      "source": "ČT24 — Výběr redakce"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Volkswagen Profit Collapses 98% While Czech Subsidiary Škoda Grows",
+      "link": "https://ct24.ceskatelevize.cz/clanek/ekonomika/volkswagen-hlasi-vyrazny-propad-zisku-skoda-naopak-rust-379097",
+      "source": "ČT24 — Výběr redakce"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Czech Mortgage Rates Rise Again Towards Six Percent",
+      "link": "https://www.novinky.cz/clanek/ekonomika-banky-znovu-zdrazily-hypoteky-sazby-splhaji-k-sesti-procentum-40605281",
+      "source": "Novinky - nejnovější články"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Ostrava Tram Line Bypasses Environmental Impact Assessment After Law Change",
+      "link": "https://www.irozhlas.cz/zpravy-domov/novela-umozni-v-ostrave-porube-stavbu-tramvajove-trati-bez-povoleni-eia-mistni_2610290700_jkd",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Student Union Declares Strike Over Plan to Abolish Public Media Fees",
+      "link": "https://ct24.ceskatelevize.cz/clanek/domaci/studenti-vyhlasili-stavku-kvuli-ruseni-poplatku-pro-ct-a-cro-379086",
+      "source": "ČT24 — Výběr redakce"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Netherlands Reliant on China for Seven Critical Raw Materials",
+      "link": "https://www.dutchnews.nl/2026/10/china-controls-key-materials-for-dutch-chips-defence-and-energy/",
+      "source": "DutchNews.nl"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Shell Quarterly Profits Double to $12.1 Billion Amid Middle East Volatility",
+      "link": "https://nos.nl/l/2637120",
+      "source": "NOS Nieuws"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Elderly Emergency Alarm Buttons Risk Failure as 2G Network Shuts Down",
+      "link": "https://nos.nl/l/2637029",
+      "source": "NOS Binnenland"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Right-Wing Opposition Trio Forms Joint Bloc in Cabinet Tax Talks",
+      "link": "https://nos.nl/l/2637113",
+      "source": "NOS Nieuws"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Boxtel Local Councillor Arrested on Suspicion of Election Fraud",
+      "link": "https://nos.nl/l/2637091",
+      "source": "NOS Binnenland"
+     },
+     {
+      "region": "Europe",
+      "headline": "High-Speed Train Collision Kills at Least 68 in Southern Spain",
+      "link": "https://www.bbc.co.uk/news/articles/c6p3g84kjqjlo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "Europe",
+      "headline": "EU and Canada Launch Future Alliance at Montreal Summit",
+      "link": "https://www.politico.eu/podcast/brussels-playbook-podcast/the-great-eu-canada-lovefest/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+      "source": "POLITICO"
+     },
+     {
+      "region": "Europe",
+      "headline": "Perception and Information Control Become Primary Front Line in Middle East Conflict",
+      "link": "https://www.politico.eu/sponsored-content/in-the-middle-east-the-next-front-line-is-the-narrative/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+      "source": "POLITICO"
+     },
+     {
+      "region": "Europe",
+      "headline": "Debate Intensifies Over Three-Year Delay to EU Methane Rules",
+      "link": "https://www.politico.eu/sponsored-content/dont-turn-a-methane-pause-into-a-retreat/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+      "source": "POLITICO"
+     },
+     {
+      "region": "Europe",
+      "headline": "King Charles Joins Bahamas Street Dance During Caribbean Tour",
+      "link": "https://www.euronews.com/video/2026/10/29/bahamas-king-charles-iii-dances-with-locals-during-caribbean-visit",
+      "source": "News | Euronews RSS"
+     },
+     {
+      "region": "World",
+      "headline": "AI Micro-Drama Edits of Classic Soap Neighbours Spark Industry Alarm",
+      "link": "https://www.bbc.co.uk/news/articles/cj1dw9znd1q1o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "Hello Kitty Maker Cuts Ties With Japanese Spy Drama Following Beijing Backlash",
+      "link": "https://www.bbc.co.uk/news/articles/cry4x177jlnyo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "El Salvador Sends 2,000 Troops to Haiti After UN Peacekeepers Ambushed",
+      "link": "https://www.aljazeera.com/news/2026/10/29/el-salvador-pledges-more-than-2000-soldiers-as-haiti-delays-elections?traffic_source=rss",
+      "source": "Al Jazeera – Breaking News, World News and Video from Al Jaz"
+     },
+     {
+      "region": "World",
+      "headline": "Hackers Leak Personal Details of 41,000 US Immigration Officers",
+      "link": "https://www.bbc.co.uk/news/articles/cq8jzkpjr28vo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "UK Chancellor Vows Stricter Welfare Rules for Unemployed Youth",
+      "link": "https://www.theguardian.com/uk-news/2026/oct/29/healey-cut-welfare-bill-tough-approach-young-people-accept-jobs",
+      "source": "World news | The Guardian"
+     }
+    ],
+    "dutch_theme": "Public transport: OV-chipkaart, trains",
+    "dutch_phrases": [
+     {
+      "nl": "Vergeet niet uit te checken.",
+      "en": "Don't forget to check out."
+     },
+     {
+      "nl": "Mag ik uw vervoersbewijs zien?",
+      "en": "May I see your ticket?"
+     },
+     {
+      "nl": "De trein heeft vertraging.",
+      "en": "The train is delayed."
+     },
+     {
+      "nl": "Op welk spoor vertrekt de trein?",
+      "en": "Which platform does the train leave from?"
+     },
+     {
+      "nl": "Mijn saldo is te laag.",
+      "en": "My balance is too low."
+     },
+     {
+      "nl": "Overstappen op de bus.",
+      "en": "Transfer to the bus."
+     }
+    ],
+    "dzogchen_theme": "Non-meditation: nothing to fix or achieve"
+   }
+  },
+  {
+   "date": "2026-10-30",
+   "title": "The Sand on the Brass Plate",
+   "file": "2026-10-30.mp3",
+   "published": "2026-10-30T09:15:47.466144+01:00",
+   "size": 12610604,
+   "duration": 1576.3,
+   "stories": [
+    "Defense ministry takes over Karlovy Vary airport for military conversion",
+    "Fact-checker Jiří Burýšek awarded state medal for media literacy",
+    "Young Czech MPs reflect on confronting parliamentary reality after one year",
+    "Most seals coalition deal keeping Marek Hrvol as mayor",
+    "Pardubice redesigns street markings to formalize parking and junction safety",
+    "Monumental 720-ton Vught railway station lifted and moved 14 metres",
+    "Cabinet meets to negotiate budget terms with new right-wing opposition bloc",
+    "Dutch first-time asylum applications drop 13 percent in third quarter",
+    "Dutch Film Fund lost over half a million euros on phantom film project",
+    "Police name five Serbian suspects in TEFAF Maastricht jewel heist",
+    "Student-backed election winners in Serbia demand sweeping state resignations",
+    "UK Post Office halts all parcel shipping to the EU over IT customs delays",
+    "Albania imposes crushing fines on street demonstrators to quell unrest",
+    "Investigation reveals UK government relies on severely patchy economic data",
+    "Newly engaged couple hauled up 150-metre cliff in dramatic Irish sea rescue",
+    "Binance hit by suspected $6.3bn hack in largest crypto theft in history",
+    "AI boom hits electricity bottleneck as Big Tech turns to nuclear power",
+    "Israeli election ends in stalemate with no bloc securing parliamentary majority",
+    "Mayon Volcano erupts in Philippines, sending ash column three kilometres high",
+    "Soaring prices test public patience in post-Assad Syria after subsidy cuts"
+   ],
+   "random_topic": "Chladni Plates and the Hidden Acoustics of Form",
+   "through_line": "Every seemingly permanent, solid structure is actually a dynamic expression continuously shaped by underlying energy.",
+   "links": [
+    "https://www.irozhlas.cz/zpravy-domov/obrana-prebira-pro-armadu-letiste-ve-varech-miliardy-na-rozvoj-ale-nema-v_2610300600_hrk",
+    "https://www.irozhlas.cz/zpravy-domov/statni-vyznamenani-jiti-burysek-popularizator-vzdelavani_2610300840_zfr",
+    "https://www.irozhlas.cz/zpravy-domov/svezi-vitr-ktery-cas-od-casu-narazi-na-horkosti-demokracie-jak-svou-praci-po_2610300713_vsn",
+    "https://www.irozhlas.cz/zpravy-domov/most-povede-dalsi-ctyri-roky-dosavadni-koalice-hnuti-promost-a-ano-primatorem-ma_2610300600_mkm",
+    "https://www.irozhlas.cz/zpravy-domov/pardubice-upravuji-dopravni-znaceni-kvuli-parkovani-i-bezpecnosti-prvni-zmeny_2610300600_mkm",
+    "https://nos.nl/l/2637244",
+    "https://www.dutchnews.nl/2026/10/cabinet-gathers-to-weigh-right-wing-blocs-new-joint-demands/",
+    "https://nos.nl/l/2637259",
+    "https://nos.nl/l/2637246",
+    "https://www.dutchnews.nl/2026/10/police-name-serbian-suspects-in-tefaf-jewellery-heist/",
+    "https://www.bbc.co.uk/news/articles/cmx2dwzp0z0vo?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.co.uk/news/articles/cvze4xkknyj4o?at_medium=RSS&at_campaign=rss",
+    "https://www.euronews.com/2026/10/30/europe-today-rare-oleshky-truce-holds-in-ukraine-albania-imposes-heavy-fines-on-protesters",
+    "https://www.politico.eu/article/5-things-westminster-doesnt-really-know-about-the-uk-economy-but-probably-should/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "https://www.bbc.co.uk/news/articles/cwkgjem016r4o?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.co.uk/news/articles/cwg7xp8kx4v5o?at_medium=RSS&at_campaign=rss",
+    "https://www.aljazeera.com/opinions/2026/10/30/ais-real-bottleneck-is-electricity-who-will-pay-for-it?traffic_source=rss",
+    "https://www.theguardian.com/world/2026/oct/30/friday-briefing-israel-has-a-dilemma-can-its-opposition-govern-with-palestinian-parties",
+    "https://www.aljazeera.com/video/newsfeed/2026/10/30/philippines-raises-alert-as-mayon-volcano-erupts?traffic_source=rss",
+    "https://www.bbc.co.uk/news/articles/cmn4egvez1yzo?at_medium=RSS&at_campaign=rss"
+   ],
+   "item_titles": [
+    "Obrana přebírá pro armádu letiště ve Varech. Miliardy na rozvoj ale nemá v rozpočtu, další výdaje ani neví",
+    "V Česku má na informace silný vliv Rusko. Důležité je zjistit, odkud informace přichází, říká Burýšek",
+    "‚Svěží vítr‘, který čas od času naráží na ‚hořkosti‘ demokracie. Jak svou práci po roce vnímají mladí poslanci",
+    "Most povede další čtyři roky dosavadní koalice hnutí ProMOST a ANO, primátorem má zůstat Marek Hrvol",
+    "Pardubice upravují dopravní značení kvůli parkování i bezpečnosti. První změny jsou na Dukle a na Židově",
+    "Megaoperatie in Vught: monumentaal stationsgebouw wordt opgetild en verplaatst",
+    "Cabinet gathers to weigh right-wing bloc’s new joint demands",
+    "Aantal eerste asielaanvragen daalt in derde kwartaal",
+    "Filmfonds betaalde ruim half miljoen voor prestigieuze film die er niet kwam",
+    "Police name Serbian suspects in Tefaf jewellery heist",
+    "Student-backed election winners demand sweeping resignations in Serbia",
+    "Post Office suspends sending goods to the EU",
+    "Europe Today: Rare Oleshky truce holds in Ukraine, Albania imposes heavy fines on protesters",
+    "5 things Westminster doesn’t know about the UK economy (but probably should)",
+    "Dramatic clifftop rescue of bride and groom-to-be",
+    "Crypto giant Binance hit by $6.3bn hack suspected to be largest in history",
+    "AI’s real bottleneck is electricity. Who will pay for it?",
+    "Friday briefing: Israel has a dilemma - can its opposition govern with Palestinian parties?",
+    "Philippines raises alert as Mayon Volcano erupts",
+    "Syrians struggle with soaring prices as crisis challenges post-Assad recovery"
+   ],
+   "dutch_idx": 8,
+   "dzogchen_idx": 8,
+   "fact_check": [
+    {
+     "turn": 5,
+     "section": "random",
+     "reason": "Replace overly precise non-famous date with safer wording."
+    },
+    {
+     "turn": 17,
+     "section": "news",
+     "reason": "Source does not say outgoing government, iROZHLAS, or NATO targets."
+    },
+    {
+     "turn": 19,
+     "section": "news",
+     "reason": "Claims about missing billions, runway reinforcements, and radar overhauls are unsupported."
+    },
+    {
+     "turn": 21,
+     "section": "news",
+     "reason": "Source mentions disinformation and manipulation, not Russian influence networks."
+    },
+    {
+     "turn": 25,
+     "section": "news",
+     "reason": "Source does not mention the neighbourhoods Dukla and Židov."
+    }
+   ],
+   "notes": "Theme: Every seemingly permanent, solid structure is actually a dynamic expression continuously shaped by underlying energy.\nNews:\n- Defense ministry takes over Karlovy Vary airport for military conversion\n- Fact-checker Jiří Burýšek awarded state medal for media literacy\n- Young Czech MPs reflect on confronting parliamentary reality after one year\n- Most seals coalition deal keeping Marek Hrvol as mayor\n- Pardubice redesigns street markings to formalize parking and junction safety\n- Monumental 720-ton Vught railway station lifted and moved 14 metres\n- Cabinet meets to negotiate budget terms with new right-wing opposition bloc\n- Dutch first-time asylum applications drop 13 percent in third quarter\n- Dutch Film Fund lost over half a million euros on phantom film project\n- Police name five Serbian suspects in TEFAF Maastricht jewel heist\n- Student-backed election winners in Serbia demand sweeping state resignations\n- UK Post Office halts all parcel shipping to the EU over IT customs delays\n- Albania imposes crushing fines on street demonstrators to quell unrest\n- Investigation reveals UK government relies on severely patchy economic data\n- Newly engaged couple hauled up 150-metre cliff in dramatic Irish sea rescue\n- Binance hit by suspected $6.3bn hack in largest crypto theft in history\n- AI boom hits electricity bottleneck as Big Tech turns to nuclear power\n- Israeli election ends in stalemate with no bloc securing parliamentary majority\n- Mayon Volcano erupts in Philippines, sending ash column three kilometres high\n- Soaring prices test public patience in post-Assad Syria after subsidy cuts\nRandom topic: Chladni Plates and the Hidden Acoustics of Form\nDutch: Family and friends\nDzogchen: Essence, nature, energy: the three aspects of mind",
+   "engine": "gemini-3.8-flash-tts",
+   "notes_data": {
+    "through_line": "Every seemingly permanent, solid structure is actually a dynamic expression continuously shaped by underlying energy.",
+    "random_topic": "Chladni Plates and the Hidden Acoustics of Form",
+    "news": [
+     {
+      "region": "Czechia",
+      "headline": "Defense ministry takes over Karlovy Vary airport for military conversion",
+      "link": "https://www.irozhlas.cz/zpravy-domov/obrana-prebira-pro-armadu-letiste-ve-varech-miliardy-na-rozvoj-ale-nema-v_2610300600_hrk",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Fact-checker Jiří Burýšek awarded state medal for media literacy",
+      "link": "https://www.irozhlas.cz/zpravy-domov/statni-vyznamenani-jiti-burysek-popularizator-vzdelavani_2610300840_zfr",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Young Czech MPs reflect on confronting parliamentary reality after one year",
+      "link": "https://www.irozhlas.cz/zpravy-domov/svezi-vitr-ktery-cas-od-casu-narazi-na-horkosti-demokracie-jak-svou-praci-po_2610300713_vsn",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Most seals coalition deal keeping Marek Hrvol as mayor",
+      "link": "https://www.irozhlas.cz/zpravy-domov/most-povede-dalsi-ctyri-roky-dosavadni-koalice-hnuti-promost-a-ano-primatorem-ma_2610300600_mkm",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Pardubice redesigns street markings to formalize parking and junction safety",
+      "link": "https://www.irozhlas.cz/zpravy-domov/pardubice-upravuji-dopravni-znaceni-kvuli-parkovani-i-bezpecnosti-prvni-zmeny_2610300600_mkm",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Monumental 720-ton Vught railway station lifted and moved 14 metres",
+      "link": "https://nos.nl/l/2637244",
+      "source": "NOS Binnenland"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Cabinet meets to negotiate budget terms with new right-wing opposition bloc",
+      "link": "https://www.dutchnews.nl/2026/10/cabinet-gathers-to-weigh-right-wing-blocs-new-joint-demands/",
+      "source": "DutchNews.nl"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Dutch first-time asylum applications drop 13 percent in third quarter",
+      "link": "https://nos.nl/l/2637259",
+      "source": "NOS Binnenland"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Dutch Film Fund lost over half a million euros on phantom film project",
+      "link": "https://nos.nl/l/2637246",
+      "source": "NOS Binnenland"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Police name five Serbian suspects in TEFAF Maastricht jewel heist",
+      "link": "https://www.dutchnews.nl/2026/10/police-name-serbian-suspects-in-tefaf-jewellery-heist/",
+      "source": "DutchNews.nl"
+     },
+     {
+      "region": "Europe",
+      "headline": "Student-backed election winners in Serbia demand sweeping state resignations",
+      "link": "https://www.bbc.co.uk/news/articles/cmx2dwzp0z0vo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "Europe",
+      "headline": "UK Post Office halts all parcel shipping to the EU over IT customs delays",
+      "link": "https://www.bbc.co.uk/news/articles/cvze4xkknyj4o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "Europe",
+      "headline": "Albania imposes crushing fines on street demonstrators to quell unrest",
+      "link": "https://www.euronews.com/2026/10/30/europe-today-rare-oleshky-truce-holds-in-ukraine-albania-imposes-heavy-fines-on-protesters",
+      "source": "News | Euronews RSS"
+     },
+     {
+      "region": "Europe",
+      "headline": "Investigation reveals UK government relies on severely patchy economic data",
+      "link": "https://www.politico.eu/article/5-things-westminster-doesnt-really-know-about-the-uk-economy-but-probably-should/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+      "source": "POLITICO"
+     },
+     {
+      "region": "Europe",
+      "headline": "Newly engaged couple hauled up 150-metre cliff in dramatic Irish sea rescue",
+      "link": "https://www.bbc.co.uk/news/articles/cwkgjem016r4o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "Binance hit by suspected $6.3bn hack in largest crypto theft in history",
+      "link": "https://www.bbc.co.uk/news/articles/cwg7xp8kx4v5o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "AI boom hits electricity bottleneck as Big Tech turns to nuclear power",
+      "link": "https://www.aljazeera.com/opinions/2026/10/30/ais-real-bottleneck-is-electricity-who-will-pay-for-it?traffic_source=rss",
+      "source": "Al Jazeera – Breaking News, World News and Video from Al Jaz"
+     },
+     {
+      "region": "World",
+      "headline": "Israeli election ends in stalemate with no bloc securing parliamentary majority",
+      "link": "https://www.theguardian.com/world/2026/oct/30/friday-briefing-israel-has-a-dilemma-can-its-opposition-govern-with-palestinian-parties",
+      "source": "World news | The Guardian"
+     },
+     {
+      "region": "World",
+      "headline": "Mayon Volcano erupts in Philippines, sending ash column three kilometres high",
+      "link": "https://www.aljazeera.com/video/newsfeed/2026/10/30/philippines-raises-alert-as-mayon-volcano-erupts?traffic_source=rss",
+      "source": "Al Jazeera – Breaking News, World News and Video from Al Jaz"
+     },
+     {
+      "region": "World",
+      "headline": "Soaring prices test public patience in post-Assad Syria after subsidy cuts",
+      "link": "https://www.bbc.co.uk/news/articles/cmn4egvez1yzo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     }
+    ],
+    "dutch_theme": "Family and friends",
+    "dutch_phrases": [
+     {
+      "nl": "Hoe gaat het met je familie?",
+      "en": "How is your family doing?"
+     },
+     {
+      "nl": "Zullen we vanavond afspreken?",
+      "en": "Shall we meet up this evening?"
+     },
+     {
+      "nl": "Hij lijkt sprekend op zijn vader.",
+      "en": "He looks just like his father."
+     },
+     {
+      "nl": "We hebben elkaar lang niet gezien.",
+      "en": "We haven't seen each other in a long time."
+     },
+     {
+      "nl": "Ik nodig mijn beste vrienden uit.",
+      "en": "I am inviting my best friends."
+     },
+     {
+      "nl": "Doe iedereen thuis de groeten.",
+      "en": "Give my regards to everyone at home."
+     }
+    ],
+    "dzogchen_theme": "Essence, nature, energy: the three aspects of mind"
+   }
+  },
+  {
+   "date": "2026-10-31",
+   "title": "The Words Beneath the Paint",
+   "file": "2026-10-31.mp3",
+   "published": "2026-10-31T09:15:47.039271+01:00",
+   "size": 11737388,
+   "duration": 1467.14,
+   "stories": [
+    "AI mushroom identification apps mistake lethal fungi for edible species, doctors warn",
+    "Czech freight operators abandon rail for diesel road transport due to rising costs",
+    "Czechs prepare cemetery pilgrimages for Dušičky to remember departed loved ones",
+    "Břidličná referendum rejects municipal cooperation on planned wind power project",
+    "Moravian-Silesian firefighters test modular emergency bridge over Ostravice river",
+    "Terminally ill Dutch professor creates AI digital twin to lecture after his death",
+    "The Hague shopkeepers board up windows amid fears of weekend youth unrest",
+    "Cabinet tax plan negotiations stall in stalemate between left and right opposition",
+    "Dutch government drafts smoking ban for playgrounds, petting zoos, and daycares",
+    "Delivery driver files criminal complaint against police officer after being tasered",
+    "Police deployed in Warsaw as battle over Poland's constitutional court leadership escalates",
+    "Syrian curriculum overhaul sparks outcry after images of women and statues are erased",
+    "Novaya Gazeta founder details systematic state pressure that forced paper's closure",
+    "Zelenskyy welcomes US Patriot missile deal but warns delivery could take years",
+    "Brazil and Argentina clash over reported border escape of former president Bolsonaro",
+    "Former DR Congo president Joseph Kabila re-emerges as armed rebel coalition leader",
+    "US 50% tariffs threaten century-old Canadian paper mill town of Témiscaming",
+    "US midterms enter final 72 hours as early voting surpasses 43 million",
+    "Historic countercultural cafe Mouria in Athens closes due to gentrification",
+    "US, South Korea, and Japan issue joint call for North Korea's complete denuclearization"
+   ],
+   "random_topic": "The Archimedes Palimpsest and the Hidden Words Beneath",
+   "through_line": "No matter what artificial overlays, dogmas, or synthetic identities are painted across our world, the underlying reality remains unblemished and fundamentally whole.",
+   "links": [
+    "https://ct24.ceskatelevize.cz/clanek/domaci/aplikace-oznacila-jedovatou-muchomurku-za-jedlou-lekari-varuji-pred-houbarenim-s-ai-379109",
+    "https://ct24.ceskatelevize.cz/clanek/domaci/firmy-uprednostnuji-prepravu-kamionem-po-kolejich-uz-se-jim-nevyplati-379160",
+    "https://www.irozhlas.cz/zpravy-domov/auto-plne-chvoji-a-kvetin-o-dusickach-se-lide-vydavaji-zapalit-svicky-na_2610310735_lhv",
+    "https://ct24.ceskatelevize.cz/clanek/regiony/bridlicna-v-referendu-odmitla-soucinnost-pri-budovani-vetrnych-elektraren-379165",
+    "https://www.irozhlas.cz/zpravy-domov/pomuze-pri-povodni-nebo-po-utrzeni-silnice-moravskoslezsti-hasici-zkouseli-novy_2610310700_lhv",
+    "https://nos.nl/l/2637407",
+    "https://nos.nl/l/2637387",
+    "https://www.dutchnews.nl/2026/10/no-movement-in-cabinet-talks-amid-left-right-stalemate/",
+    "https://www.dutchnews.nl/2026/10/government-seeks-to-ban-smoking-where-children-congregate/",
+    "https://nos.nl/l/2637364",
+    "https://www.politico.eu/article/tusk-nawrocki-battle-escalates-chief-judge-ousted-from-polands-top-court/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+    "https://www.euronews.com/2026/10/31/syrian-curriculum-changes-spark-debate-over-removal-of-images-and-historical-figures",
+    "https://www.bbc.co.uk/news/articles/cmewepdr109do?at_medium=RSS&at_campaign=rss",
+    "https://www.euronews.com/2026/10/31/zelenskyy-thanks-us-over-deal-for-500-patriot-missiles-but-warns-delivery-could-take-years",
+    "https://www.euronews.com/2026/10/30/brazil-claims-it-questioned-argentina-over-bolsonaros-escape-buenos-aires-denies-it",
+    "https://www.bbc.co.uk/news/articles/cr3wv311dwnlo?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.co.uk/news/articles/cmly016ep243o?at_medium=RSS&at_campaign=rss",
+    "https://www.aljazeera.com/news/2026/10/31/us-midterms-3-days-to-go-what-latest-polls-say-as-early-voting-surges?traffic_source=rss",
+    "https://www.theguardian.com/world/2026/oct/31/mouria-historic-athens-cafe-closes-exarchia-gentrifies",
+    "https://www.aljazeera.com/news/2026/10/31/us-south-korea-japan-call-for-complete-denuclearisation-of-north-korea?traffic_source=rss"
+   ],
+   "item_titles": [
+    "Aplikace označila jedovatou muchomůrku za jedlou. Lékaři varují před houbařením s AI",
+    "Firmy upřednostňují přepravu kamionem, po kolejích už se jim nevyplatí",
+    "Auto plné chvojí a květin. O Dušičkách se lidé vydávají zapálit svíčky na vzdálené hřbitovy",
+    "Břidličná v referendu odmítla součinnost při budování větrných elektráren",
+    "Pomůže při povodni nebo po utržení silnice. Moravskoslezští hasiči zkoušeli nový nouzový most",
+    "Ongeneeslijk zieke hoogleraar Jan Rotmans laat 'AI-tweeling' van zichzelf maken",
+    "Den Haag zet zich schrap: winkeliers timmeren hun zaken dicht uit angst voor rellen",
+    "“No movement” in cabinet talks amid left-right stalemate",
+    "Government seeks to ban smoking where children congregate",
+    "Advocaat getaserde bezorger: man is gewond en doet aangifte tegen agent",
+    "Tusk-Nawrocki battle escalates as chief judge is ousted from Poland’s top court",
+    "Syrian curriculum changes spark debate over removal of images and historical figures",
+    "They strangled us, says founder of Russian newspaper shut under pressure from authorities",
+    "Zelenskyy thanks US over deal for 500 Patriot missiles but warns delivery could take years",
+    "Brazil claims it questioned Argentina over Bolsonaro's escape, Buenos Aires denies it",
+    "Suited and booted: How Joseph Kabila went from president to rebel leader",
+    "Trump's tariffs could shutter this Canadian town - its residents are fighting to save it",
+    "US midterms: 3 days to go – What latest polls say as early voting surges",
+    "‘The last fortress’: historic Athens cafe closes as countercultural area gentrifies",
+    "US, South Korea, Japan call for ‘complete denuclearisation’ of North Korea"
+   ],
+   "dutch_idx": 9,
+   "dzogchen_idx": 9,
+   "fact_check": [
+    {
+     "turn": 9,
+     "section": "random",
+     "reason": "Removed the superlative 'only' as required by the general lines rule."
+    },
+    {
+     "turn": 19,
+     "section": "news",
+     "reason": "Removed mention of 'amatoxins' and corrected the claim about why people consult AI, as sources only state patients ask A"
+    },
+    {
+     "turn": 21,
+     "section": "news",
+     "reason": "Softened 'twenty percent more expensive' to 'up to twenty percent' because the merchant in Nové Město reported a 10% pri"
+    },
+    {
+     "turn": 23,
+     "section": "news",
+     "reason": "Removed the unsupported detail about packing cars with flowers and pine branches."
+    },
+    {
+     "turn": 31,
+     "section": "news",
+     "reason": "Corrected 'cookware shops' to 'pancake shops' (translating 'pannenwinkel')."
+    },
+    {
+     "turn": 47,
+     "section": "news",
+     "reason": "Removed the specific year 'twenty nineteen' as it is not present in the source text."
+    }
+   ],
+   "notes": "Theme: No matter what artificial overlays, dogmas, or synthetic identities are painted across our world, the underlying reality remains unblemished and fundamentally whole.\nNews:\n- AI mushroom identification apps mistake lethal fungi for edible species, doctors warn\n- Czech freight operators abandon rail for diesel road transport due to rising costs\n- Czechs prepare cemetery pilgrimages for Dušičky to remember departed loved ones\n- Břidličná referendum rejects municipal cooperation on planned wind power project\n- Moravian-Silesian firefighters test modular emergency bridge over Ostravice river\n- Terminally ill Dutch professor creates AI digital twin to lecture after his death\n- The Hague shopkeepers board up windows amid fears of weekend youth unrest\n- Cabinet tax plan negotiations stall in stalemate between left and right opposition\n- Dutch government drafts smoking ban for playgrounds, petting zoos, and daycares\n- Delivery driver files criminal complaint against police officer after being tasered\n- Police deployed in Warsaw as battle over Poland's constitutional court leadership escalates\n- Syrian curriculum overhaul sparks outcry after images of women and statues are erased\n- Novaya Gazeta founder details systematic state pressure that forced paper's closure\n- Zelenskyy welcomes US Patriot missile deal but warns delivery could take years\n- Brazil and Argentina clash over reported border escape of former president Bolsonaro\n- Former DR Congo president Joseph Kabila re-emerges as armed rebel coalition leader\n- US 50% tariffs threaten century-old Canadian paper mill town of Témiscaming\n- US midterms enter final 72 hours as early voting surpasses 43 million\n- Historic countercultural cafe Mouria in Athens closes due to gentrification\n- US, South Korea, and Japan issue joint call for North Korea's complete denuclearization\nRandom topic: The Archimedes Palimpsest and the Hidden Words Beneath\nDutch: Weather small talk\nDzogchen: Primordial purity (ka dag)",
+   "engine": "gemini-3.8-flash-tts",
+   "notes_data": {
+    "through_line": "No matter what artificial overlays, dogmas, or synthetic identities are painted across our world, the underlying reality remains unblemished and fundamentally whole.",
+    "random_topic": "The Archimedes Palimpsest and the Hidden Words Beneath",
+    "news": [
+     {
+      "region": "Czechia",
+      "headline": "AI mushroom identification apps mistake lethal fungi for edible species, doctors warn",
+      "link": "https://ct24.ceskatelevize.cz/clanek/domaci/aplikace-oznacila-jedovatou-muchomurku-za-jedlou-lekari-varuji-pred-houbarenim-s-ai-379109",
+      "source": "ČT24 — Výběr redakce"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Czech freight operators abandon rail for diesel road transport due to rising costs",
+      "link": "https://ct24.ceskatelevize.cz/clanek/domaci/firmy-uprednostnuji-prepravu-kamionem-po-kolejich-uz-se-jim-nevyplati-379160",
+      "source": "ČT24 — Výběr redakce"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Czechs prepare cemetery pilgrimages for Dušičky to remember departed loved ones",
+      "link": "https://www.irozhlas.cz/zpravy-domov/auto-plne-chvoji-a-kvetin-o-dusickach-se-lide-vydavaji-zapalit-svicky-na_2610310735_lhv",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Břidličná referendum rejects municipal cooperation on planned wind power project",
+      "link": "https://ct24.ceskatelevize.cz/clanek/regiony/bridlicna-v-referendu-odmitla-soucinnost-pri-budovani-vetrnych-elektraren-379165",
+      "source": "ČT24 — Výběr redakce"
+     },
+     {
+      "region": "Czechia",
+      "headline": "Moravian-Silesian firefighters test modular emergency bridge over Ostravice river",
+      "link": "https://www.irozhlas.cz/zpravy-domov/pomuze-pri-povodni-nebo-po-utrzeni-silnice-moravskoslezsti-hasici-zkouseli-novy_2610310700_lhv",
+      "source": "Zprávy z domova - iROZHLAS.cz"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Terminally ill Dutch professor creates AI digital twin to lecture after his death",
+      "link": "https://nos.nl/l/2637407",
+      "source": "NOS Binnenland"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "The Hague shopkeepers board up windows amid fears of weekend youth unrest",
+      "link": "https://nos.nl/l/2637387",
+      "source": "NOS Binnenland"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Cabinet tax plan negotiations stall in stalemate between left and right opposition",
+      "link": "https://www.dutchnews.nl/2026/10/no-movement-in-cabinet-talks-amid-left-right-stalemate/",
+      "source": "DutchNews.nl"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Dutch government drafts smoking ban for playgrounds, petting zoos, and daycares",
+      "link": "https://www.dutchnews.nl/2026/10/government-seeks-to-ban-smoking-where-children-congregate/",
+      "source": "DutchNews.nl"
+     },
+     {
+      "region": "Netherlands",
+      "headline": "Delivery driver files criminal complaint against police officer after being tasered",
+      "link": "https://nos.nl/l/2637364",
+      "source": "NOS Binnenland"
+     },
+     {
+      "region": "Europe",
+      "headline": "Police deployed in Warsaw as battle over Poland's constitutional court leadership escalates",
+      "link": "https://www.politico.eu/article/tusk-nawrocki-battle-escalates-chief-judge-ousted-from-polands-top-court/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication",
+      "source": "POLITICO"
+     },
+     {
+      "region": "Europe",
+      "headline": "Syrian curriculum overhaul sparks outcry after images of women and statues are erased",
+      "link": "https://www.euronews.com/2026/10/31/syrian-curriculum-changes-spark-debate-over-removal-of-images-and-historical-figures",
+      "source": "News | Euronews RSS"
+     },
+     {
+      "region": "Europe",
+      "headline": "Novaya Gazeta founder details systematic state pressure that forced paper's closure",
+      "link": "https://www.bbc.co.uk/news/articles/cmewepdr109do?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "Europe",
+      "headline": "Zelenskyy welcomes US Patriot missile deal but warns delivery could take years",
+      "link": "https://www.euronews.com/2026/10/31/zelenskyy-thanks-us-over-deal-for-500-patriot-missiles-but-warns-delivery-could-take-years",
+      "source": "News | Euronews RSS"
+     },
+     {
+      "region": "Europe",
+      "headline": "Brazil and Argentina clash over reported border escape of former president Bolsonaro",
+      "link": "https://www.euronews.com/2026/10/30/brazil-claims-it-questioned-argentina-over-bolsonaros-escape-buenos-aires-denies-it",
+      "source": "News | Euronews RSS"
+     },
+     {
+      "region": "World",
+      "headline": "Former DR Congo president Joseph Kabila re-emerges as armed rebel coalition leader",
+      "link": "https://www.bbc.co.uk/news/articles/cr3wv311dwnlo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "US 50% tariffs threaten century-old Canadian paper mill town of Témiscaming",
+      "link": "https://www.bbc.co.uk/news/articles/cmly016ep243o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News"
+     },
+     {
+      "region": "World",
+      "headline": "US midterms enter final 72 hours as early voting surpasses 43 million",
+      "link": "https://www.aljazeera.com/news/2026/10/31/us-midterms-3-days-to-go-what-latest-polls-say-as-early-voting-surges?traffic_source=rss",
+      "source": "Al Jazeera – Breaking News, World News and Video from Al Jaz"
+     },
+     {
+      "region": "World",
+      "headline": "Historic countercultural cafe Mouria in Athens closes due to gentrification",
+      "link": "https://www.theguardian.com/world/2026/oct/31/mouria-historic-athens-cafe-closes-exarchia-gentrifies",
+      "source": "World news | The Guardian"
+     },
+     {
+      "region": "World",
+      "headline": "US, South Korea, and Japan issue joint call for North Korea's complete denuclearization",
+      "link": "https://www.aljazeera.com/news/2026/10/31/us-south-korea-japan-call-for-complete-denuclearisation-of-north-korea?traffic_source=rss",
+      "source": "Al Jazeera – Breaking News, World News and Video from Al Jaz"
+     }
+    ],
+    "dutch_theme": "Weather small talk",
+    "dutch_phrases": [
+     {
+      "nl": "Het regent pijpenstelen",
+      "en": "It is raining cats and dogs"
+     },
+     {
+      "nl": "Wat een rotweer",
+      "en": "What foul weather"
+     },
+     {
+      "nl": "Lekker weertje, hè?",
+      "en": "Lovely weather, isn't it?"
+     },
+     {
+      "nl": "Het klaart al een beetje op",
+      "en": "It is already clearing up a bit"
+     },
+     {
+      "nl": "Ik ben helemaal doorweekt",
+      "en": "I am completely soaked"
+     },
+     {
+      "nl": "Morgen wordt het beter",
+      "en": "Tomorrow will be better"
+     }
+    ],
+    "dzogchen_theme": "Primordial purity (ka dag)"
+   }
+  }
+ ],
+ "dutch_next": 10,
+ "dzogchen_next": 10
+}
