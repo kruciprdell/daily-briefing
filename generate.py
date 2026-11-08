@@ -657,7 +657,7 @@ def tts_gemini(client, turns: list[dict], workdir: Path, model: str | None = Non
     """Synthesize the whole episode with ONE model, so an episode never mixes voices."""
     from google.genai import types
     model = model or TTS_MODELS[0]
-    voices = {"Anna": os.getenv("ANNA_VOICE", "Kore"), "Ben": os.getenv("BEN_VOICE", "Charon")}   # Charon = deeper male voice
+    voices = {"Anna": (os.getenv("ANNA_VOICE") or "Kore"), "Ben": (os.getenv("BEN_VOICE") or "Charon")}   # Charon = deeper male voice
     speech = types.SpeechConfig(multi_speaker_voice_config=types.MultiSpeakerVoiceConfig(
         speaker_voice_configs=[
             types.SpeakerVoiceConfig(speaker=name, voice_config=types.VoiceConfig(
@@ -972,6 +972,7 @@ def main() -> int:
     from google.genai import types as genai_types
     # a hung request must fail fast and be retried, not eat the 60-minute limit
     client = genai.Client(api_key=api_key, http_options=genai_types.HttpOptions(
+        api_version="v1beta",      # SDK 3.x defaults to "v1", which rejects per-turn speech_metadata
         timeout=int(os.getenv("API_TIMEOUT_SECONDS", "300")) * 1000))
 
     stamp("Planning episode...")
