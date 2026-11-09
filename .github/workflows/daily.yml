@@ -60,6 +60,9 @@ jobs:
           FEED_DIR: ${{ vars.FEED_DIR || 'podcast' }}
           SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
           FORCE: ${{ inputs.force && '1' || '' }}
+          ANNA_VOICE: ${{ vars.ANNA_VOICE }}
+          BEN_VOICE: ${{ vars.BEN_VOICE }}
+          ALLOW_EDGE_FALLBACK: ${{ vars.ALLOW_EDGE_FALLBACK }}
         run: python generate.py --site site
 
       - name: Publish to gh-pages
