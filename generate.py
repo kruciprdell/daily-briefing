@@ -65,6 +65,11 @@ TTS_PAUSE_SECONDS = int(os.getenv("TTS_PAUSE", "22"))   # free-tier TTS has a lo
 TTS_ATTEMPTS = int(os.getenv("TTS_ATTEMPTS", "6"))       # tries per chunk before a model is given up on
 HOSTS = ("Anna", "Ben")
 REGIONS = {"CZ": "Czechia", "NL": "Netherlands", "EU": "Europe", "WORLD": "World"}
+# Voice candidates by role, best first. If Google renames or retires a voice, the next one is tried,
+# so an episode keeps "one female + one male voice" whatever the names are.
+FEMALE_VOICES = ["Kore", "Sulafat", "Aoede", "Callirrhoe", "Vindemiatrix"]
+MALE_VOICES = ["Charon", "Orus", "Alnilam", "Algenib", "Rasalgethi"]
+ALLOW_EDGE = os.getenv("ALLOW_EDGE_FALLBACK", "").strip().lower() in ("1", "true", "yes")
 
 
 def log(*a):
@@ -445,6 +450,7 @@ OUTPUT: only valid JSON, no markdown fences:
   "turns": [{{"speaker": "Anna", "section": "hook", "text": "spoken words only, no stage directions, no markdown", "style": "optional, max 6 words, e.g. amused / mock-serious / calm, slower, warm"}}, ...]
 }}
 "section" goes ONLY on the first turn of each part of the show, with one of: "hook", "random", "news", "dutch", "dzogchen", "close".
+Inside the news part, add "region" ONLY on the first turn of each region block (the very first news turn then has both "section": "news" and "region"), with one of: "CZ", "NL", "EU", "WORLD".
 "speaker" must be exactly "Anna" or "Ben". Write numbers and abbreviations the way they are spoken.
 """
 
@@ -468,6 +474,8 @@ def validate_script(data: dict) -> None:
             turn["style"] = t["style"].strip()[:60]
         if t.get("section") in SECTIONS:
             turn["section"] = t["section"]
+        if t.get("region") in REGIONS:
+            turn["region"] = t["region"]
         good.append(turn)
     bad = len(turns) - len(good)
     if len(good) < 10 or bad > max(2, int(0.05 * len(turns))):
@@ -642,6 +650,22 @@ def make_silence_wav(workdir: Path, seconds: float = SECTION_PAUSE) -> Path:
     return path
 
 
+class VoiceRejected(RuntimeError):
+    """The API refused a voice name (renamed or retired): try the next candidate pair."""
+
+
+def voice_pairs() -> list[tuple[str, str]]:
+    """(female, male) candidate pairs, preferred first; ANNA_VOICE / BEN_VOICE override the first choice."""
+    fem = [v for v in [os.getenv("ANNA_VOICE", "").strip()] + FEMALE_VOICES if v]
+    mal = [v for v in [os.getenv("BEN_VOICE", "").strip()] + MALE_VOICES if v]
+    fem = list(dict.fromkeys(fem))
+    mal = list(dict.fromkeys(mal))
+    return list(zip(fem, mal))[:4]
+
+
+VOICE_ERROR = re.compile(r"voice[_ ]?name|prebuilt[_ ]?voice|unsupported voice|invalid voice|unknown voice", re.I)
+
+
 class ModelUnavailable(RuntimeError):
     """This TTS model cannot be used any more today (retired name, or its daily quota is used up)."""
 
@@ -653,11 +677,13 @@ def quota_info(msg: str) -> dict:
             "delay": float(m.group(1)) if m else None}
 
 
-def tts_gemini(client, turns: list[dict], workdir: Path, model: str | None = None) -> list[Path]:
+def tts_gemini(client, turns: list[dict], workdir: Path, model: str | None = None,
+               voice_pair: tuple[str, str] | None = None) -> list[Path]:
     """Synthesize the whole episode with ONE model, so an episode never mixes voices."""
     from google.genai import types
     model = model or TTS_MODELS[0]
-    voices = {"Anna": (os.getenv("ANNA_VOICE") or "Kore"), "Ben": (os.getenv("BEN_VOICE") or "Charon")}   # Charon = deeper male voice
+    voice_pair = voice_pair or voice_pairs()[0]
+    voices = {"Anna": voice_pair[0], "Ben": voice_pair[1]}
     speech = types.SpeechConfig(multi_speaker_voice_config=types.MultiSpeakerVoiceConfig(
         speaker_voice_configs=[
             types.SpeakerVoiceConfig(speaker=name, voice_config=types.VoiceConfig(
@@ -687,6 +713,8 @@ def tts_gemini(client, turns: list[dict], workdir: Path, model: str | None = Non
                 log(f"  TTS chunk {n}/{len(chunks)} attempt {attempt} on {model}: {msg[:300]}")
                 if "NOT_FOUND" in msg or "404" in msg:
                     raise ModelUnavailable(f"{model} not found")
+                if "INVALID_ARGUMENT" in msg and VOICE_ERROR.search(msg):
+                    raise VoiceRejected(f"voice pair {voice_pair} rejected on chunk {n}")
                 if "INVALID_ARGUMENT" in msg or "PERMISSION_DENIED" in msg:
                     raise RuntimeError(f"Gemini TTS rejected the request on chunk {n}")   # permanent
                 if "429" in msg or "RESOURCE_EXHAUSTED" in msg:
@@ -771,12 +799,85 @@ def tts_edge(turns: list[dict], workdir: Path) -> list[Path]:
     return order
 
 
-def to_mp3(parts: list[Path], out: Path) -> None:
+def ffmeta_escape(text: str) -> str:
+    return re.sub(r"([=;#\\])", r"\\\1", text.replace("\n", " "))
+
+
+def to_mp3(parts: list[Path], out: Path, chapters: list[dict] | None = None, total_seconds: float = 0.0) -> None:
     lst = out.parent / "concat.txt"
     lst.write_text("".join(f"file '{p.resolve().as_posix()}'\n" for p in parts), encoding="utf-8")
-    run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", str(lst),
-         "-af", "loudnorm=I=-16:TP=-1.5:LRA=11", "-ac", "1", "-ar", "24000",
-         "-c:a", "libmp3lame", "-b:a", "64k", str(out)])
+    cmd = ["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", str(lst)]
+    meta = None
+    if chapters:                                   # ID3 chapters (AntennaPod shows them in the player)
+        meta = out.parent / "chapters.ffmeta"
+        lines = [";FFMETADATA1"]
+        for i, c in enumerate(chapters):
+            end = chapters[i + 1]["startTime"] if i + 1 < len(chapters) else max(total_seconds, c["startTime"] + 1)
+            lines += ["[CHAPTER]", "TIMEBASE=1/1000", f"START={int(c['startTime'] * 1000)}",
+                      f"END={int(end * 1000)}", f"title={ffmeta_escape(c['title'])}"]
+        meta.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        cmd += ["-i", str(meta), "-map", "0:a", "-map_metadata", "1", "-map_chapters", "1", "-id3v2_version", "3"]
+    cmd += ["-af", "loudnorm=I=-16:TP=-1.5:LRA=11", "-ac", "1", "-ar", "24000",
+            "-c:a", "libmp3lame", "-b:a", "64k", str(out)]
+    try:
+        run(cmd)
+    except RuntimeError:
+        if not meta:
+            raise
+        log("  chapters could not be embedded; encoding without them")
+        to_mp3(parts, out)
+    finally:
+        if meta:
+            meta.unlink(missing_ok=True)
+
+
+def wav_seconds(path: Path) -> float:
+    with wave.open(str(path), "rb") as w:
+        return w.getnframes() / float(w.getframerate())
+
+
+def turn_starts(turns: list[dict], parts: list[Path]) -> list[float]:
+    """Start time of every turn. Chunk lengths are exact (read from the WAVs); inside a chunk the start of a
+    turn is estimated from how much of the chunk's text comes before it."""
+    chunks = chunk_turns(turns)
+    starts: list[float] = []
+    t, ci = 0.0, 0
+    for p in parts:
+        dur = wav_seconds(p)
+        if p.name.startswith("chunk_") and ci < len(chunks):
+            weights = [len(x["text"]) + 8 for x in chunks[ci]]
+            total, cum = float(sum(weights)), 0.0
+            for w in weights:
+                starts.append(t + dur * cum / total)
+                cum += w
+            ci += 1
+        t += dur
+    return starts
+
+
+def build_chapters(turns: list[dict], starts: list[float], names: dict | None = None) -> list[dict]:
+    names = names or {}
+    fixed = {"hook": "Welcome", "news": "News", "close": "Wrap-up"}
+    chapters: list[dict] = []
+    for t, st in zip(turns, starts):
+        title = None
+        if t.get("region") in REGIONS:
+            title = REGIONS[t["region"]]
+        elif t.get("section") in fixed:
+            title = fixed[t["section"]]
+        elif t.get("section") == "random":
+            title = "Random topic: " + names["random"] if names.get("random") else "Random topic"
+        elif t.get("section") == "dutch":
+            title = "Dutch lesson: " + names["dutch"] if names.get("dutch") else "Dutch lesson"
+        elif t.get("section") == "dzogchen":
+            title = "Dzogchen: " + names["dzogchen"] if names.get("dzogchen") else "Dzogchen"
+        if not title:
+            continue
+        start = 0 if not chapters else int(round(st))
+        if chapters and start - chapters[-1]["startTime"] < 8:     # too close to the previous marker: keep the earlier
+            continue
+        chapters.append({"startTime": start, "title": clean(title, 70)})
+    return chapters
 
 
 def duration_seconds(path: Path) -> float:
@@ -796,26 +897,47 @@ def duration_seconds(path: Path) -> float:
     return path.stat().st_size / (64000 / 8)
 
 
-def make_audio(client, turns: list[dict], out: Path) -> str:
-    """Try each Gemini TTS model in order, each from scratch (one voice per episode), then Edge TTS.
-    Returns the engine used: a Gemini model name, or "edge"."""
+LAST_VOICES: tuple[str, str] | None = None     # voice pair used for the last episode
+LAST_CHAPTERS: list[dict] = []                 # chapters of the last episode (empty for Edge TTS)
+
+
+def make_audio(client, turns: list[dict], out: Path, names: dict | None = None) -> str:
+    """Try each Gemini TTS model in order, each with the voice pairs in order (one voice pair per episode),
+    then Edge TTS. Returns the engine used: a Gemini model name, or "edge"."""
+    global LAST_VOICES, LAST_CHAPTERS
+    LAST_VOICES, LAST_CHAPTERS = None, []
+    total = 0.0
     with tempfile.TemporaryDirectory() as tmp:
         work = Path(tmp)
         parts, engine = None, "edge"
         if client is not None:
             for model in TTS_MODELS:
-                sub = work / re.sub(r"[^A-Za-z0-9.-]", "_", model)
-                sub.mkdir()
-                try:
-                    parts = tts_gemini(client, turns, sub, model)
-                    engine = model
+                for vi, pair in enumerate(voice_pairs()):
+                    sub = work / (re.sub(r"[^A-Za-z0-9.-]", "_", model) + f"_{vi}")
+                    sub.mkdir()
+                    try:
+                        parts = tts_gemini(client, turns, sub, model, pair)
+                        engine, LAST_VOICES = model, pair
+                        break
+                    except VoiceRejected as ex:
+                        log(f"Voice pair {pair} refused on {model} ({str(ex)[:120]}); trying the next pair")
+                    except Exception as ex:
+                        log(f"Gemini TTS model {model} unusable ({str(ex)[:200]}); trying the next option")
+                        break
+                if parts is not None:
                     break
-                except Exception as ex:
-                    log(f"Gemini TTS model {model} unusable ({str(ex)[:200]}); trying the next option")
         if parts is None:
             log("All Gemini TTS models failed; falling back to Edge TTS")
             parts = tts_edge(turns, work)
-        to_mp3(parts, out)
+        else:
+            try:
+                starts = turn_starts(turns, parts)
+                LAST_CHAPTERS = build_chapters(turns, starts, names) if len(starts) == len(turns) else []
+                total = sum(wav_seconds(p) for p in parts)
+            except Exception as ex:
+                log(f"  chapters skipped: {str(ex)[:120]}")
+                LAST_CHAPTERS, total = [], 0.0
+        to_mp3(parts, out, LAST_CHAPTERS if len(LAST_CHAPTERS) >= 2 else None, total)
     return engine
 
 
@@ -831,6 +953,9 @@ def prune(root: Path, state: dict, today: dt.date) -> None:
     keep = {e["file"] for e in state["episodes"] if e.get("file")}
     for f in ep_dir.glob("*.mp3"):
         if f.name not in keep:
+            f.unlink()
+    for f in ep_dir.glob("*.chapters.json"):
+        if f.name.replace(".chapters.json", ".mp3") not in keep:
             f.unlink()
     state["episodes"] = sorted(state["episodes"], key=lambda e: e["date"])[-60:]
 
@@ -884,9 +1009,13 @@ def build_feed(root: Path, base: str, feed_dir: str, state: dict) -> None:
             f"length=\"{int(e['size'])}\" type=\"audio/mpeg\"/>"
             f"<itunes:duration>{int(e['duration'])}</itunes:duration>"
             "<itunes:explicit>false</itunes:explicit>"
-            "</item>")
+            + (f"<podcast:chapters url=\"{escape(chan_url)}/episodes/{escape(e['date'])}.chapters.json\" "
+               "type=\"application/json+chapters\"/>"
+               if (root / "episodes" / f"{e['date']}.chapters.json").exists() else "")
+            + "</item>")
     xml = ("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-           "<rss version=\"2.0\" xmlns:itunes=\"http://www.itunes.com/dtds/podcast-1.0.dtd\">\n<channel>\n"
+           "<rss version=\"2.0\" xmlns:itunes=\"http://www.itunes.com/dtds/podcast-1.0.dtd\" "
+           "xmlns:podcast=\"https://podcastindex.org/namespace/1.0\">\n<channel>\n"
            "<title>Daily Briefing</title>\n"
            f"<link>{escape(chan_url)}/</link>\n"
            "<language>en</language>\n"
@@ -896,6 +1025,57 @@ def build_feed(root: Path, base: str, feed_dir: str, state: dict) -> None:
            "<itunes:category text=\"News\"/>\n" +
            "\n".join(items) + "\n</channel>\n</rss>\n")
     (root / "feed.xml").write_text(xml, encoding="utf-8")
+    build_stories_page(root, state)
+
+
+def story_history(state: dict) -> list[dict]:
+    """Every story used so far, newest episode first (older state entries get the region guessed from order)."""
+    out = []
+    for e in sorted(state["episodes"], key=lambda e: e["date"], reverse=True):
+        news = (e.get("notes_data") or {}).get("news")
+        if news:
+            items = [{"region": n.get("region", ""), "headline": n["headline"], "link": n.get("link", "")} for n in news]
+        else:
+            heads, links = e.get("stories") or [], e.get("links") or []
+            names = list(REGIONS.values())
+            per = max(1, len(heads) // len(names)) if len(heads) >= len(names) else 0
+            items = [{"region": names[min(i // per, len(names) - 1)] if per else "", "headline": h,
+                      "link": links[i] if i < len(links) else ""} for i, h in enumerate(heads)]
+        if items:
+            out.append({"date": e["date"], "title": e.get("title", ""), "items": items})
+    return out
+
+
+STORIES_PAGE = """<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Stories so far</title>
+<style>:root{--bg:#fff;--fg:#1a1a1a;--mut:#666;--line:#ddd;--acc:#1a5fb4}
+@media(prefers-color-scheme:dark){:root{--bg:#14161a;--fg:#e8e8e8;--mut:#9aa0a6;--line:#2c3036;--acc:#7ab0ff}}
+body{margin:0;padding:16px;background:var(--bg);color:var(--fg);font:16px/1.4 system-ui,sans-serif;max-width:760px;margin:auto}
+h1{font-size:1.3rem}h2{font-size:1rem;margin:22px 0 4px;color:var(--mut)}
+label{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+input{margin-top:4px;flex:none;width:20px;height:20px}a{color:var(--acc)}small{color:var(--mut)}
+.bar{position:sticky;top:0;background:var(--bg);padding:8px 0;border-bottom:1px solid var(--line)}
+button{font:inherit;padding:8px 14px}textarea{width:100%;height:140px;margin-top:8px;display:none}</style></head><body>
+<h1>Stories so far</h1><p>Tick the ones that were <b>not interesting</b>. Ticks are remembered on this device.</p>
+<div class="bar"><button id="copy">Copy my ticked list</button> <span id="n"></span><textarea id="ta" readonly></textarea></div>
+<div id="list"></div>
+<script>const DATA=__DATA__;const KEY="uninteresting-v1";let sel={};try{sel=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){}
+const list=document.getElementById("list");
+function save(){try{localStorage.setItem(KEY,JSON.stringify(sel))}catch(e){}document.getElementById("n").textContent=Object.keys(sel).length+" ticked"}
+DATA.forEach(ep=>{const h=document.createElement("h2");h.textContent=ep.date+" - "+ep.title;list.appendChild(h);
+ep.items.forEach(it=>{const l=document.createElement("label");const c=document.createElement("input");c.type="checkbox";
+const id=it.headline;c.checked=!!sel[id];c.onchange=()=>{c.checked?sel[id]=it.region:delete sel[id];save()};
+const d=document.createElement("div");const a=document.createElement(it.link?"a":"span");a.textContent=it.headline;if(it.link){a.href=it.link;a.target="_blank";a.rel="noopener"}
+d.appendChild(a);if(it.region){const s=document.createElement("small");s.textContent=" ("+it.region+")";d.appendChild(s)}
+l.appendChild(c);l.appendChild(d);list.appendChild(l)})});
+document.getElementById("copy").onclick=()=>{const t=Object.entries(sel).map(([h,r])=>(r?r+" | ":"")+h).join("\\n");
+const ta=document.getElementById("ta");ta.style.display="block";ta.value=t;ta.select();try{navigator.clipboard.writeText(t).catch(()=>{})}catch(e){}};save();
+</script></body></html>"""
+
+
+def build_stories_page(root: Path, state: dict) -> None:
+    data = json.dumps(story_history(state), ensure_ascii=False).replace("</", "<\\/")
+    (root / "stories.html").write_text(STORIES_PAGE.replace("__DATA__", data), encoding="utf-8")
 
 
 def make_notes(script: dict, dutch: str, dzogchen: str) -> str:
@@ -999,16 +1179,23 @@ def main() -> int:
     fname = f"{today.isoformat()}.mp3"
     out = root / "episodes" / fname
     stamp("Generating audio...")
-    engine = make_audio(client, script["turns"], out)
-    log(f"  audio engine: {engine}")
+    engine = make_audio(client, script["turns"], out,
+                        {"random": plan["random_topic"], "dutch": dutch_theme, "dzogchen": dzogchen_theme})
+    log(f"  audio engine: {engine}; voices: {LAST_VOICES}; chapters: {len(LAST_CHAPTERS)}")
     stamp("audio finished")
+    if engine == "edge" and not ALLOW_EDGE:
+        out.unlink(missing_ok=True)
+        log("ERROR: no Gemini voice worked, and the flat backup voices are switched off, so nothing is published today.")
+        print("::error title=No episode published::Gemini TTS failed, and the backup voices are switched off "
+              "(set the repository variable ALLOW_EDGE_FALLBACK to 1 to accept them).", flush=True)
+        return 1
     title = script["title"]
     if engine == "edge":
         title += " [backup voices]"
         print("::warning title=Backup voices::Gemini TTS was unavailable, so this episode uses the flatter Edge voices.", flush=True)
-    elif engine != TTS_MODELS[0]:
+    elif engine != TTS_MODELS[0] or (LAST_VOICES and LAST_VOICES != voice_pairs()[0]):
         title += " [alt voices]"
-        print(f"::warning title=Alternative voice model::{TTS_MODELS[0]} was unavailable; this episode used {engine}.", flush=True)
+        print(f"::warning title=Alternative voices::The first-choice voices were unavailable; this episode used {engine} with {LAST_VOICES}.", flush=True)
 
     picked = [p for lst in plan["picks"].values() for p in lst]
     used = [by_id[p["id"]] for p in picked]
@@ -1021,7 +1208,8 @@ def main() -> int:
         "published": now.isoformat(), "size": out.stat().st_size, "duration": duration_seconds(out),
         "stories": stories, "random_topic": plan["random_topic"], "through_line": plan["through_line"],
         "links": [i["link"] for i in used], "item_titles": [i["title"] for i in used],
-        "dutch_idx": d_idx, "dzogchen_idx": z_idx, "fact_check": fixes,
+        "dutch_idx": d_idx, "dzogchen_idx": z_idx, "fact_check": fixes, "chapters": LAST_CHAPTERS,
+        "voices": list(LAST_VOICES) if LAST_VOICES else None,
         "notes": make_notes(meta, dutch_theme, dzogchen_theme), "engine": engine,
         "notes_data": {"through_line": plan["through_line"], "random_topic": plan["random_topic"], "news": news,
                        "dutch_theme": dutch_theme, "dutch_phrases": script.get("dutch_phrases", []),
@@ -1031,6 +1219,11 @@ def main() -> int:
     if not existing:
         state["dutch_next"] = d_idx + 1
         state["dzogchen_next"] = z_idx + 1
+    chap_file = root / "episodes" / f"{today.isoformat()}.chapters.json"
+    chap_file.unlink(missing_ok=True)
+    if len(LAST_CHAPTERS) >= 2:
+        chap_file.write_text(json.dumps({"version": "1.2.0", "chapters": LAST_CHAPTERS}, ensure_ascii=False, indent=1),
+                             encoding="utf-8")
     prune(root, state, today)
     save_state(state_path, state)
     build_feed(root, base, feed_dir, state)
