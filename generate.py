@@ -341,6 +341,28 @@ def make_plan(client, prompt: str, items: dict, by_id: dict) -> dict:
 
 # --------------------------------------------------------------------------- stage 2: article text
 
+EXTRACT_CODE = (
+    "import sys\n"
+    "import trafilatura\n"
+    "t = trafilatura.extract(sys.stdin.read(), include_comments=False, include_tables=False, favor_precision=True)\n"
+    "sys.stdout.write(t or '')\n")
+EXTRACT_CMD = [sys.executable, "-c", EXTRACT_CODE]
+
+
+def extract_text(html_text: str, timeout: int = 40) -> str:
+    """Run the HTML-to-text step in its own process: a crash inside the parser (a segfault, exit code 139,
+    has stopped a whole run before) then only costs this one article, which falls back to the RSS summary."""
+    try:
+        r = subprocess.run(EXTRACT_CMD, input=html_text, capture_output=True, text=True, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        log("  article text extraction timed out")
+        return ""
+    if r.returncode != 0:
+        log(f"  article text extraction crashed (exit code {r.returncode}); using the RSS summary")
+        return ""
+    return r.stdout
+
+
 def fetch_article(url: str, timeout: int = 15) -> str:
     try:
         req = urllib.request.Request(url, headers={"User-Agent": UA_BROWSER,
@@ -348,9 +370,7 @@ def fetch_article(url: str, timeout: int = 15) -> str:
         with urllib.request.urlopen(req, timeout=timeout) as r:
             raw = r.read(2_000_000)
             charset = r.headers.get_content_charset() or "utf-8"
-        import trafilatura
-        text = trafilatura.extract(raw.decode(charset, errors="replace"),
-                                   include_comments=False, include_tables=False, favor_precision=True) or ""
+        text = extract_text(raw.decode(charset, errors="replace"))
         return re.sub(r"\s+", " ", text).strip()[:ARTICLE_CHARS]
     except Exception as ex:
         log(f"  article fetch failed {url[:70]}: {str(ex)[:80]}")
