@@ -1,0 +1,7 @@
+file '/tmp/tmp52r_je29/gemini-3.8-flash-tts_0/chunk_001.wav'
+file '/tmp/tmp52r_je29/gemini-3.8-flash-tts_0/chunk_002.wav'
+file '/tmp/tmp52r_je29/gemini-3.8-flash-tts_0/chunk_003.wav'
+file '/tmp/tmp52r_je29/gemini-3.8-flash-tts_0/break.wav'
+file '/tmp/tmp52r_je29/gemini-3.8-flash-tts_0/chunk_004.wav'
+file '/tmp/tmp52r_je29/gemini-3.8-flash-tts_0/break.wav'
+file '/tmp/tmp52r_je29/gemini-3.8-flash-tts_0/chunk_005.wav'
