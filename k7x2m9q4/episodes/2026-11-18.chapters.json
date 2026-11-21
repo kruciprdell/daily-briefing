@@ -1,0 +1,41 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0,
+   "title": "Welcome"
+  },
+  {
+   "startTime": 63,
+   "title": "Random topic: The Luminiferous Aether and the Michelson-Morley Experim"
+  },
+  {
+   "startTime": 258,
+   "title": "Czechia"
+  },
+  {
+   "startTime": 439,
+   "title": "Netherlands"
+  },
+  {
+   "startTime": 674,
+   "title": "Europe"
+  },
+  {
+   "startTime": 888,
+   "title": "World"
+  },
+  {
+   "startTime": 1130,
+   "title": "Dutch lesson: Colleague small talk and borrels"
+  },
+  {
+   "startTime": 1335,
+   "title": "Dzogchen: Simplicity: dropping elaboration"
+  },
+  {
+   "startTime": 1527,
+   "title": "Wrap-up"
+  }
+ ]
+}

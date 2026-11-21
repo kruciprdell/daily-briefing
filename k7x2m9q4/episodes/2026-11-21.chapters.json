@@ -1,0 +1,41 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0,
+   "title": "Welcome"
+  },
+  {
+   "startTime": 67,
+   "title": "Random topic: The Cosmic Microwave Background and the Pigeons of Holmd"
+  },
+  {
+   "startTime": 255,
+   "title": "Czechia"
+  },
+  {
+   "startTime": 480,
+   "title": "Netherlands"
+  },
+  {
+   "startTime": 682,
+   "title": "Europe"
+  },
+  {
+   "startTime": 870,
+   "title": "World"
+  },
+  {
+   "startTime": 1069,
+   "title": "Dutch lesson: Greetings and introductions"
+  },
+  {
+   "startTime": 1262,
+   "title": "Dzogchen: Nature of mind: awareness that is already present"
+  },
+  {
+   "startTime": 1475,
+   "title": "Wrap-up"
+  }
+ ]
+}

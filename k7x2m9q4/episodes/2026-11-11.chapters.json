@@ -1,0 +1,41 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0,
+   "title": "Welcome"
+  },
+  {
+   "startTime": 60,
+   "title": "Random topic: The 1965 Tongan Castaways of 'Ata Island"
+  },
+  {
+   "startTime": 199,
+   "title": "Czechia"
+  },
+  {
+   "startTime": 385,
+   "title": "Netherlands"
+  },
+  {
+   "startTime": 594,
+   "title": "Europe"
+  },
+  {
+   "startTime": 788,
+   "title": "World"
+  },
+  {
+   "startTime": 981,
+   "title": "Dutch lesson: Emotions and feelings"
+  },
+  {
+   "startTime": 1121,
+   "title": "Dzogchen: Compassion as natural expression of awareness"
+  },
+  {
+   "startTime": 1301,
+   "title": "Wrap-up"
+  }
+ ]
+}

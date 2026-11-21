@@ -1,0 +1,41 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0,
+   "title": "Welcome"
+  },
+  {
+   "startTime": 62,
+   "title": "Random topic: The 1907 Monongah Mining Disaster and the Birth of Mine "
+  },
+  {
+   "startTime": 223,
+   "title": "Czechia"
+  },
+  {
+   "startTime": 460,
+   "title": "Netherlands"
+  },
+  {
+   "startTime": 775,
+   "title": "Europe"
+  },
+  {
+   "startTime": 1002,
+   "title": "World"
+  },
+  {
+   "startTime": 1225,
+   "title": "Dutch lesson: Past tense (perfectum)"
+  },
+  {
+   "startTime": 1351,
+   "title": "Dzogchen: Dzogchen vs gradual-path approaches"
+  },
+  {
+   "startTime": 1524,
+   "title": "Wrap-up"
+  }
+ ]
+}
