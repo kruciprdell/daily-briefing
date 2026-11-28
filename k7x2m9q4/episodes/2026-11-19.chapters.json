@@ -1,0 +1,41 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0,
+   "title": "Welcome"
+  },
+  {
+   "startTime": 65,
+   "title": "Random topic: Japan's Point-and-Call Railway System"
+  },
+  {
+   "startTime": 211,
+   "title": "Czechia"
+  },
+  {
+   "startTime": 490,
+   "title": "Netherlands"
+  },
+  {
+   "startTime": 783,
+   "title": "Europe"
+  },
+  {
+   "startTime": 999,
+   "title": "World"
+  },
+  {
+   "startTime": 1222,
+   "title": "Dutch lesson: Complaints and solving problems politely"
+  },
+  {
+   "startTime": 1375,
+   "title": "Dzogchen: Integrating view into work and family life"
+  },
+  {
+   "startTime": 1584,
+   "title": "Wrap-up"
+  }
+ ]
+}

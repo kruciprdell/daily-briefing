@@ -1,0 +1,41 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0,
+   "title": "Welcome"
+  },
+  {
+   "startTime": 67,
+   "title": "Random topic: Luis Barragán and the Salk Institute's Travertine Plaza"
+  },
+  {
+   "startTime": 227,
+   "title": "Czechia"
+  },
+  {
+   "startTime": 425,
+   "title": "Netherlands"
+  },
+  {
+   "startTime": 661,
+   "title": "Europe"
+  },
+  {
+   "startTime": 885,
+   "title": "World"
+  },
+  {
+   "startTime": 1110,
+   "title": "Dutch lesson: Holidays: Sinterklaas, Koningsdag, birthdays"
+  },
+  {
+   "startTime": 1349,
+   "title": "Dzogchen: Spaciousness and openness"
+  },
+  {
+   "startTime": 1602,
+   "title": "Wrap-up"
+  }
+ ]
+}

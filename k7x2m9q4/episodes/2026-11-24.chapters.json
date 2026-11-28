@@ -1,0 +1,41 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0,
+   "title": "Welcome"
+  },
+  {
+   "startTime": 80,
+   "title": "Random topic: Fridtjof Nansen's Encounter with Ocean Dead Water"
+  },
+  {
+   "startTime": 225,
+   "title": "Czechia"
+  },
+  {
+   "startTime": 535,
+   "title": "Netherlands"
+  },
+  {
+   "startTime": 908,
+   "title": "Europe"
+  },
+  {
+   "startTime": 1190,
+   "title": "World"
+  },
+  {
+   "startTime": 1470,
+   "title": "Dutch lesson: Ordering coffee at a cafe"
+  },
+  {
+   "startTime": 1623,
+   "title": "Dzogchen: Thoughts as waves: arising and dissolving on their own"
+  },
+  {
+   "startTime": 1787,
+   "title": "Wrap-up"
+  }
+ ]
+}

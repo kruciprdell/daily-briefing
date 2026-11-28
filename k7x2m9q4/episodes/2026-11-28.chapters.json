@@ -1,0 +1,41 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0,
+   "title": "Welcome"
+  },
+  {
+   "startTime": 75,
+   "title": "Random topic: The Sleep Effort Paradox and the Mechanics of Involuntar"
+  },
+  {
+   "startTime": 205,
+   "title": "Czechia"
+  },
+  {
+   "startTime": 419,
+   "title": "Netherlands"
+  },
+  {
+   "startTime": 703,
+   "title": "Europe"
+  },
+  {
+   "startTime": 957,
+   "title": "World"
+  },
+  {
+   "startTime": 1235,
+   "title": "Dutch lesson: Public transport: OV-chipkaart, trains"
+  },
+  {
+   "startTime": 1420,
+   "title": "Dzogchen: Non-meditation: nothing to fix or achieve"
+  },
+  {
+   "startTime": 1628,
+   "title": "Wrap-up"
+  }
+ ]
+}

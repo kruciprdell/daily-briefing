@@ -1,0 +1,41 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0,
+   "title": "Welcome"
+  },
+  {
+   "startTime": 58,
+   "title": "Random topic: The Quicksand Paradox and the Physics of Thixotropy"
+  },
+  {
+   "startTime": 234,
+   "title": "Czechia"
+  },
+  {
+   "startTime": 459,
+   "title": "Netherlands"
+  },
+  {
+   "startTime": 692,
+   "title": "Europe"
+  },
+  {
+   "startTime": 879,
+   "title": "World"
+  },
+  {
+   "startTime": 1045,
+   "title": "Dutch lesson: Time, days, months"
+  },
+  {
+   "startTime": 1185,
+   "title": "Dzogchen: Non-grasping: letting experience be as it is"
+  },
+  {
+   "startTime": 1371,
+   "title": "Wrap-up"
+  }
+ ]
+}
